@@ -80,7 +80,7 @@ public class main extends JavaPlugin implements Listener {
 		System.out.println("Initialisation de l'api LuckPerms en cours...");
 		if (provider != null) {
 			api = provider.getProvider();
-			System.out.println("API initialisé !");
+			System.out.println("API initialisée !");
 			System.out.println("-----------------------------------------------------------------------------------------------------");
 		}
 		MakeTop.CreateHolo();
