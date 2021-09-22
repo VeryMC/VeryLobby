@@ -1,0 +1,12 @@
+name: PremsiLobby
+version: 1.0
+author: Farmeurimmo
+main: fr.farmeurimmo.premsi.core.main
+softdepend: [HolographicDisplays]
+commands:
+  site:
+  discord:
+  serveur:
+  builder:
+  boutique:
+  skyblock:
