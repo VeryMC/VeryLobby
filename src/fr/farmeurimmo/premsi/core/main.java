@@ -52,7 +52,10 @@ public class main extends JavaPlugin implements Listener {
     public static int getCooldown(UUID player) {
         return (cooldowns.get(player) == null ? 0 : cooldowns.get(player));
     }
-	
+    
+    //✯
+	//✔
+    
 	@Override
 	public void onEnable() {
 		instance = this;
