@@ -12,8 +12,6 @@ import org.bukkit.Material;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import fr.farmeurimmo.premsi.commands.CommandBuilder;
 import fr.farmeurimmo.premsi.jump.InteractJump;
@@ -42,10 +40,6 @@ public class JoinHub implements Listener
         CommandBuilder.statutbuilder.put(player, false);
         player.teleport(spawn);
         player.sendMessage("§6§lPremsiServ §f| Version §cBêta §d1.8x1.16.5 \n \n§aBon jeu sur PremsiServ !");
-        if(InteractJump.haseffect.contains(player.getName())) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, 1));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 999999999, 3));
-        }
         player.setHealth(2.0);
         player.setMaxHealth(2.0);
         player.setFoodLevel(20);
