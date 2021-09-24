@@ -59,7 +59,6 @@ public class main extends JavaPlugin implements Listener {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
 		getServer().getPluginManager().registerEvents(new JoinHub(), this);
-		getServer().getPluginManager().registerEvents(new LeaveHub(), this);
 		getServer().getPluginManager().registerEvents(new ChooseEffect(), this);
 		getServer().getPluginManager().registerEvents(new InteractJump(), this);
 		this.getCommand("builder").setExecutor(new CommandBuilder());

@@ -7,6 +7,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.entity.Player;
 import org.bukkit.Material;
 
@@ -43,12 +44,13 @@ public class JoinHub implements Listener
         player.setHealth(2.0);
         player.setMaxHealth(2.0);
         player.setFoodLevel(20);
-        player.setGameMode(GameMode.ADVENTURE);
+        player.removePotionEffect(PotionEffectType.SPEED);
+        player.removePotionEffect(PotionEffectType.JUMP);
         if(InteractJump.haseffect.contains(player.getName())) {
-        playerInventory.setItem(8, JoinHub.effecttrue = new ItemStackBuilder(Material.SLIME_BALL).setName("§a§lEffets Activés §8| §7(clic-droit) ").getItemStack());
-        } else {
-        	playerInventory.setItem(8, JoinHub.effecttrue = new ItemStackBuilder(Material.FIREWORK_CHARGE).setName("§c§lEffets désactivés §8| §7(clic droit) ").getItemStack());
+        	InteractJump.haseffect.remove(player.getName());
         }
+        player.setGameMode(GameMode.ADVENTURE);
+        playerInventory.setItem(8, JoinHub.effecttrue = new ItemStackBuilder(Material.FIREWORK_CHARGE).setName("§c§lEffets désactivés §8| §7(clic droit) ").getItemStack());
         playerInventory.setItem(4, JoinHub.gamesNether = new ItemStackBuilder(Material.NETHER_STAR).setName("§a§lMenu §8| §7(clic-droit) ").getItemStack());
         final ItemStack skullProfile = new SkullBuilder(player.getName()).setDisplayName("§d§lProfil §8| §7(clic-droit)").getItemStack();
         playerInventory.setItem(0, skullProfile);
@@ -59,7 +61,6 @@ public class JoinHub implements Listener
             playerInventory.setItem(3, FeatherFly);
         }
         ScoreBoardNMS.MakeScoreBoardForPlayer(player);
-        //main.setScoreBoard(player);
     }
     
     public static void GiveItem(Player player) {
