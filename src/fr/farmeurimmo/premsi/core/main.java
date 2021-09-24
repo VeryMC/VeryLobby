@@ -1,7 +1,9 @@
 package fr.farmeurimmo.premsi.core;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -34,6 +36,7 @@ import fr.farmeurimmo.premsi.serverqueue.ServerQueueManager;
 import fr.farmeurimmo.premsi.utils.ChooseEffect;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.model.user.User;
+import net.luckperms.api.node.Node;
 public class main extends JavaPlugin implements Listener {
 	
 	public static main instance;
@@ -119,6 +122,29 @@ public class main extends JavaPlugin implements Listener {
 			if (user.getCachedData().getMetaData().getPrefix() != null) {
 				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§").replace("&d✯", "");
 			}
+			
+			
+			Instant expire = null;
+			for(Node node : user.getNodes()) {
+				if(node.hasExpiry()) {
+				expire = node.getExpiry();
+				}
+			}
+			
+			long duration = -1;
+			if(expire != null) {
+				Instant now = Instant.now();
+				long NowMillis = now.toEpochMilli();
+				long expireMillis = expire.toEpochMilli();
+				
+				duration = expireMillis - NowMillis;
+				long minleft = TimeUnit.MILLISECONDS.toMinutes(duration) + 1;
+				player.sendMessage("Duration: " + minleft);
+			} else {
+				player.sendMessage("a");
+			}
+				
+			
 			if (user.getCachedData().getMetaData().getSuffix() != null) {
 				Suffix = user.getCachedData().getMetaData().getSuffix().replace("&l", "").replace("&", "§");
 			}
@@ -157,97 +183,6 @@ public class main extends JavaPlugin implements Listener {
 			Suffix = "";
 		}
 	}
-	/*public static void setScoreBoard(final Player player){
-		Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
-		Objective obj = board.registerNewObjective("Stratania", "dummy");
-		obj.setDisplaySlot(DisplaySlot.SIDEBAR);
-		obj.setDisplayName("§fPremsi§6Serv");
-		
-		User user = LuckPermsProvider.get().getUserManager().getUser(player.getName());
-		if (user.getCachedData().getMetaData().getPrefix() != null) {
-			Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
-		}
-		
-		
-		obj.getScore("§6§l" + player.getName()).setScore(11);
-		obj.getScore("§6§lServeur").setScore(6);
-		obj.getScore("  §eplay.Stratania.net").setScore(1);
-		obj.getScore("§a").setScore(12);
-		obj.getScore("§l").setScore(7);
-		obj.getScore("§o").setScore(2);
-		obj.getScore("§fBoutique §8» §9/boutique").setScore(3);
-		obj.getScore("§fCripto §8» §e<soon>").setScore(9);
-		obj.getScore("§fCrédit §8» §e<soon>").setScore(8);
-
-
-		Team rank = board.registerNewTeam("rank");
-		Team online = board.registerNewTeam("online");
-		Team ping = board.registerNewTeam("ping");
-		
-		
-		online.addEntry("§k");
-		rank.addEntry("§2");
-		ping.addEntry("§9");
-		
-		
-		obj.getScore("§k").setScore(5);
-		obj.getScore("§2").setScore(10);
-		obj.getScore("§9").setScore(4);
-
-
-		player.setScoreboard(board);
-
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
-			public void run() {
-				updateScoreBoard(player);
-			}
-		}, 2);
-
-	}
-
-
-	public static void updateScoreBoard(final Player player){
-		Scoreboard board = player.getScoreboard();
-		
-		User user = LuckPermsProvider.get().getUserManager().getUser(player.getName());
-		if (user.getCachedData().getMetaData().getPrefix() != null) {
-			Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
-		}
-		int ping = 0;
-		String pingcolor = "§2";
-		try {
-			  Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
-			  ping = (int) entityPlayer.getClass().getField("ping").get(entityPlayer);
-			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | NoSuchFieldException e) {
-			  e.printStackTrace();
-			}
-		if(ping >= 0 && ping <= 35) {
-			pingcolor = "§2";
-		}
-		if(ping >= 36 && ping <= 65) {
-			pingcolor = "§a";
-		}
-		if(ping >= 66 && ping <= 95) {
-			pingcolor = "§e";
-		}
-		if(ping >= 96 && ping <= 125) {
-			pingcolor = "§c";
-		}
-		if(ping >= 126) {
-			pingcolor = "§4";
-		}
-			board.getTeam("ping").setPrefix("§fPing §8» " + pingcolor + ping);
-			board.getTeam("rank").setPrefix("§fGrade §8» " + Grade);
-			board.getTeam("online").setPrefix("§f" + Bukkit.getServerName() + " §8» §c" + Bukkit.getServer().getOnlinePlayers().size());	
-				
-
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
-			public void run() {
-				updateScoreBoard(player);
-			}
-		}, 20);
-
-	}*/
 	public static void MakeMainGui(Player player) {
 		Inventory inv = Bukkit.createInventory(null, 54, "§fPremsi§6Serv §f➔ §6Mini-jeux");
 		
@@ -286,7 +221,7 @@ public class main extends JavaPlugin implements Listener {
         ItemStack stack2 = new ItemStack(Material.BOOK, 1);
         ItemMeta meta2 = stack2.getItemMeta();
         meta2.setDisplayName("§6Informations");
-        meta2.setLore(Arrays.asList("§7Site §8» §awww.premsiserv.net", "§7Discord §8» §9https://discord.gg/DJgzEAdG28"));
+        meta2.setLore(Arrays.asList("§7Site §8» §awww.premsiserv.com", "§7Discord §8» §9https://discord.gg/DJgzEAdG28"));
         stack2.setItemMeta(meta2);
         inv.setItem(45, stack2);
         
@@ -300,7 +235,7 @@ public class main extends JavaPlugin implements Listener {
         ItemStack stack4 = new ItemStack(Material.GRASS, 1);
         ItemMeta meta4 = stack4.getItemMeta();
         meta4.setDisplayName("§6Skyblock");
-        meta4.setLore(Arrays.asList("§7SkyBlock, vous commencez avec une petite île", "§7où vous devez survivre, agrandir votre terrain pour forger", "§7votre empire !", "§7", "§d§lInformations","§7","§7Version: §e1.8x1.16","§7Développeur: Farmeurimmo"));
+        meta4.setLore(Arrays.asList("§7SkyBlock, vous commencez avec une petite île", "§7où vous devez survivre, agrandir votre terrain pour forger", "§7votre empire !", "§7", "§d§lInformations","§7","§7Version: §e1.16.5 et supérieur","§7Développeur: Farmeurimmo"));
         stack4.setItemMeta(meta4);
         inv.setItem(22, stack4);
         
@@ -479,7 +414,7 @@ public class main extends JavaPlugin implements Listener {
         ItemStack stack = new ItemStack(Material.BOOK, 1);
         ItemMeta metab = stack.getItemMeta();
         metab.setDisplayName("§6Informations");
-        metab.setLore(Arrays.asList("§7Site §8» §awww.premsiserv.net", "§7Discord §8» §9https://discord.gg/DJgzEAdG28"));
+        metab.setLore(Arrays.asList("§7Site §8» §awww.premsiserv.com", "§7Discord §8» §9https://discord.gg/DJgzEAdG28"));
         stack.setItemMeta(metab);
         
         ItemStack stack1 = new ItemStack(Material.ARROW, 1);
