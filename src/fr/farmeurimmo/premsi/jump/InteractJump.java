@@ -45,8 +45,6 @@ public class InteractJump implements Listener {
 		PlayerInventory aa = player.getInventory();
 		aa.clear();
 		
-		permchangeeffect.put(player, false);
-		
 		if(player.hasPotionEffect(PotionEffectType.JUMP)) {
 			haseffect.add(player.getName());
 			player.removePotionEffect(PotionEffectType.JUMP);
@@ -157,7 +155,6 @@ public class InteractJump implements Listener {
 				Integer ddd = 0;
 				Timer.put(player.getUniqueId(), ddd);
 				Timer(player);
-				ChooseEffect.permchangeeffect.put(player, false);
 				player.sendMessage("§a§lJump §7» §aVous avez commencé le jump !");
 				}
 				else if(Jump.contains(player.getUniqueId())) {
@@ -236,7 +233,6 @@ public class InteractJump implements Listener {
 				}
 				Checkpoint1.remove(player.getUniqueId());
 				Checkpoint2.remove(player.getUniqueId());
-				permchangeeffect.put(player, false);
 				}
 				else {
 					player.sendMessage("§a§lJump §7» §aErreur, vous n'avez pas commencé le jump !");

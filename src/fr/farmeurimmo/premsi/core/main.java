@@ -112,12 +112,23 @@ public class main extends JavaPlugin implements Listener {
 	        event.setJoinMessage((String)null);
 		}
 		else {
-			User user = api.getUserManager().getUser(player.getUniqueId());
+			String Grade = "§7N/A";
+			String Suffix = "";
+			
+			User user = main.api.getUserManager().getUser(player.getUniqueId());
 			if (user.getCachedData().getMetaData().getPrefix() != null) {
-				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§");
+				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§").replace("&d✯", "");
 			}
-			event.setJoinMessage("§l§o" + Grade + " " + player.getName() + " §6§ovient de rejoindre le serveur.");
+			if (user.getCachedData().getMetaData().getSuffix() != null) {
+				Suffix = user.getCachedData().getMetaData().getSuffix().replace("&l", "").replace("&", "§");
+			}
+			if(!Suffix.equalsIgnoreCase("§d✯")) {
+			event.setJoinMessage("§l§o" + Grade + " " + player.getName() +" §6§ovient de rejoindre le serveur.");
+			} else {
+				event.setJoinMessage("§l§o" + Grade + " " + player.getName() + " " + Suffix +" §6§ovient de rejoindre le serveur.");
+			}
 			Grade = "§fN/A";
+			Suffix = "";
 		}
 	}
 	@EventHandler
@@ -127,12 +138,23 @@ public class main extends JavaPlugin implements Listener {
 	        event.setQuitMessage((String)null);
 		}
 		else {
-			User user = api.getUserManager().getUser(player.getUniqueId());
+			String Grade = "§7N/A";
+			String Suffix = "";
+			
+			User user = main.api.getUserManager().getUser(player.getUniqueId());
 			if (user.getCachedData().getMetaData().getPrefix() != null) {
-				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§");
+				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§").replace("&d✯", "");
 			}
-			event.setQuitMessage("§l§o" + Grade + " " + player.getName() + " §6§ovient de quitter le serveur.");
+			if (user.getCachedData().getMetaData().getSuffix() != null) {
+				Suffix = user.getCachedData().getMetaData().getSuffix().replace("&l", "").replace("&", "§");
+			}
+			if(!Suffix.equalsIgnoreCase("§d✯")) {
+			event.setQuitMessage("§l§o" + Grade + " " + player.getName() +" §6§ovient de quitter le serveur.");
+			} else {
+				event.setQuitMessage("§l§o" + Grade + " " + player.getName() + " " + Suffix +" §6§ovient de quitter le serveur.");
+			}
 			Grade = "§fN/A";
+			Suffix = "";
 		}
 	}
 	/*public static void setScoreBoard(final Player player){
