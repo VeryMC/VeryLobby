@@ -19,10 +19,14 @@ public class ScoreBoardNMS {
 	ScoreboardSign sb = new ScoreboardSign(player, "§6§lPremsiServ");
 	
 	String Grade = "§7N/A";
+	String Suffix = "";
 	
 	User user = main.api.getUserManager().getUser(player.getUniqueId());
 	if (user.getCachedData().getMetaData().getPrefix() != null) {
-		Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§");
+		Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§").replace("&d✯", "");
+	}
+	if (user.getCachedData().getMetaData().getSuffix() != null) {
+		Suffix = user.getCachedData().getMetaData().getSuffix().replace("&l", "").replace("&", "§");
 	}
 	
 	int ping = 0;
@@ -49,19 +53,26 @@ public class ScoreBoardNMS {
 		pingcolor = "§4";
 	}
 	
+	
+	int online = Bukkit.getServer().getOnlinePlayers().size();
 	sb.create();
 	sb.setLine(14, "  §eplay.premsiserv.com");
 	sb.setLine(13, "§1");
 	sb.setLine(12, "§fServeur §8» §c"+Bukkit.getServerName());
-	sb.setLine(11, "§fEn ligne §8» §c" + Bukkit.getServer().getOnlinePlayers().size());
+	sb.setLine(11, "§fEn ligne §8»§f §c" + online);
 	sb.setLine(10, "§6§lServeur");
 	sb.setLine(9, "§6");
 	sb.setLine(8, "§fCrédits §8» §csoon");
 	sb.setLine(7, "§fCoins §8» §csoon");
-	sb.setLine(6, "§fGrade §8» §f"+Grade);
-	sb.setLine(5, "§fPing §8» §f" + pingcolor + ping);
-	sb.setLine(4, "§6§l"+player.getName());
-	sb.setLine(3, "§f");
+	if(Suffix.equalsIgnoreCase("§d✯")) {
+	sb.setLine(6, "§fAbonnement §8» §a✔");
+	} else {
+		sb.setLine(6, "§fAbonnement §8» §cx");
+	}
+	sb.setLine(5, "§fGrade §8» §f"+Grade+" "+Suffix);
+	sb.setLine(4, "§fPing §8» §f" + pingcolor + ping);
+	sb.setLine(3, "§6§l"+player.getName());
+	sb.setLine(2, "§f");
 
 	//...//
 
@@ -99,22 +110,32 @@ public class ScoreBoardNMS {
 			}
 			
 			String Grade = "§7N/A";
+			String Suffix = "";
 			
 			User user = main.api.getUserManager().getUser(board.getKey().getUniqueId());
 			if (user.getCachedData().getMetaData().getPrefix() != null) {
-				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§");
+				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§").replace("&d✯", "");
 			}
+			if (user.getCachedData().getMetaData().getSuffix() != null) {
+				Suffix = user.getCachedData().getMetaData().getSuffix().replace("&l", "").replace("&", "§");
+			}
+			int online = Bukkit.getServer().getOnlinePlayers().size();
+			board.getValue().setLine(4, "§fPing §8» §f" + pingcolor + ping);
+			board.getValue().setLine(11, "§fEn ligne §8»§f §c" + online);
+			board.getValue().setLine(5, "§fGrade §8» §f"+Grade);
 			
-			board.getValue().setLine(5, "§fPing §8» §f" + pingcolor + ping);
-			board.getValue().setLine(11, "§fEn ligne §8» §c" + Bukkit.getServer().getOnlinePlayers().size());
-			board.getValue().setLine(6, "§fGrade §8» §f"+Grade);
+			if(Suffix.equalsIgnoreCase("§d✯")) {
+				board.getValue().setLine(6, "§fAbonnement §8» §a✔");
+				} else {
+					board.getValue().setLine(6, "§fAbonnement §8» §cx");
+				}
 		    
 		}
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
 			public void run() {
 				UpdateScoreBoard();
 			}
-		}, 20);
+		}, 40);
 	}
 	public static void DeleteScoreBoard() {
 		for (Entry<Player, ScoreboardSign> board : boards.entrySet()) {
