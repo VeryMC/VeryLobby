@@ -92,10 +92,15 @@ public class main extends JavaPlugin implements Listener {
 			InteractJump.permchangeeffect.put(player, true);
 		}
 		ServerQueueManager.Every5sec();
+		for(Player player : Bukkit.getOnlinePlayers()) {
+			ScoreBoardNMS.MakeScoreBoardForPlayer(player);
+		}
+		ScoreBoardNMS.UpdateScoreBoard();
 	}
 	@Override
 	public void onDisable() {
 		MakeTop.RemoveHolo();
+		ScoreBoardNMS.DeleteScoreBoard();
 	}
 	@EventHandler
 	public void OnJOINbroadcast(PlayerJoinEvent event) {
