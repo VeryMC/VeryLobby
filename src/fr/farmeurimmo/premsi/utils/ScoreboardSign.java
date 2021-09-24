@@ -131,6 +131,7 @@ public class ScoreboardSign {
 		return ((CraftPlayer) player).getHandle().playerConnection;
 	}
 
+	@SuppressWarnings("rawtypes")
 	private void sendLine(int line) {
 		if (line > 14)
 			return;
@@ -315,6 +316,7 @@ public class ScoreboardSign {
 			return addOrRemovePlayer(3, currentPlayer);
 		}
 
+		@SuppressWarnings("unchecked")
 		public PacketPlayOutScoreboardTeam addOrRemovePlayer(int mode, String playerName) {
 			PacketPlayOutScoreboardTeam packet = new PacketPlayOutScoreboardTeam();
 			setField(packet, "a", name);
