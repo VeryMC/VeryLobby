@@ -64,6 +64,7 @@ public class JoinHub implements Listener
         if (player.hasPermission("fly")) {
             playerInventory.setItem(3, FeatherFly);
         }
+        ScoreBoardNMS.MakeScoreBoardForPlayer(player);
         //main.setScoreBoard(player);
     }
     
