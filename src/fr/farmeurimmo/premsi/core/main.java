@@ -397,12 +397,44 @@ public class main extends JavaPlugin implements Listener {
 		}
 		
 		final Inventory inv = Bukkit.createInventory(null, 54, "§fPremsi§6Serv §f➔ §6Boutique des grades");
-        
-        ItemStack stacku = new ItemStack(Material.GOLD_INGOT, 1);
+		
+		
+		ItemStack stacku = new ItemStack(Material.BEACON, 1);
         ItemMeta metau = stacku.getItemMeta();
-        metau.setDisplayName("§6Boutique des grades");
-        metau.setLore(Arrays.asList("§cAchats bientôt disponibles !"));
+        metau.setDisplayName("§d7 Jours d'abonnements");
+        metau.setLore(Arrays.asList("§c..."));
         stacku.setItemMeta(metau);
+        
+        ItemStack stacka = new ItemStack(Material.BEACON, 1);
+        ItemMeta metaa = stacka.getItemMeta();
+        metaa.setDisplayName("§d14 Jours d'abonnements");
+        metaa.setLore(Arrays.asList("§c..."));
+        stacka.setItemMeta(metaa);
+        
+        ItemStack stackb= new ItemStack(Material.BEACON, 1);
+        ItemMeta metab = stackb.getItemMeta();
+        metab.setDisplayName("§d30 Jours d'abonnements");
+        metab.setLore(Arrays.asList("§c..."));
+        stackb.setItemMeta(metab);
+        
+        ItemStack stackc = new ItemStack(Material.BEACON, 1);
+        ItemMeta metac = stackc.getItemMeta();
+        metac.setDisplayName("§d60 Jours d'abonnements");
+        metac.setLore(Arrays.asList("§c..."));
+        stackc.setItemMeta(metac);
+        
+        ItemStack stackd = new ItemStack(Material.BEACON, 1);
+        ItemMeta metad = stackd.getItemMeta();
+        metad.setDisplayName("§d90 Jours d'abonnements");
+        metad.setLore(Arrays.asList("§c..."));
+        stackd.setItemMeta(metad);
+        
+        inv.setItem(20, stacku);
+        inv.setItem(22, stacka);
+        inv.setItem(24, stackb);
+        inv.setItem(30, stackc);
+        inv.setItem(32, stackd);
+		
 		
 		ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
         ItemMeta meta = head.getItemMeta();
@@ -411,11 +443,11 @@ public class main extends JavaPlugin implements Listener {
         meta.setLore(Arrays.asList("§7Grade: " + Grade));
         head.setItemMeta(meta);
         
-        ItemStack stack = new ItemStack(Material.BOOK, 1);
-        ItemMeta metab = stack.getItemMeta();
-        metab.setDisplayName("§6Informations");
-        metab.setLore(Arrays.asList("§7Site §8» §awww.premsiserv.com", "§7Discord §8» §9https://discord.gg/DJgzEAdG28"));
-        stack.setItemMeta(metab);
+        ItemStack stack7 = new ItemStack(Material.BOOK, 1);
+        ItemMeta meta7 = stack7.getItemMeta();
+        meta7.setDisplayName("§6Informations");
+        meta7.setLore(Arrays.asList("§7Site §8» §awww.premsiserv.com", "§7Discord §8» §9https://discord.gg/DJgzEAdG28"));
+        stack7.setItemMeta(meta7);
         
         ItemStack stack1 = new ItemStack(Material.ARROW, 1);
         ItemMeta meta1 = stack1.getItemMeta();
@@ -444,10 +476,11 @@ public class main extends JavaPlugin implements Listener {
         inv.setItem(36, stack8);
         inv.setItem(35, stack8);
         inv.setItem(44, stack8);
-        inv.setItem(45, stack);
+        inv.setItem(45, stack7);
         inv.setItem(46, stack8);
         inv.setItem(47, stack8);
         inv.setItem(48, stack8);
+        inv.setItem(49, stack8);
         inv.setItem(50, stack8);
         inv.setItem(51, stack8);
         inv.setItem(52, stack8);
