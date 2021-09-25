@@ -435,11 +435,16 @@ public class main extends JavaPlugin implements Listener {
         long realminleft = minleft - 60*hourleft;
         long realhourleft = hourleft - 24*dayleft;
         metae.setDisplayName("§eStatus de l'abonnement §a(§lACTIF§a)");
-        metae.setLore(Arrays.asList("§6"+dayleft+" §7jour(s) §6"+realhourleft+" §7heure(s) §6"+realminleft+" §7minute(s) §6"
+        metae.setLore(Arrays.asList("§7Type: §a§lTemporaire","§6"+dayleft+" §7jour(s) §6"+realhourleft+" §7heure(s) §6"+realminleft+" §7minute(s) §6"
         +realsecleft+" §7seconde(s) restantes"));
         metae.addEnchant(Enchantment.SILK_TOUCH, 0, true);
         metae.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        } else {
+        } else if(player.hasPermission("group.abo")){
+        	metae.setDisplayName("§eStatus de l'abonnement §a(§lACTIF§a)");
+        	metae.setLore(Arrays.asList("§7Type: §2§lPermanant"));
+        	metae.addEnchant(Enchantment.SILK_TOUCH, 0, true);
+            metae.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+	    } else {
         	metae.setDisplayName("§eStatus de l'abonnement §c(§lINACTIF§c)");
         }
         stacke.setItemMeta(metae);
