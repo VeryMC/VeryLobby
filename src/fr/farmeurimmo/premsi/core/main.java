@@ -1,5 +1,4 @@
 package fr.farmeurimmo.premsi.core;
-import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.UUID;
@@ -8,6 +7,8 @@ import java.util.concurrent.TimeUnit;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,12 +18,14 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.farmeurimmo.premsi.commands.CommandBoutique;
 import fr.farmeurimmo.premsi.commands.CommandBuilder;
@@ -34,9 +37,11 @@ import fr.farmeurimmo.premsi.jump.InteractJump;
 import fr.farmeurimmo.premsi.jump.MakeTop;
 import fr.farmeurimmo.premsi.serverqueue.ServerQueueManager;
 import fr.farmeurimmo.premsi.utils.ChooseEffect;
+import fr.farmeurimmo.premsi.utils.RankExpiry;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.model.user.User;
-import net.luckperms.api.node.Node;
+import net.minecraft.server.v1_8_R3.EnumParticle;
+import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
 public class main extends JavaPlugin implements Listener {
 	
 	public static main instance;
@@ -92,14 +97,25 @@ public class main extends JavaPlugin implements Listener {
 		MakeTop.SecondMap.clear();
 		MakeTop.Valeurs.clear();
 		MakeTop.Classement.clear();
-		for(Player player : Bukkit.getOnlinePlayers()) {
-			//setScoreBoard(player);
-			InteractJump.permchangeeffect.put(player, true);
-		}
 		ServerQueueManager.Every5sec();
-		for(Player player : Bukkit.getOnlinePlayers()) {
+		for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+			InteractJump.permchangeeffect.put(player, true);
 			ScoreBoardNMS.MakeScoreBoardForPlayer(player);
-		}
+
+                new BukkitRunnable() {
+
+                    @Override
+                    public void run() {
+                        float red = 0;
+                        float green = 255;
+                        float blue = 255;
+                        Location location = player.getLocation();
+
+                        PacketPlayOutWorldParticles particles = new PacketPlayOutWorldParticles(EnumParticle.NOTE, true, (float) location.getX(), (float) location.getY() + 2, (float) location.getZ(), red, green, blue, (float)255, 0, 10);
+                        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(particles);
+                    }
+                }.runTaskTimerAsynchronously(this, 0, 0);
+        }
 		ScoreBoardNMS.UpdateScoreBoard();
 	}
 	@Override
@@ -122,29 +138,7 @@ public class main extends JavaPlugin implements Listener {
 			if (user.getCachedData().getMetaData().getPrefix() != null) {
 				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§").replace("&d✯", "");
 			}
-			
-			
-			Instant expire = null;
-			for(Node node : user.getNodes()) {
-				if(node.hasExpiry()) {
-				expire = node.getExpiry();
-				}
-			}
-			
-			long duration = -1;
-			if(expire != null) {
-				Instant now = Instant.now();
-				long NowMillis = now.toEpochMilli();
-				long expireMillis = expire.toEpochMilli();
-				
-				duration = expireMillis - NowMillis;
-				long minleft = TimeUnit.MILLISECONDS.toMinutes(duration) + 1;
-				player.sendMessage("Duration: " + minleft);
-			} else {
-				player.sendMessage("a");
-			}
-				
-			
+					
 			if (user.getCachedData().getMetaData().getSuffix() != null) {
 				Suffix = user.getCachedData().getMetaData().getSuffix().replace("&l", "").replace("&", "§");
 			}
@@ -429,10 +423,32 @@ public class main extends JavaPlugin implements Listener {
         metad.setLore(Arrays.asList("§c..."));
         stackd.setItemMeta(metad);
         
+        ItemStack stacke = new ItemStack(Material.PAPER, 1);
+        ItemMeta metae = stacke.getItemMeta();
+        if(RankExpiry.GetTimeLeft(player) >= 1) {
+        long aaa = RankExpiry.GetTimeLeft(player);
+        long dayleft = TimeUnit.MILLISECONDS.toDays(aaa);
+        long hourleft = TimeUnit.MILLISECONDS.toHours(aaa);
+        long minleft = TimeUnit.MILLISECONDS.toMinutes(aaa);
+        long secleft = TimeUnit.MILLISECONDS.toSeconds(aaa);
+        long realsecleft = secleft - 60*minleft;
+        long realminleft = minleft - 60*hourleft;
+        long realhourleft = hourleft - 24*dayleft;
+        metae.setDisplayName("§eStatus de l'abonnement §a(§lACTIF§a)");
+        metae.setLore(Arrays.asList("§6"+dayleft+" §7jour(s) §6"+realhourleft+" §7heure(s) §6"+realminleft+" §7minute(s) §6"
+        +realsecleft+" §7seconde(s) restants"));
+        metae.addEnchant(Enchantment.SILK_TOUCH, 0, true);
+        metae.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        } else {
+        	metae.setDisplayName("§eStatus de l'abonnement §c(§lINACTIF§c)");
+        }
+        stacke.setItemMeta(metae);
+        
         inv.setItem(20, stacku);
         inv.setItem(22, stacka);
         inv.setItem(24, stackb);
         inv.setItem(30, stackc);
+        inv.setItem(31, stacke);
         inv.setItem(32, stackd);
 		
 		
