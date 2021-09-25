@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import fr.farmeurimmo.premsi.core.JoinHub;
+import fr.farmeurimmo.premsi.core.JoinLeaveHub;
 
 import java.util.Map;
 import org.bukkit.command.CommandExecutor;
@@ -30,7 +30,7 @@ public class CommandBuilder implements CommandExecutor
         	if(CommandBuilder.statutbuilder.get(player) == true) {
             CommandBuilder.statutbuilder.put(player, false);
             player.sendMessage("§a§lMode Builder §8>> §fTu es maintenant en mode Joueur !");
-            JoinHub.GiveItem(player);
+            JoinLeaveHub.GiveItem(player);
             player.setGameMode(GameMode.ADVENTURE);
             return true;
         } else {

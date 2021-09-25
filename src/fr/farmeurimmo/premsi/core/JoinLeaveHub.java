@@ -17,13 +17,15 @@ import org.bukkit.GameMode;
 import fr.farmeurimmo.premsi.commands.CommandBuilder;
 import fr.farmeurimmo.premsi.jump.InteractJump;
 import fr.farmeurimmo.premsi.utils.*;
+import net.luckperms.api.model.user.User;
 
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.event.Listener;
 
-public class JoinHub implements Listener
+public class JoinLeaveHub implements Listener
 {
     public static ItemStack effecttrue;
     public static ItemStack gamesNether;
@@ -50,8 +52,8 @@ public class JoinHub implements Listener
         	InteractJump.haseffect.remove(player.getName());
         }
         player.setGameMode(GameMode.ADVENTURE);
-        playerInventory.setItem(8, JoinHub.effecttrue = new ItemStackBuilder(Material.FIREWORK_CHARGE).setName("§c§lEffets désactivés §8| §7(clic droit) ").getItemStack());
-        playerInventory.setItem(4, JoinHub.gamesNether = new ItemStackBuilder(Material.NETHER_STAR).setName("§a§lMenu §8| §7(clic-droit) ").getItemStack());
+        playerInventory.setItem(8, JoinLeaveHub.effecttrue = new ItemStackBuilder(Material.FIREWORK_CHARGE).setName("§c§lEffets désactivés §8| §7(clic droit) ").getItemStack());
+        playerInventory.setItem(4, JoinLeaveHub.gamesNether = new ItemStackBuilder(Material.NETHER_STAR).setName("§a§lMenu §8| §7(clic-droit) ").getItemStack());
         final ItemStack skullProfile = new SkullBuilder(player.getName()).setDisplayName("§d§lProfil §8| §7(clic-droit)").getItemStack();
         playerInventory.setItem(0, skullProfile);
         final ItemStack boutique = new ItemStackBuilder(Material.GOLD_INGOT).setName("§e§lBoutique §8| §7(clic-droit)").getItemStack();
@@ -61,18 +63,69 @@ public class JoinHub implements Listener
             playerInventory.setItem(3, FeatherFly);
         }
         ScoreBoardNMS.MakeScoreBoardForPlayer(player);
+        if(!player.hasPermission("broadcast.join")) {
+	        event.setJoinMessage((String)null);
+		}
+		else {
+			String Grade = "§7N/A";
+			String Suffix = "";
+			
+			User user = main.api.getUserManager().getUser(player.getUniqueId());
+			if (user.getCachedData().getMetaData().getPrefix() != null) {
+				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§").replace("&d✯", "");
+			}
+					
+			if (user.getCachedData().getMetaData().getSuffix() != null) {
+				Suffix = user.getCachedData().getMetaData().getSuffix().replace("&l", "").replace("&", "§");
+			}
+			if(!Suffix.equalsIgnoreCase("§d✯")) {
+			event.setJoinMessage("§l§o" + Grade + " " + player.getName() +" §6§ovient de rejoindre le serveur.");
+			} else {
+				event.setJoinMessage("§l§o" + Grade + " " + player.getName() + " " + Suffix +" §6§ovient de rejoindre le serveur.");
+			}
+			Grade = "§fN/A";
+			Suffix = "";
+		}
     }
+    
+    @EventHandler
+	public void OnLeavebroadcast(PlayerQuitEvent event) {
+		Player player = event.getPlayer();
+		if(!player.hasPermission("broadcast.join")) {
+	        event.setQuitMessage((String)null);
+		}
+		else {
+			String Grade = "§7N/A";
+			String Suffix = "";
+			
+			User user = main.api.getUserManager().getUser(player.getUniqueId());
+			if (user.getCachedData().getMetaData().getPrefix() != null) {
+				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§").replace("&d✯", "");
+			}
+			if (user.getCachedData().getMetaData().getSuffix() != null) {
+				Suffix = user.getCachedData().getMetaData().getSuffix().replace("&l", "").replace("&", "§");
+			}
+			if(!Suffix.equalsIgnoreCase("§d✯")) {
+			event.setQuitMessage("§l§o" + Grade + " " + player.getName() +" §6§ovient de quitter le serveur.");
+			} else {
+				event.setQuitMessage("§l§o" + Grade + " " + player.getName() + " " + Suffix +" §6§ovient de quitter le serveur.");
+			}
+			Grade = "§fN/A";
+			Suffix = "";
+		}
+	}
+    
     
     public static void GiveItem(Player player) {
     	final PlayerInventory playerInventory = player.getInventory();
     	playerInventory.clear();
     	player.setGameMode(GameMode.ADVENTURE);
     	if(InteractJump.haseffect.contains(player.getName())) {
-            playerInventory.setItem(8, JoinHub.effecttrue = new ItemStackBuilder(Material.SLIME_BALL).setName("§a§lEffets Activés §8| §7(clic-droit) ").getItemStack());
+            playerInventory.setItem(8, JoinLeaveHub.effecttrue = new ItemStackBuilder(Material.SLIME_BALL).setName("§a§lEffets Activés §8| §7(clic-droit) ").getItemStack());
             } else {
-            	playerInventory.setItem(8, JoinHub.effecttrue = new ItemStackBuilder(Material.FIREWORK_CHARGE).setName("§c§lEffets désactivés §8| §7(clic droit) ").getItemStack());
+            	playerInventory.setItem(8, JoinLeaveHub.effecttrue = new ItemStackBuilder(Material.FIREWORK_CHARGE).setName("§c§lEffets désactivés §8| §7(clic droit) ").getItemStack());
             }
-        playerInventory.setItem(4, JoinHub.gamesNether = new ItemStackBuilder(Material.NETHER_STAR).setName("§a§lMenu §8| §7(clic-droit) ").getItemStack());
+        playerInventory.setItem(4, JoinLeaveHub.gamesNether = new ItemStackBuilder(Material.NETHER_STAR).setName("§a§lMenu §8| §7(clic-droit) ").getItemStack());
         final ItemStack skullProfile = new SkullBuilder(player.getName()).setDisplayName("§d§lProfil §8| §7(clic-droit)").getItemStack();
         playerInventory.setItem(0, skullProfile);
         final ItemStack boutique = new ItemStackBuilder(Material.GOLD_INGOT).setName("§e§lBoutique §8| §7(clic-droit)").getItemStack();

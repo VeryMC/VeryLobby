@@ -23,7 +23,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import fr.farmeurimmo.premsi.commands.CommandBuilder;
-import fr.farmeurimmo.premsi.core.JoinHub;
+import fr.farmeurimmo.premsi.core.JoinLeaveHub;
 import fr.farmeurimmo.premsi.utils.ChooseEffect;
 
 public class InteractJump implements Listener {
@@ -95,7 +95,7 @@ public class InteractJump implements Listener {
 			}
 			if(player.getItemInHand().getItemMeta().getDisplayName() != null) {
 			if(player.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("§aArrêter le jump §8| §7(clic droit)")) {
-			JoinHub.GiveItem(player);
+			JoinLeaveHub.GiveItem(player);
 			player.sendMessage("§a§lJump §7» §aVous avez décidé d'arrêter le jump !");
 			if(haseffect.contains(player.getName())) {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, 1));
@@ -215,7 +215,7 @@ public class InteractJump implements Listener {
 								if(Checkpoint2.contains(player.getUniqueId())) {
 									Checkpoint2.remove(player.getUniqueId());
 									}
-							JoinHub.GiveItem(player);
+							JoinLeaveHub.GiveItem(player);
 							if(haseffect.contains(player.getName())) {
 								player.sendMessage("aa");
 								player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, 1));
@@ -226,7 +226,7 @@ public class InteractJump implements Listener {
 				Bukkit.broadcastMessage("§a§lJump §7» §aGG à " + player.getName() + " qui vient de finir le jump en " + min + " minutes et " + timeintotal + " secondes !");
 				player.setGameMode(GameMode.ADVENTURE);
 				Jump.remove(player.getUniqueId());
-				JoinHub.GiveItem(player);
+				JoinLeaveHub.GiveItem(player);
 				if(haseffect.contains(player.getName())) {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, 1));
 	                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 999999999, 3));
