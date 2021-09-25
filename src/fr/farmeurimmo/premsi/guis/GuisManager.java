@@ -61,10 +61,16 @@ public class GuisManager implements Listener {
 			if(current.getType() == Material.ARROW) {
 				MakeGuis.MakeMainGui(player);
 			}
+			if(current.getType() == Material.SKULL_ITEM) {
+				MakeGuis.MakeProfil(player);
+			}
         }
         if(event.getInventory().getName() == "§fPremsi§6Serv §f➔ §6Boutiques") {
 			if(current.getType() == Material.ARROW) {
 				MakeGuis.MakeMainGui(player);
+			}
+			if(current.getType() == Material.SKULL_ITEM) {
+				MakeGuis.MakeProfil(player);
 			}
 			if(current.getType() == Material.GOLD_INGOT) {
 				MakeGuis.MakeBoutiqueRank(player);
@@ -79,6 +85,9 @@ public class GuisManager implements Listener {
 			}
 			if(current.getType() == Material.WOOL) {
 				MakeGuis.MakeBoutiqueRank(player);
+			}
+			if(current.getType() == Material.SKULL_ITEM) {
+				MakeGuis.MakeProfil(player);
 			}
 			if(current.getType() == Material.IRON_SWORD) {
 				if(player.hasPermission("rusher")){
