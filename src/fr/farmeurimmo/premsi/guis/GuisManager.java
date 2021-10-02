@@ -52,6 +52,9 @@ public class GuisManager implements Listener {
 		event.setCancelled(true);
 		
 		}
+		if(current == null) {
+			return;
+		}
 		if(current.getType() == null) {
 			return;
 		}
