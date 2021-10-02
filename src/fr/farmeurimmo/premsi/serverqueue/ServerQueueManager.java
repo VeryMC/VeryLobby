@@ -25,32 +25,7 @@ public class ServerQueueManager {
         return (position.get(playername) == null ? 0 : position.get(playername));
     }
 	
-	public static void Every5sec() {
-		
-		if(position.size() >= 1) {
-			for (Map.Entry<String, Integer> entry : position.entrySet()){
-				if(Bukkit.getPlayer(entry.getKey()) != null) {
-				int aa = 0;
-				@SuppressWarnings("unused")
-				int bb = 99;
-				if(entry.getValue() == 0) {
-				bb = entry.getValue();
-				aa = aa+1;
-				}
-				
-				if(aa == 0) {
-					for (Map.Entry<String, Integer> ent : position.entrySet()){
-						if(ent.getValue() >= 1) {
-						ent.setValue(ent.getValue() - 1);
-						Bukkit.getPlayer(entry.getKey()).sendMessage("§a§lFile d'attente §7» §aVous êtes en position §6" + ent.getValue() + " §apour la file d'attente du skyblock");
-						}
-					}
-				}
-			} else {
-				ServerQueueManager.position.remove(entry.getKey());
-			}
-			}
-			
+	public static void Every5sec() {	
 		Player player = null;
 		for (Map.Entry<String, Integer> entry : position.entrySet()){
 			  if(entry.getValue() == 0) {
@@ -77,21 +52,26 @@ public class ServerQueueManager {
 		}
 		}
 		final Player p = player;
+		
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
 		     public void run() {
 		    	 if(p != null) {
 		    		 if(!p.isOnline()) {
 		    			 ServerQueueManager.position.remove(p.getName());
+		    					for (Map.Entry<String, Integer> entry : position.entrySet()){
+		    						entry.setValue(entry.getValue() - 1);
+		    						Bukkit.getPlayer(entry.getKey()).sendMessage("§a§lFile d'attente §7» §aVous êtes en position §6" + entry.getValue() + 
+		    								" §adans la file d'attente du skyblock");
+		    				}
 		    		 }
 		    	 }
 		     }
 		}, 20);
-		}
 		
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
 		     public void run() {
 		    	 Every5sec();
 		     }
 		}, 100);
-	}
+   }
 }

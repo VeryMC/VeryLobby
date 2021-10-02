@@ -83,7 +83,7 @@ public class main extends JavaPlugin implements Listener {
 		MakeTop.Valeurs.clear();
 		MakeTop.Classement.clear();
 		ServerQueueManager.Every5sec();
-		for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+		for (final Player player : Bukkit.getServer().getOnlinePlayers()) {
 			InteractJump.permchangeeffect.put(player, true);
 			ScoreBoardNMS.MakeScoreBoardForPlayer(player);
 

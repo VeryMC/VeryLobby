@@ -26,13 +26,13 @@ public class CommandSkyblock implements CommandExecutor {
 			final Player player = (Player) sender;
 			ViaAPI api = Via.getAPI();
 			if(api.getPlayerVersion(player) >= 754) {
-			int lastpos = 0;
+				int pos = ServerQueueManager.position.size();
 			if(player.hasPermission("fastjoin")) {
 		        ServerQueueManager.setPosition(player.getName(), 0);
 			} else {
-				lastpos = ServerQueueManager.position.size();
+				ServerQueueManager.setPosition(player.getName(), pos);
 			}
-		player.sendMessage("§a§lFile d'attente §7» §aVous rejoignez la file d'attente du Skyblock avec la position " + lastpos);
+		player.sendMessage("§a§lFile d'attente §7» §aVous rejoignez la file d'attente du Skyblock avec la position §6" + pos);
 			} else {
 				player.sendMessage("§a§lFile d'attente §7» §cVous devez utilisez la version 1.16.5 ou supérieure pour jouer au skyblock !");
 			}
