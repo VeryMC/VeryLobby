@@ -87,7 +87,7 @@ public class ScoreBoardNMS {
 			public void run() {
 				UpdateScorePings();
 			}
-		}, 40);
+		}, 30);
 	}
 	public static String GetPlayerPingFormatted(Player player) {
 		String pingcolor = "§2";
