@@ -102,6 +102,7 @@ public class main extends JavaPlugin implements Listener {
                 }.runTaskTimerAsynchronously(this, 0, 0);
         }
 		ScoreBoardNMS.UpdateScorePings();
+		ScoreBoardNMSRanksJump.AutoUpdate();
 		ScoreBoardNMS.UpdateScoreBoard();
 	}
 	@Override

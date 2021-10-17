@@ -9,26 +9,19 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import fr.farmeurimmo.premsi.utils.ScoreboardSign;
-import net.luckperms.api.model.user.User;
 
 public class ScoreBoardNMS {
 	
 	public static Map<Player, ScoreboardSign> boards = new HashMap<>();
 	public static Map<Player, Integer> pings = new HashMap<>();
+	public static Map<Player, String> preffixes = new HashMap<>();
+	public static Map<Player, String> suffixes = new HashMap<>();
 	
 	public static void MakeScoreBoardForPlayer(Player player) {
 	ScoreboardSign sb = new ScoreboardSign(player, "§6§lPremsiServ");
 	
-	String Grade = "§7N/A";
-	String Suffix = "";
-	
-	User user = main.api.getUserManager().getUser(player.getUniqueId());
-	if (user.getCachedData().getMetaData().getPrefix() != null) {
-		Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§").replace("&d✯", "");
-	}
-	if (user.getCachedData().getMetaData().getSuffix() != null) {
-		Suffix = user.getCachedData().getMetaData().getSuffix().replace("&l", "").replace("&", "§");
-	}
+	String Preffix = ScoreBoardNMSRanksJump.GetPrefix(player);
+	String Suffix = ScoreBoardNMSRanksJump.GetSuffix(player);
 	
 	int online = Bukkit.getServer().getOnlinePlayers().size();
 	String serveurname = Bukkit.getServerName();
@@ -46,7 +39,7 @@ public class ScoreBoardNMS {
 	} else {
 		sb.setLine(6, "§fAbonnement §8» §cx");
 	}
-	sb.setLine(5, "§fGrade §8» §f"+Grade+" "+Suffix);
+	sb.setLine(5, "§fGrade §8» §f"+Preffix);
 	sb.setLine(4, "§fPing §8» §f" + GetPlayerPingFormatted(player));
 	sb.setLine(3, "§6§l"+player.getName());
 	sb.setLine(2, "§f");
@@ -58,20 +51,12 @@ public class ScoreBoardNMS {
 	public static void UpdateScoreBoard() {
 		for (Entry<Player, ScoreboardSign> board : boards.entrySet()) {
 			
-			String Grade = "§7N/A";
-			String Suffix = "x";
-			
-			User user = main.api.getUserManager().getUser(board.getKey().getUniqueId());
-			if (user.getCachedData().getMetaData().getPrefix() != null) {
-				Grade = user.getCachedData().getMetaData().getPrefix().replace("&l", "").replace("&", "§").replace("&d✯", "");
-			}
-			if (user.getCachedData().getMetaData().getSuffix() != null) {
-				Suffix = user.getCachedData().getMetaData().getSuffix().replace("&l", "").replace("&", "§");
-			}
+			String Preffix = ScoreBoardNMSRanksJump.GetPrefix(board.getKey());
+			String Suffix = ScoreBoardNMSRanksJump.GetSuffix(board.getKey());
 			int online = Bukkit.getServer().getOnlinePlayers().size();
 			board.getValue().setLine(4, "§fPing §8» §f" + GetPlayerPingFormatted(board.getKey()));
 			board.getValue().setLine(11, "§fEn ligne §8»§f §c" + online);
-			board.getValue().setLine(5, "§fGrade §8» §f"+Grade);
+			board.getValue().setLine(5, "§fGrade §8» §f"+Preffix);
 			
 			if(Suffix.equalsIgnoreCase("§d✯")) {
 				board.getValue().setLine(6, "§fAbonnement §8» §a✔");
