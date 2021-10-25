@@ -4,13 +4,10 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.farmeurimmo.premsi.commands.CommandBoutique;
 import fr.farmeurimmo.premsi.commands.CommandBuilder;
@@ -24,8 +21,6 @@ import fr.farmeurimmo.premsi.jump.MakeTop;
 import fr.farmeurimmo.premsi.serverqueue.ServerQueueManager;
 import fr.farmeurimmo.premsi.utils.ChooseEffect;
 import net.luckperms.api.LuckPerms;
-import net.minecraft.server.v1_8_R3.EnumParticle;
-import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
 public class main extends JavaPlugin implements Listener {
 	
 	public static main instance;
@@ -57,6 +52,7 @@ public class main extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new ChooseEffect(), this);
 		getServer().getPluginManager().registerEvents(new InteractJump(), this);
 		getServer().getPluginManager().registerEvents(new GuisManager(), this);
+		getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
 		this.getCommand("builder").setExecutor(new CommandBuilder());
 		this.getCommand("serveur").setExecutor(new CommandServeur());
 		this.getCommand("discord").setExecutor(new CommandDiscord());
@@ -83,24 +79,6 @@ public class main extends JavaPlugin implements Listener {
 		MakeTop.Valeurs.clear();
 		MakeTop.Classement.clear();
 		ServerQueueManager.Every5sec();
-		for (final Player player : Bukkit.getServer().getOnlinePlayers()) {
-			InteractJump.permchangeeffect.put(player, true);
-			ScoreBoardNMS.MakeScoreBoardForPlayer(player);
-
-                new BukkitRunnable() {
-
-                    @Override
-                    public void run() {
-                        float red = 0;
-                        float green = 255;
-                        float blue = 255;
-                        Location location = player.getLocation();
-
-                        PacketPlayOutWorldParticles particles = new PacketPlayOutWorldParticles(EnumParticle.NOTE, true, (float) location.getX(), (float) location.getY() + 2, (float) location.getZ(), red, green, blue, (float)255, 0, 10);
-                        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(particles);
-                    }
-                }.runTaskTimerAsynchronously(this, 0, 0);
-        }
 		ScoreBoardNMS.UpdateScorePings();
 		ScoreBoardNMSRanksJump.AutoUpdate();
 		ScoreBoardNMS.UpdateScoreBoard();

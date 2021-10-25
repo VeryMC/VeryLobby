@@ -45,9 +45,7 @@ public class JoinLeaveHub implements Listener
         }
         CommandBuilder.statutbuilder.put(player, false);
         player.teleport(spawn);
-        player.sendMessage("\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n "+
-        		"\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n "+
-        		"\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ");
+        player.sendMessage("\n ");
         player.sendMessage("§6§lPremsiServ §f| Version §cBêta §d1.8x1.16.5 \n  \n§aBon jeu sur PremsiServ ! \n ");
         player.setHealth(2.0);
         player.setMaxHealth(2.0);
