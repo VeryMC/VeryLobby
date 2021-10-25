@@ -8,6 +8,9 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffectType;
+
+import com.premsiserv.core.paper.PaperAPI;
+
 import org.bukkit.entity.Player;
 import org.bukkit.Material;
 
@@ -42,7 +45,10 @@ public class JoinLeaveHub implements Listener
         }
         CommandBuilder.statutbuilder.put(player, false);
         player.teleport(spawn);
-        player.sendMessage("§6§lPremsiServ §f| Version §cBêta §d1.8x1.16.5 \n \n§aBon jeu sur PremsiServ !");
+        player.sendMessage("\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n "+
+        		"\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n "+
+        		"\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ");
+        player.sendMessage("§6§lPremsiServ §f| Version §cBêta §d1.8x1.16.5 \n  \n§aBon jeu sur PremsiServ ! \n ");
         player.setHealth(2.0);
         player.setMaxHealth(2.0);
         player.setFoodLevel(20);
@@ -62,11 +68,17 @@ public class JoinLeaveHub implements Listener
         if (player.hasPermission("fly")) {
             playerInventory.setItem(3, FeatherFly);
         }
+        
         ScoreBoardNMS.MakeScoreBoardForPlayer(player);
+        
         if(!player.hasPermission("broadcast.join")) {
 	        event.setJoinMessage((String)null);
 		}
 		else {
+			if(PaperAPI.getInstance().GetVanishedList().contains(player.getName())) {
+	        	event.setJoinMessage((String)null);
+	        	return;
+	        }
 			String Grade = "§7N/A";
 			String Suffix = "";
 			
@@ -95,6 +107,10 @@ public class JoinLeaveHub implements Listener
 	        event.setQuitMessage((String)null);
 		}
 		else {
+			if(PaperAPI.getInstance().GetVanishedList().contains(player.getName())) {
+	        	event.setQuitMessage((String)null);
+	        	return;
+	        }
 			String Grade = "§7N/A";
 			String Suffix = "";
 			
