@@ -2,6 +2,7 @@ name: PremsiLobby
 version: 1.0
 author: Farmeurimmo
 main: fr.farmeurimmo.premsi.core.main
+depend: [Core]
 softdepend: [HolographicDisplays]
 commands:
   site:
