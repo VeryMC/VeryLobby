@@ -57,19 +57,30 @@ public class ServerQueueManager {
 		     public void run() {
 		    	 if(p != null) {
 		    		 if(!p.isOnline()) {
-		    			 ServerQueueManager.position.remove(p.getName());
-		    					for (Map.Entry<String, Integer> entry : position.entrySet()){
-		    						entry.setValue(entry.getValue() - 1);
-		    						Bukkit.getPlayer(entry.getKey()).sendMessage("§a§lFile d'attente §7» §aVous êtes en position §6" + entry.getValue() + 
-		    								" §adans la file d'attente du skyblock");
-		    				}
+		    			 int aaa = 0;
+		    			 for (Map.Entry<String, Integer> entry : position.entrySet()){
+		    				 if(aaa <= entry.getValue()) {
+		    					 aaa = entry.getValue();
+		    				 }
+		    			 }
+		    			 for (Map.Entry<String, Integer> entry : position.entrySet()){
+		    				 if(aaa >= 1) {
+	    						entry.setValue(entry.getValue() - 1);
+		    				 }
+	    				}
+		    			 aaa = 0;
 		    		 }
 		    	 }
-		     }
-		}, 20);
-		
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
-		     public void run() {
+		    	 for (Map.Entry<String, Integer> entry : position.entrySet()){
+		 			if(Bukkit.getPlayer(entry.getKey()) != null) {
+		 				if(Bukkit.getPlayer(entry.getKey()).isOnline() == true) {
+		 			Bukkit.getPlayer(entry.getKey()).sendMessage("§a§lFile d'attente §7» §aVous êtes en position §6" + entry.getValue() + 
+		 					" §adans la file d'attente du skyblock");
+		 				}
+		 			} else {
+		 				position.remove(entry.getKey());
+		 			}
+		 		}
 		    	 Every5sec();
 		     }
 		}, 100);

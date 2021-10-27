@@ -19,6 +19,7 @@ import org.bukkit.GameMode;
 
 import fr.farmeurimmo.premsi.commands.CommandBuilder;
 import fr.farmeurimmo.premsi.jump.InteractJump;
+import fr.farmeurimmo.premsi.serverqueue.ServerQueueManager;
 import fr.farmeurimmo.premsi.utils.*;
 import net.luckperms.api.model.user.User;
 
@@ -126,6 +127,9 @@ public class JoinLeaveHub implements Listener
 			}
 			Grade = "§fN/A";
 			Suffix = "";
+		}
+		if(ServerQueueManager.position.containsKey(player.getName())) {
+			ServerQueueManager.position.remove(player.getName());
 		}
 	}
     
