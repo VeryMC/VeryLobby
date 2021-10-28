@@ -11,7 +11,7 @@ public class CommandBoutique implements CommandExecutor {
 	public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
         if (sender instanceof Player) {
             final Player p = (Player)sender;
-            p.sendMessage("§e§lBoutique » §fhttps://criptmania.net/boutique");
+            p.sendMessage("§e§lBoutique » §fhttps://premsiserv.com/boutique");
             return true;
         }
         System.out.println("Merci d'éxecuter cette commande en jeu !");
