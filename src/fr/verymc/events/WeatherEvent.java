@@ -1,4 +1,4 @@
-package fr.verymc;
+package fr.verymc.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

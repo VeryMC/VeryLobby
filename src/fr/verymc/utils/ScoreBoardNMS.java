@@ -1,4 +1,4 @@
-package fr.verymc;
+package fr.verymc.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import fr.verymc.utils.ScoreboardSign;
+import fr.verymc.ScoreBoardNMSRanksJump;
 
 public class ScoreBoardNMS {
 	
