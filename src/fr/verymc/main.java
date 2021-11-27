@@ -12,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import fr.verymc.commands.CommandBoutique;
 import fr.verymc.commands.CommandBuilder;
 import fr.verymc.commands.CommandDiscord;
+import fr.verymc.commands.CommandLeaveQueues;
 import fr.verymc.commands.CommandServeur;
 import fr.verymc.commands.CommandSite;
 import fr.verymc.commands.CommandSkyblock;
@@ -62,6 +63,7 @@ public class main extends JavaPlugin implements Listener {
 		this.getCommand("site").setExecutor(new CommandSite());
 		this.getCommand("boutique").setExecutor(new CommandBoutique());
 		this.getCommand("skyblock").setExecutor(new CommandSkyblock());
+		this.getCommand("leavequeues").setExecutor(new CommandLeaveQueues());
 		
 		Bukkit.getPluginManager().isPluginEnabled("LuckPerms");
 		RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
