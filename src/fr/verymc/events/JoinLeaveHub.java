@@ -33,7 +33,7 @@ public class JoinLeaveHub implements Listener
     public static ItemStack effecttrue;
     public static ItemStack gamesNether;
     
-    static Location spawn = new Location(Bukkit.getWorld("Lobby-01"), 260.5, 67.5, 268.5, 0, 10);
+    static Location spawn = new Location(Bukkit.getWorld("world"), 260.5, 67.5, 268.5, 0, 10);
     
     @EventHandler
     public void onPlayerJoin(final PlayerJoinEvent event) {

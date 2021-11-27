@@ -44,7 +44,7 @@ public class ServerQueueManager {
 		if(player != null) {
 			if(player.isOnline() == true) {
 		final ByteArrayDataOutput out = ByteStreams.newDataOutput();
-		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Bukkit.getPluginManager().getPlugin("VeryMc"), "BungeeCord");
+		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Bukkit.getPluginManager().getPlugin("VeryLobby"), "BungeeCord");
 		player.closeInventory();
 		out.writeUTF("Connect");
 	    out.writeUTF("skyblock");
@@ -53,7 +53,7 @@ public class ServerQueueManager {
 		}
 		final Player p = player;
 		
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
 		     public void run() {
 		    	 if(p != null) {
 		    		 if(!p.isOnline()) {
