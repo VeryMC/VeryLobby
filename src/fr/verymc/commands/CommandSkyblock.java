@@ -13,6 +13,10 @@ import com.viaversion.viaversion.api.ViaAPI;
 
 import fr.verymc.main;
 import fr.verymc.serverqueue.ServerQueueManager;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class CommandSkyblock implements CommandExecutor {
 	
@@ -33,6 +37,11 @@ public class CommandSkyblock implements CommandExecutor {
 				ServerQueueManager.setPosition(player.getName(), pos);
 			}
 		player.sendMessage("§a§lFile d'attente §7» §aVous rejoignez la file d'attente du Skyblock avec la position §6" + pos);
+		TextComponent message = new TextComponent("\n §c§l» §c§lCliquez ici pour quitter la file d'attente §c§l« \n");
+			message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/leavequeues"));
+			message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, 
+					new ComponentBuilder("§c§lCliquez sur ce message pour quitter la file d'attente").create()));
+			player.sendMessage(message);
 			} else {
 				player.sendMessage("§a§lFile d'attente §7» §cVous devez utilisez la version 1.16.5 ou supérieure pour jouer au skyblock !");
 			}
