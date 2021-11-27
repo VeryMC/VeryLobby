@@ -78,8 +78,7 @@ public class main extends JavaPlugin implements Listener {
 			System.out.println("API initialisée !");
 			System.out.println("-----------------------------------------------------------------------------------------------------");
 		}
-		MakeTop.CreateHolo();
-		MakeTop.SecondMap.clear();
+		MakeTop.GenClassement();
 		MakeTop.Valeurs.clear();
 		MakeTop.Classement.clear();
 		ServerQueueManager.Every5sec();

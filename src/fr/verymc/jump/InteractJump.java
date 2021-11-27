@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -35,9 +36,7 @@ public class InteractJump implements Listener {
 	public static ArrayList<UUID> Checkpoint2 = new ArrayList<UUID>();
 	public static ArrayList<UUID> Reset = new ArrayList<UUID>();
 	public static ArrayList<String> haseffect = new ArrayList<String>();
-	public static Map<UUID, Integer> Timer = new HashMap < > ();
-	public static Map<String, Integer> Valeurs = new HashMap < > ();
-	public static Map<String, Integer> SecondMap = new HashMap < > ();
+	public static Map<String, Double> Valeurs = new HashMap < > ();
 	public static Map<Player, Boolean> permchangeeffect = ChooseEffect.permchangeeffect;
 	
 	
@@ -79,8 +78,8 @@ public class InteractJump implements Listener {
 	
 	@EventHandler
 	public void OnInteract(PlayerInteractEvent e) {
-		Integer timeintotal = 0;
-		int min = 0;
+		double timeintotal = (long) 0;
+		long min = 0;
 		Player player = e.getPlayer();
 		Block bb = e.getClickedBlock();
 		Location start = new Location(Bukkit.getServer().getWorld("Lobby-01"), 260.5, 66, 279.5, -22, 14);
@@ -152,15 +151,12 @@ public class InteractJump implements Listener {
 				player.setGameMode(GameMode.ADVENTURE);
 				PrepareJump(player);
                 Jump.add(player.getUniqueId());
-				Integer ddd = 0;
-				Timer.put(player.getUniqueId(), ddd);
-				Timer(player);
+				Valeurs.put(player.getName(), (double) System.currentTimeMillis());
 				player.sendMessage("§a§lJump §7» §aVous avez commencé le jump !");
 				}
 				else if(Jump.contains(player.getUniqueId())) {
 					player.sendMessage("§a§lJump §7» §aChronomètre réinitialisé !");
-					Integer ddd = 0;
-					Timer.put(player.getUniqueId(), ddd);	
+					Valeurs.put(player.getName(), (double) System.currentTimeMillis());
 				}
 			}
 			if(bb.getX() == 281 && bb.getZ() == 257 && bb.getY() == 78) {
@@ -177,53 +173,20 @@ public class InteractJump implements Listener {
 				}
 			if(bb.getX() == 241 && bb.getY() == 88 && bb.getZ() == 285) {
 					if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && Checkpoint2.contains(player.getUniqueId())) {
-						timeintotal = Timer.get(player.getUniqueId());
+						timeintotal = System.currentTimeMillis()-Valeurs.get(player.getName());
 						
 						if(Valeurs.get(player.getName()) != null) {
 							if(timeintotal < Valeurs.get(player.getName())) {
-								SecondMap.put(player.getName(), timeintotal);
-					    Valeurs.put(player.getName(), timeintotal);
+								Valeurs.put(player.getName(), timeintotal);
 							}
 						}
 						else {
 							Valeurs.put(player.getName(), timeintotal);
-							SecondMap.put(player.getName(), timeintotal);
 						}
-						if(timeintotal < 239) {
-						min = 0;
-						if(timeintotal - 60 >= 0) {
-							min = min + 1;
-							timeintotal = timeintotal - 60;
-						}
-						if(timeintotal - 60 >= 0) {
-							min = min + 1;
-							timeintotal = timeintotal - 60;
-						}
-						if(timeintotal - 60 >= 0) {
-							min = min + 1;
-							timeintotal = timeintotal - 60;
-						}
-						}
-						else {
-							player.sendMessage("§a§lJump §7» §aDélai maximum atteint pour le chronomètre !");
-							if(Jump.contains(player.getUniqueId())) {
-								Jump.remove(player.getUniqueId());
-								}
-								if(Checkpoint1.contains(player.getUniqueId())) {
-									Checkpoint1.remove(player.getUniqueId());
-									}
-								if(Checkpoint2.contains(player.getUniqueId())) {
-									Checkpoint2.remove(player.getUniqueId());
-									}
-							JoinLeaveHub.GiveItem(player);
-							if(haseffect.contains(player.getName())) {
-								player.sendMessage("aa");
-								player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, 1));
-				                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 999999999, 3));
-							}
-						}
+						min = TimeUnit.MILLISECONDS.toMinutes((long) timeintotal);
 						
-				Bukkit.broadcastMessage("§a§lJump §7» §aGG à " + player.getName() + " qui vient de finir le jump en " + min + " minutes et " + timeintotal + " secondes !");
+				Bukkit.broadcastMessage("§a§lJump §7» §aGG à " + player.getName() + " qui vient de finir le jump en " + min + " minutes et " + 
+				TimeUnit.MILLISECONDS.toSeconds((long) timeintotal) + " secondes !");
 				player.setGameMode(GameMode.ADVENTURE);
 				Jump.remove(player.getUniqueId());
 				JoinLeaveHub.GiveItem(player);
@@ -239,20 +202,6 @@ public class InteractJump implements Listener {
 				}
 			}
 			}
-		}
-	}
-	
-	public void Timer(final Player player) {
-		if(Jump.contains(player.getUniqueId())) {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
-		     public void run() {
-		    	 if(Jump.contains(player.getUniqueId())) {
-		    	 Integer time = Timer.get(player.getUniqueId()) + 1;
-		    	 Timer.put(player.getUniqueId(), time);
-		    	 Timer(player);
-		    	 }
-		     }
-		}, 20);
 		}
 	}
 }
