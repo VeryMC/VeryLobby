@@ -22,8 +22,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import fr.verymc.JoinLeaveHub;
 import fr.verymc.commands.CommandBuilder;
+import fr.verymc.events.JoinLeaveHub;
 import fr.verymc.utils.ChooseEffect;
 
 public class InteractJump implements Listener {

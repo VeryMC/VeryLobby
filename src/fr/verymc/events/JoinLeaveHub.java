@@ -1,4 +1,4 @@
-package fr.verymc;
+package fr.verymc.events;
 
 import org.bukkit.Location;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -15,6 +15,7 @@ import org.bukkit.Material;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 
+import fr.verymc.main;
 import fr.verymc.commands.CommandBuilder;
 import fr.verymc.jump.InteractJump;
 import fr.verymc.serverqueue.ServerQueueManager;

@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import fr.verymc.JoinLeaveHub;
+import fr.verymc.events.JoinLeaveHub;
 
 import java.util.Map;
 import org.bukkit.command.CommandExecutor;
