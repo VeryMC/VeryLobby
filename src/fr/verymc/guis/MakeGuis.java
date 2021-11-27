@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.guis;
+package fr.verymc.guis;
 
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
@@ -13,8 +13,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import fr.farmeurimmo.premsi.core.main;
-import fr.farmeurimmo.premsi.utils.RankExpiry;
+import fr.verymc.main;
+import fr.verymc.utils.RankExpiry;
 import net.luckperms.api.model.user.User;
 
 public class MakeGuis {
@@ -23,7 +23,7 @@ public class MakeGuis {
 	static String Suffix = "";
 	
 	public static void MakeMainGui(Player player) {
-		Inventory inv = Bukkit.createInventory(null, 54, "§fPremsi§6Serv §f➔ §6Mini-jeux");
+		Inventory inv = Bukkit.createInventory(null, 54, "§6Very§fMc §f➔ §6Mini-jeux");
 		
 		User user = main.api.getUserManager().getUser(player.getUniqueId());
 		if (user.getCachedData().getMetaData().getPrefix() != null) {
@@ -128,7 +128,7 @@ public class MakeGuis {
         meta23.setLore(Arrays.asList("§c<<---"));
         stack23.setItemMeta(meta23);
 		
-		Inventory profil = Bukkit.createInventory(null, 45, "§fPremsi§6Serv §f➔ Votre profil");
+		Inventory profil = Bukkit.createInventory(null, 45, "§f§6Very§fMc §f➔ Votre profil");
 		
 		ItemStack head11 = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
         ItemMeta meta11 = head11.getItemMeta();
@@ -166,7 +166,7 @@ public class MakeGuis {
         player.openInventory(profil);
 	}
 	public static void MakeBoutiquesGui(Player player) {
-        final Inventory sous = Bukkit.createInventory(null, 27, "§fPremsi§6Serv §f➔ §6Boutiques");
+        final Inventory sous = Bukkit.createInventory(null, 27, "§f§6Very§fMc §f➔ §6Boutiques");
         
         ItemStack stackm = new ItemStack(Material.BLAZE_POWDER, 1);
         ItemMeta metam = stackm.getItemMeta();
@@ -235,7 +235,7 @@ public class MakeGuis {
 			Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
 		}
 		
-		final Inventory inv = Bukkit.createInventory(null, 54, "§fPremsi§6Serv §f➔ §6Boutique des grades");
+		final Inventory inv = Bukkit.createInventory(null, 54, "§6Very§fMc §f➔ §6Boutique des grades");
 		
 		
 		ItemStack stacku = new ItemStack(Material.BEACON, 1);
@@ -317,7 +317,7 @@ public class MakeGuis {
         ItemStack stack7 = new ItemStack(Material.BOOK, 1);
         ItemMeta meta7 = stack7.getItemMeta();
         meta7.setDisplayName("§6Informations");
-        meta7.setLore(Arrays.asList("§7Site §8» §awww.premsiserv.com", "§7Discord §8» §9https://discord.gg/DJgzEAdG28"));
+        meta7.setLore(Arrays.asList("§7Site §8» §awww.verymc.fr", "§7Discord §8» §9https://discord.gg/FnePjz6rAh"));
         stack7.setItemMeta(meta7);
         
         ItemStack stack1 = new ItemStack(Material.ARROW, 1);

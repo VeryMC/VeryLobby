@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.core;
+package fr.verymc;
 
 import org.bukkit.Location;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -9,18 +9,16 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffectType;
 
-import com.premsiserv.core.paper.PaperAPI;
-
 import org.bukkit.entity.Player;
 import org.bukkit.Material;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 
-import fr.farmeurimmo.premsi.commands.CommandBuilder;
-import fr.farmeurimmo.premsi.jump.InteractJump;
-import fr.farmeurimmo.premsi.serverqueue.ServerQueueManager;
-import fr.farmeurimmo.premsi.utils.*;
+import fr.verymc.commands.CommandBuilder;
+import fr.verymc.jump.InteractJump;
+import fr.verymc.serverqueue.ServerQueueManager;
+import fr.verymc.utils.*;
 import net.luckperms.api.model.user.User;
 
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -47,7 +45,7 @@ public class JoinLeaveHub implements Listener
         CommandBuilder.statutbuilder.put(player, false);
         player.teleport(spawn);
         player.sendMessage("\n ");
-        player.sendMessage("§6§lPremsiServ §f| Version §cBêta §d1.8x1.16.5 \n  \n§aBon jeu sur PremsiServ ! \n ");
+        player.sendMessage("§6§lVery§f§lMc §f| Version §cBêta §d1.8x1.16.5 \n  \n§aBon jeu sur VeryMc ! \n ");
         player.setHealth(2.0);
         player.setMaxHealth(2.0);
         player.setFoodLevel(20);
@@ -74,10 +72,6 @@ public class JoinLeaveHub implements Listener
 	        event.setJoinMessage((String)null);
 		}
 		else {
-			if(PaperAPI.getInstance().GetVanishedList().contains(player.getName())) {
-	        	event.setJoinMessage((String)null);
-	        	return;
-	        }
 			String Grade = "§7N/A";
 			String Suffix = "";
 			
@@ -106,10 +100,6 @@ public class JoinLeaveHub implements Listener
 	        event.setQuitMessage((String)null);
 		}
 		else {
-			if(PaperAPI.getInstance().GetVanishedList().contains(player.getName())) {
-	        	event.setQuitMessage((String)null);
-	        	return;
-	        }
 			String Grade = "§7N/A";
 			String Suffix = "";
 			

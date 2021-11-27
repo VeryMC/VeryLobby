@@ -3,10 +3,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <groupId>StrataniaLobby</groupId>
-  <artifactId>StrataniaLobby</artifactId>
+  <groupId>VeryLobby</groupId>
+  <artifactId>VeryLobby</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <name>Stratania lobby</name>
+  <name>VeryMc lobby</name>
   <description>Plugin du lobby</description>
   <repositories>
         <repository>

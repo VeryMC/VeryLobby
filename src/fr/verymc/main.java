@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.core;
+package fr.verymc;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -9,17 +9,17 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import fr.farmeurimmo.premsi.commands.CommandBoutique;
-import fr.farmeurimmo.premsi.commands.CommandBuilder;
-import fr.farmeurimmo.premsi.commands.CommandDiscord;
-import fr.farmeurimmo.premsi.commands.CommandServeur;
-import fr.farmeurimmo.premsi.commands.CommandSite;
-import fr.farmeurimmo.premsi.commands.CommandSkyblock;
-import fr.farmeurimmo.premsi.guis.GuisManager;
-import fr.farmeurimmo.premsi.jump.InteractJump;
-import fr.farmeurimmo.premsi.jump.MakeTop;
-import fr.farmeurimmo.premsi.serverqueue.ServerQueueManager;
-import fr.farmeurimmo.premsi.utils.ChooseEffect;
+import fr.verymc.commands.CommandBoutique;
+import fr.verymc.commands.CommandBuilder;
+import fr.verymc.commands.CommandDiscord;
+import fr.verymc.commands.CommandServeur;
+import fr.verymc.commands.CommandSite;
+import fr.verymc.commands.CommandSkyblock;
+import fr.verymc.guis.GuisManager;
+import fr.verymc.jump.InteractJump;
+import fr.verymc.jump.MakeTop;
+import fr.verymc.serverqueue.ServerQueueManager;
+import fr.verymc.utils.ChooseEffect;
 import net.luckperms.api.LuckPerms;
 public class main extends JavaPlugin implements Listener {
 	

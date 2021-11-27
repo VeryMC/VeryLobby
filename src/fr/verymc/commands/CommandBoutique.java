@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.commands;
+package fr.verymc.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,7 +11,7 @@ public class CommandBoutique implements CommandExecutor {
 	public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
         if (sender instanceof Player) {
             final Player p = (Player)sender;
-            p.sendMessage("§e§lBoutique » §fhttps://premsiserv.com/boutique");
+            p.sendMessage("§e§lBoutique » §fhttps://verymc.fr/boutique");
             return true;
         }
         System.out.println("Merci d'éxecuter cette commande en jeu !");

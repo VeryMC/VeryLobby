@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.utils;
+package fr.verymc.utils;
 
 import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;

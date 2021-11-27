@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.utils;
+package fr.verymc.utils;
 
 import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;

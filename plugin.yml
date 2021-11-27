@@ -1,8 +1,7 @@
-name: PremsiLobby
+name: VeryLobby
 version: 1.0
 author: Farmeurimmo
-main: fr.farmeurimmo.premsi.core.main
-depend: [Core]
+main: fr.verymc.main
 softdepend: [HolographicDisplays]
 commands:
   site:

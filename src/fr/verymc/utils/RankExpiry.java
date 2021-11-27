@@ -1,10 +1,10 @@
-package fr.farmeurimmo.premsi.utils;
+package fr.verymc.utils;
 
 import java.time.Instant;
 
 import org.bukkit.entity.Player;
 
-import fr.farmeurimmo.premsi.core.main;
+import fr.verymc.main;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
 

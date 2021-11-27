@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.jump;
+package fr.verymc.jump;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class MakeTop {
 	static Integer score3 = 0;
 	
 	static Location holo = new Location(Bukkit.getServer().getWorld("Lobby-01"), 257, 70, 285);
-	static Plugin plugin = Bukkit.getPluginManager().getPlugin("PremsiLobby");
+	static Plugin plugin = Bukkit.getPluginManager().getPlugin("VeryLobby");
 	static Hologram hologram = HologramsAPI.createHologram(plugin, holo);
 
 	
@@ -121,7 +121,7 @@ public class MakeTop {
 		hologram.appendTextLine("2.§7 " + p2 + " en §e" + score2 + " §7secondes");	
 		hologram.appendTextLine("3.§7 " + p3 + " en §e" + score3 + " §7secondes");
 		
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
 			public void run() {
 				UpdateHolos();
 			}

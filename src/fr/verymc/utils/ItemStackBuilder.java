@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.utils;
+package fr.verymc.utils;
 
 import java.util.List;
 import java.util.Arrays;
