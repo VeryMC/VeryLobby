@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.core;
+package fr.verymc;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import fr.farmeurimmo.premsi.utils.ScoreboardSign;
+import fr.verymc.utils.ScoreboardSign;
 
 public class ScoreBoardNMS {
 	
@@ -18,7 +18,7 @@ public class ScoreBoardNMS {
 	public static Map<Player, String> suffixes = new HashMap<>();
 	
 	public static void MakeScoreBoardForPlayer(Player player) {
-	ScoreboardSign sb = new ScoreboardSign(player, "§6§lPremsiServ");
+	ScoreboardSign sb = new ScoreboardSign(player, "§6§lVery§f§lMc");
 	
 	String Preffix = ScoreBoardNMSRanksJump.GetPrefix(player);
 	String Suffix = ScoreBoardNMSRanksJump.GetSuffix(player);
@@ -26,7 +26,7 @@ public class ScoreBoardNMS {
 	int online = Bukkit.getServer().getOnlinePlayers().size();
 	String serveurname = Bukkit.getServerName();
 	sb.create();
-	sb.setLine(13, "  §eplay.premsiserv.com");
+	sb.setLine(13, "  §eplay.verymc.fr");
 	sb.setLine(12, "§1");
 	sb.setLine(11, "§fServeur §8» §c"+serveurname);
 	sb.setLine(10, "§fEn ligne §8»§f §c" + online);
@@ -64,7 +64,7 @@ public class ScoreBoardNMS {
 				}
 		    
 		}
-		Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
 			public void run() {
 				UpdateScoreBoard();
 			}
@@ -82,7 +82,7 @@ public class ScoreBoardNMS {
 				}
 			pings.put(player, ping);
 		}
-		Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
 			public void run() {
 				UpdateScorePings();
 			}

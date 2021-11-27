@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.core;
+package fr.verymc;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -23,7 +23,7 @@ public class ScoreBoardNMSRanksJump {
 			ScoreBoardNMS.preffixes.put(player, Preffix);
 			ScoreBoardNMS.suffixes.put(player, Suffix);
 		}
-		Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
 			public void run() {
 				AutoUpdate();
 			}

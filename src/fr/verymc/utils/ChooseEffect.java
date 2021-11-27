@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.utils;
+package fr.verymc.utils;
 
 import java.util.HashMap;
 import org.bukkit.event.EventHandler;
@@ -9,7 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import fr.farmeurimmo.premsi.jump.InteractJump;
+import fr.verymc.jump.InteractJump;
 
 import org.bukkit.Material;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -110,7 +110,7 @@ public class ChooseEffect implements Listener
 							}
 							}
 						}
-					}.runTaskTimer(Bukkit.getPluginManager().getPlugin("PremsiLobby"), 20, 20);
+					}.runTaskTimer(Bukkit.getPluginManager().getPlugin("VeryLobby"), 20, 20);
 				}
             }
             }
@@ -171,7 +171,7 @@ public class ChooseEffect implements Listener
 							}
 						}
 						}
-					}.runTaskTimer(Bukkit.getPluginManager().getPlugin("PremsiLobby"), 20, 20);
+					}.runTaskTimer(Bukkit.getPluginManager().getPlugin("VeryLobby"), 20, 20);
 				}
             }
             }

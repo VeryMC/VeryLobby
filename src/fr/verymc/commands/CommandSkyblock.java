@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.commands;
+package fr.verymc.commands;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -11,8 +11,8 @@ import org.bukkit.entity.Player;
 import com.viaversion.viaversion.api.Via;
 import com.viaversion.viaversion.api.ViaAPI;
 
-import fr.farmeurimmo.premsi.core.main;
-import fr.farmeurimmo.premsi.serverqueue.ServerQueueManager;
+import fr.verymc.main;
+import fr.verymc.serverqueue.ServerQueueManager;
 
 public class CommandSkyblock implements CommandExecutor {
 	

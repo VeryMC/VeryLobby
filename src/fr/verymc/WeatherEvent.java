@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.core;
+package fr.verymc;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

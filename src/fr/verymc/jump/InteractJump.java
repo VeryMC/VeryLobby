@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.jump;
+package fr.verymc.jump;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,9 +22,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import fr.farmeurimmo.premsi.commands.CommandBuilder;
-import fr.farmeurimmo.premsi.core.JoinLeaveHub;
-import fr.farmeurimmo.premsi.utils.ChooseEffect;
+import fr.verymc.JoinLeaveHub;
+import fr.verymc.commands.CommandBuilder;
+import fr.verymc.utils.ChooseEffect;
 
 public class InteractJump implements Listener {
 	
@@ -244,7 +244,7 @@ public class InteractJump implements Listener {
 	
 	public void Timer(final Player player) {
 		if(Jump.contains(player.getUniqueId())) {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
 		     public void run() {
 		    	 if(Jump.contains(player.getUniqueId())) {
 		    	 Integer time = Timer.get(player.getUniqueId()) + 1;

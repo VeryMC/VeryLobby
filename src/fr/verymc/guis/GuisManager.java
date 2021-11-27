@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.guis;
+package fr.verymc.guis;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -10,7 +10,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import fr.farmeurimmo.premsi.commands.CommandBuilder;
+import fr.verymc.commands.CommandBuilder;
 
 public class GuisManager implements Listener {
 	
@@ -60,7 +60,7 @@ public class GuisManager implements Listener {
 		}
         
         
-        if(event.getInventory().getName() == "§fPremsi§6Serv §f➔ Votre profil") {
+        if(event.getInventory().getName() == "§6Very§fMc §f➔ Votre profil") {
 			if(current.getType() == Material.ARROW) {
 				MakeGuis.MakeMainGui(player);
 			}
@@ -68,7 +68,7 @@ public class GuisManager implements Listener {
 				MakeGuis.MakeProfil(player);
 			}
         }
-        if(event.getInventory().getName() == "§fPremsi§6Serv §f➔ §6Boutiques") {
+        if(event.getInventory().getName() == "§6Very§fMc §f➔ §6Boutiques") {
 			if(current.getType() == Material.ARROW) {
 				MakeGuis.MakeMainGui(player);
 			}
@@ -82,7 +82,7 @@ public class GuisManager implements Listener {
             player.sendMessage("§cPas encore disponnible !");
             }
         }
-		if(event.getInventory().getName() == "§fPremsi§6Serv §f➔ §6Boutique des grades") {
+		if(event.getInventory().getName() == "§6Very§fMc §f➔ §6Boutique des grades") {
 			if(current.getType() == Material.ARROW) {
 				MakeGuis.MakeBoutiquesGui(player);
 			}
@@ -96,7 +96,7 @@ public class GuisManager implements Listener {
 				if(player.hasPermission("rusher")){
 					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 					     public void run() {
 					    	 current.setType(Material.IRON_SWORD);
 					     }
@@ -105,7 +105,7 @@ public class GuisManager implements Listener {
 				else {
 					player.sendMessage("§6Vérification de la disponibilité du grade...");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 					     public void run() {
 					    	 player.sendMessage("§cErreur, achat indisponible !");
 					    	 current.setType(Material.IRON_SWORD);
@@ -117,7 +117,7 @@ public class GuisManager implements Listener {
 				if(player.hasPermission("mania")){
 					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 					     public void run() {
 					    	 current.setType(Material.DIAMOND_SWORD);
 					     }
@@ -126,7 +126,7 @@ public class GuisManager implements Listener {
 				else {
 					player.sendMessage("§6Vérification de la disponibilité du grade...");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 					     public void run() {
 					    	 player.sendMessage("§cErreur, achat indisponible !");
 					    	 current.setType(Material.DIAMOND_SWORD);
@@ -138,7 +138,7 @@ public class GuisManager implements Listener {
 				if(player.hasPermission("vip")){
 					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 					     public void run() {
 					    	 current.setType(Material.GOLD_BLOCK);
 					     }
@@ -147,7 +147,7 @@ public class GuisManager implements Listener {
 				else {
 					player.sendMessage("§6Vérification de la disponibilité du grade...");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 					     public void run() {
 					    	 player.sendMessage("§cErreur, achat indisponible !");
 					    	 current.setType(Material.GOLD_BLOCK);
@@ -159,7 +159,7 @@ public class GuisManager implements Listener {
 				if(player.hasPermission("premium")){
 					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 					     public void run() {
 					    	 current.setType(Material.DIAMOND_BLOCK);
 					     }
@@ -168,7 +168,7 @@ public class GuisManager implements Listener {
 				else {
 					player.sendMessage("§6Vérification de la disponibilité du grade...");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 					     public void run() {
 					    	 player.sendMessage("§cErreur, achat indisponible !");
 					    	 current.setType(Material.DIAMOND_BLOCK);
@@ -180,7 +180,7 @@ public class GuisManager implements Listener {
 				if(player.hasPermission("elite")){
 					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 					     public void run() {
 					    	 current.setType(Material.EMERALD_BLOCK);
 					     }
@@ -189,7 +189,7 @@ public class GuisManager implements Listener {
 				else {
 					player.sendMessage("§6Vérification de la disponibilité du grade...");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 					     public void run() {
 					    	 player.sendMessage("§cErreur, achat indisponible !");
 					    	 current.setType(Material.EMERALD_BLOCK);
@@ -198,7 +198,7 @@ public class GuisManager implements Listener {
 				}
 			}
 		}
-		if(event.getInventory().getName() == "§fPremsi§6Serv §f➔ §6Mini-jeux") {
+		if(event.getInventory().getName() == "§6Very§fMc §f➔ §6Mini-jeux") {
 			
 			if(current.getType() == Material.GOLD_INGOT) {
 				MakeGuis.MakeBoutiquesGui(player);

@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.serverqueue;
+package fr.verymc.serverqueue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 
-import fr.farmeurimmo.premsi.core.main;
+import fr.verymc.main;
 
 public class ServerQueueManager {
 	
@@ -44,7 +44,7 @@ public class ServerQueueManager {
 		if(player != null) {
 			if(player.isOnline() == true) {
 		final ByteArrayDataOutput out = ByteStreams.newDataOutput();
-		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Bukkit.getPluginManager().getPlugin("PremsiLobby"), "BungeeCord");
+		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Bukkit.getPluginManager().getPlugin("VeryMc"), "BungeeCord");
 		player.closeInventory();
 		out.writeUTF("Connect");
 	    out.writeUTF("skyblock");
@@ -53,7 +53,7 @@ public class ServerQueueManager {
 		}
 		final Player p = player;
 		
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("PremsiLobby"), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryMc"), new Runnable() {
 		     public void run() {
 		    	 if(p != null) {
 		    		 if(!p.isOnline()) {

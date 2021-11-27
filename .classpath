@@ -17,6 +17,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/farme/Desktop/1.8.8buildtools/spigot-1.8.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/farme/IdeaProjects/Core/target/Core-1.0.0-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

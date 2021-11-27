@@ -1,4 +1,4 @@
-package fr.farmeurimmo.premsi.commands;
+package fr.verymc.commands;
 
 import java.util.HashMap;
 
@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import fr.farmeurimmo.premsi.core.JoinLeaveHub;
+import fr.verymc.JoinLeaveHub;
 
 import java.util.Map;
 import org.bukkit.command.CommandExecutor;
