@@ -59,6 +59,7 @@ public class main extends JavaPlugin implements Listener {
 		this.getCommand("site").setExecutor(new CommandSite());
 		this.getCommand("boutique").setExecutor(new CommandBoutique());
 		this.getCommand("skyblock").setExecutor(new CommandSkyblock());
+		
 		Bukkit.getPluginManager().isPluginEnabled("LuckPerms");
 		RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
 		if (Bukkit.getPluginManager().getPlugin("LuckPerms") != null) {
