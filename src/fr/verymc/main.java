@@ -56,6 +56,7 @@ public class main extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new InteractJump(), this);
 		getServer().getPluginManager().registerEvents(new GuisManager(), this);
 		getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
+		
 		this.getCommand("builder").setExecutor(new CommandBuilder());
 		this.getCommand("serveur").setExecutor(new CommandServeur());
 		this.getCommand("discord").setExecutor(new CommandDiscord());
