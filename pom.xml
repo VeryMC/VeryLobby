@@ -14,9 +14,9 @@
             <url>https://repo1.maven.org/maven2/net/luckperms/api/5.3/</url>
         </repository>
         <repository>
-        <id>spigot-repo</id>
-        <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-    </repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
     <repository>
     <id>codemc-repo</id>
     <url>https://repo.codemc.io/repository/maven-public/</url>
@@ -34,11 +34,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-           <groupId>org.spigotmc</groupId>
-           <artifactId>spigot-api</artifactId>
-           <version>1.8.8-R0.1-SNAPSHOT</version>
-           <scope>provided</scope>
-    </dependency>
+	    <groupId>com.github.CobbleSword</groupId>
+	    <artifactId>NachoSpigot</artifactId>
+	    <version>LATEST</version>
+	</dependency>
     <dependency>
     <groupId>com.gmail.filoghost.holographicdisplays</groupId>
     <artifactId>holographicdisplays-api</artifactId>
