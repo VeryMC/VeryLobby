@@ -22,7 +22,6 @@ import fr.verymc.jump.InteractJump;
 import fr.verymc.jump.MakeTop;
 import fr.verymc.serverqueue.ServerQueueManager;
 import fr.verymc.utils.ChooseEffect;
-import fr.verymc.utils.ScoreBoardNMS;
 import net.luckperms.api.LuckPerms;
 public class main extends JavaPlugin implements Listener {
 	
@@ -79,10 +78,13 @@ public class main extends JavaPlugin implements Listener {
 			System.out.println("API initialisée !");
 			System.out.println("-----------------------------------------------------------------------------------------------------");
 		}
+		
 		MakeTop.GenClassement();
 		MakeTop.Valeurs.clear();
 		MakeTop.Classement.clear();
+		
 		ServerQueueManager.Every5sec();
+		
 		ScoreBoardNMS.UpdateScorePings();
 		ScoreBoardNMSRanksJump.AutoUpdate();
 		ScoreBoardNMS.UpdateScoreBoard();

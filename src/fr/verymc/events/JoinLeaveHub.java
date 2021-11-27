@@ -15,6 +15,7 @@ import org.bukkit.Material;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 
+import fr.verymc.ScoreBoardNMS;
 import fr.verymc.main;
 import fr.verymc.commands.CommandBuilder;
 import fr.verymc.jump.InteractJump;

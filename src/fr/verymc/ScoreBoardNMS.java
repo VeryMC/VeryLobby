@@ -1,4 +1,4 @@
-package fr.verymc.utils;
+package fr.verymc;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import fr.verymc.ScoreBoardNMSRanksJump;
+import fr.verymc.utils.ScoreboardSign;
 
 public class ScoreBoardNMS {
 	
@@ -86,7 +86,7 @@ public class ScoreBoardNMS {
 			public void run() {
 				UpdateScorePings();
 			}
-		}, 40);
+		}, 60);
 	}
 	public static String GetPlayerPingFormatted(Player player) {
 		String pingcolor = "§2";

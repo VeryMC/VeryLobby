@@ -3,7 +3,6 @@ package fr.verymc;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import fr.verymc.utils.ScoreBoardNMS;
 import net.luckperms.api.model.user.User;
 
 public class ScoreBoardNMSRanksJump {
@@ -28,7 +27,7 @@ public class ScoreBoardNMSRanksJump {
 			public void run() {
 				AutoUpdate();
 			}
-		}, 40);
+		}, 60);
 	}
 	public static String GetPrefix(Player player) {
 		
