@@ -60,7 +60,7 @@ public class MakeGuis {
         ItemStack stack2 = new ItemStack(Material.BOOK, 1);
         ItemMeta meta2 = stack2.getItemMeta();
         meta2.setDisplayName("§6Informations");
-        meta2.setLore(Arrays.asList("§7Site §8» §awww.premsiserv.com", "§7Discord §8» §9https://discord.gg/DJgzEAdG28"));
+        meta2.setLore(Arrays.asList("§7Site §8» §awww.verymc.fr", "§7Discord §8» §9https://discord.gg/FnePjz6rAh"));
         stack2.setItemMeta(meta2);
         inv.setItem(45, stack2);
         
@@ -128,7 +128,7 @@ public class MakeGuis {
         meta23.setLore(Arrays.asList("§c<<---"));
         stack23.setItemMeta(meta23);
 		
-		Inventory profil = Bukkit.createInventory(null, 45, "§f§6Very§fMc §f➔ Votre profil");
+		Inventory profil = Bukkit.createInventory(null, 45, "§6Very§fMc §f➔ Votre profil");
 		
 		ItemStack head11 = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
         ItemMeta meta11 = head11.getItemMeta();
@@ -166,7 +166,7 @@ public class MakeGuis {
         player.openInventory(profil);
 	}
 	public static void MakeBoutiquesGui(Player player) {
-        final Inventory sous = Bukkit.createInventory(null, 27, "§f§6Very§fMc §f➔ §6Boutiques");
+        final Inventory sous = Bukkit.createInventory(null, 27, "§6Very§fMc §f➔ §6Boutiques");
         
         ItemStack stackm = new ItemStack(Material.BLAZE_POWDER, 1);
         ItemMeta metam = stackm.getItemMeta();

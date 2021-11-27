@@ -25,6 +25,7 @@ public class MakeTop {
 	static Hologram hologram = HologramsAPI.createHologram(plugin, holo);
 	
 	public static void GenClassement() {
+		Classement.clear();
 		String un = "",deux = "",trois = "",quatre = "",cinq = "";
 		int current = 0;
 		int maxi = 5;
@@ -62,15 +63,20 @@ public class MakeTop {
 		
 		current += 1;
 		}
+		String sc1 = Classement.get(un)+"";
+		String sc2 = Classement.get(deux)+"";
+		String sc3 = Classement.get(trois)+"";
+		String sc4 = Classement.get(quatre)+"";
+		String sc5 = Classement.get(cinq)+"";
 		hologram.clearLines();
 		hologram = HologramsAPI.createHologram(plugin, holo);
 		hologram.appendTextLine("§7▸ §6Classement §7◂ ");
 		hologram.appendTextLine("§7");
-		hologram.appendTextLine("1.§7 " + un + " en §e" + Classement.get(un) + " §7secondes");
-		hologram.appendTextLine("2.§7 " + deux + " en §e" + Classement.get(deux) + " §7secondes");	
-		hologram.appendTextLine("3.§7 " + trois + " en §e" + Classement.get(trois) + " §7secondes");
-		hologram.appendTextLine("4.§7 " + quatre + " en §e" + Classement.get(quatre) + " §7secondes");
-		hologram.appendTextLine("5.§7 " + cinq + " en §e" + Classement.get(cinq) + " §7secondes");
+		hologram.appendTextLine("1.§7 " + un + " en §e" + sc1.replace("null", "N/A") + " §7secondes");
+		hologram.appendTextLine("2.§7 " + deux + " en §e" + sc2.replace("null", "N/A") + " §7secondes");	
+		hologram.appendTextLine("3.§7 " + trois + " en §e" + sc3.replace("null", "N/A") + " §7secondes");
+		hologram.appendTextLine("4.§7 " + quatre + " en §e" + sc4.replace("null", "N/A") + " §7secondes");
+		hologram.appendTextLine("5.§7 " + cinq + " en §e" + sc5.replace("null", "N/A") + " §7secondes");
 		
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
 			public void run() {
