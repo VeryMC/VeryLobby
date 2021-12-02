@@ -50,6 +50,11 @@ public class ScoreBoardNMS {
 	public static void UpdateScoreBoard() {
 		for (Entry<Player, ScoreboardSign> board : boards.entrySet()) {
 			
+			if(board.getKey().isOnline() == false) {
+				board.getKey().remove();
+				pings.remove(board.getKey());
+			}
+			
 			String Preffix = ScoreBoardNMSRanksJump.GetPrefix(board.getKey());
 			String Suffix = ScoreBoardNMSRanksJump.GetSuffix(board.getKey());
 			int online = Bukkit.getServer().getOnlinePlayers().size();
@@ -87,6 +92,16 @@ public class ScoreBoardNMS {
 				UpdateScorePings();
 			}
 		}, 60);
+	}
+	public static void GetPlayerPing(Player player) {
+			int ping = 0;
+			try {
+				  Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
+				  ping = (int) entityPlayer.getClass().getField("ping").get(entityPlayer);
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | NoSuchFieldException e) {
+				  ((Throwable) e).printStackTrace();
+				}
+			pings.put(player, ping);
 	}
 	public static String GetPlayerPingFormatted(Player player) {
 		String pingcolor = "§2";
