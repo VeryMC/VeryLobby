@@ -79,7 +79,7 @@ public class ServerQueueManager {
 		 			if(Bukkit.getPlayer(entry.getKey()) != null) {
 		 				if(Bukkit.getPlayer(entry.getKey()).isOnline() == true) {
 		 					int tmp = position.size()-1;
-		 					Bukkit.getPlayer(entry.getKey()).sendMessage("§a§lFile d'attente §7» §aVous êtes en position §6" + 
+		 					Bukkit.getPlayer(entry.getKey()).sendMessage("\n§a§lFile d'attente §7» §aVous êtes en position §6" + 
 		 					entry.getValue() + "§a sur §6" + tmp + " §adans la file d'attente du skyblock.");
 		 			TextComponent message = new TextComponent("\n §c§l» §c§lCliquez ici pour quitter la file d'attente §c§l« \n");
 		 			message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/leavequeues"));
