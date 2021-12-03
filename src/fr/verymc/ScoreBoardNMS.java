@@ -32,7 +32,7 @@ public class ScoreBoardNMS {
 	sb.setLine(10, "§fEn ligne §8»§f §c" + online);
 	sb.setLine(9, "§6§lServeur");
 	sb.setLine(8, "§6");
-	sb.setLine(7, "§fCroins §8» §csoon");
+	sb.setLine(7, "§fCoins §8» §csoon");
 	if(Suffix.equalsIgnoreCase("§d✯")) {
 	sb.setLine(6, "§fAbonnement §8» §a✔");
 	} else {
@@ -73,7 +73,7 @@ public class ScoreBoardNMS {
 			public void run() {
 				UpdateScoreBoard();
 			}
-		}, 60);
+		}, 40);
 	}
 	@SuppressWarnings("deprecation")
 	public static void UpdateScorePings() {
@@ -91,7 +91,7 @@ public class ScoreBoardNMS {
 			public void run() {
 				UpdateScorePings();
 			}
-		}, 60);
+		}, 40);
 	}
 	public static void GetPlayerPing(Player player) {
 			int ping = 0;
