@@ -47,7 +47,7 @@ public class JoinLeaveHub implements Listener
         CommandBuilder.statutbuilder.put(player, false);
         player.teleport(spawn);
         player.sendMessage("\n ");
-        player.sendMessage("§6§lVery§f§lMc §f| Version §cBêta §d1.8x1.16.5 \n  \n§aBon jeu sur VeryMc ! \n ");
+        player.sendMessage("§6§lVery§f§lMc §f| Version §cBêta §d1.8x1.18.1 \n  \n§aBon jeu sur VeryMc ! \n ");
         player.setHealth(2.0);
         player.setMaxHealth(2.0);
         player.setFoodLevel(20);
