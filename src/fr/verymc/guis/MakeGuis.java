@@ -242,31 +242,31 @@ public class MakeGuis {
 		
 		ItemStack stacku = new ItemStack(Material.BEACON, 1);
         ItemMeta metau = stacku.getItemMeta();
-        metau.setDisplayName("§d7 Jours d'abonnements");
+        metau.setDisplayName("§d7 Jours de Premium");
         metau.setLore(Arrays.asList("§c..."));
         stacku.setItemMeta(metau);
         
         ItemStack stacka = new ItemStack(Material.BEACON, 1);
         ItemMeta metaa = stacka.getItemMeta();
-        metaa.setDisplayName("§d14 Jours d'abonnements");
+        metaa.setDisplayName("§d14 Jours de Premium");
         metaa.setLore(Arrays.asList("§c..."));
         stacka.setItemMeta(metaa);
         
         ItemStack stackb= new ItemStack(Material.BEACON, 1);
         ItemMeta metab = stackb.getItemMeta();
-        metab.setDisplayName("§d30 Jours d'abonnements");
+        metab.setDisplayName("§d30 Jours de Premium");
         metab.setLore(Arrays.asList("§c..."));
         stackb.setItemMeta(metab);
         
         ItemStack stackc = new ItemStack(Material.BEACON, 1);
         ItemMeta metac = stackc.getItemMeta();
-        metac.setDisplayName("§d60 Jours d'abonnements");
+        metac.setDisplayName("§d60 Jours de Premium");
         metac.setLore(Arrays.asList("§c..."));
         stackc.setItemMeta(metac);
         
         ItemStack stackd = new ItemStack(Material.BEACON, 1);
         ItemMeta metad = stackd.getItemMeta();
-        metad.setDisplayName("§d90 Jours d'abonnements");
+        metad.setDisplayName("§d90 Jours de Premium");
         metad.setLore(Arrays.asList("§c..."));
         stackd.setItemMeta(metad);
         
@@ -281,18 +281,18 @@ public class MakeGuis {
         long realsecleft = secleft - 60*minleft;
         long realminleft = minleft - 60*hourleft;
         long realhourleft = hourleft - 24*dayleft;
-        metae.setDisplayName("§eStatus de l'abonnement §a(§lACTIF§a)");
+        metae.setDisplayName("§eStatus du Premium §a(§lACTIF§a)");
         metae.setLore(Arrays.asList("§7Type: §a§lTemporaire","§6"+dayleft+" §7jour(s) §6"+realhourleft+" §7heure(s) §6"+realminleft+" §7minute(s) §6"
         +realsecleft+" §7seconde(s) restantes"));
         metae.addEnchant(Enchantment.SILK_TOUCH, 0, true);
         metae.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         } else if(player.hasPermission("group.abo")){
-        	metae.setDisplayName("§eStatus de l'abonnement §a(§lACTIF§a)");
+        	metae.setDisplayName("§eStatus du Premium §a(§lACTIF§a)");
         	metae.setLore(Arrays.asList("§7Type: §2§lPermanant"));
         	metae.addEnchant(Enchantment.SILK_TOUCH, 0, true);
             metae.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 	    } else {
-        	metae.setDisplayName("§eStatus de l'abonnement §c(§lINACTIF§c)");
+        	metae.setDisplayName("§eStatus du Premium §c(§lINACTIF§c)");
         }
         stacke.setItemMeta(metae);
         

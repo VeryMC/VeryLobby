@@ -33,10 +33,10 @@ public class ScoreBoardNMS {
 	sb.setLine(9, "§6§lServeur");
 	sb.setLine(8, "§6");
 	sb.setLine(7, "§fCoins §8» §csoon");
-	if(Suffix.equalsIgnoreCase("§d✯")) {
-	sb.setLine(6, "§fAbonnement §8» §a✔");
+	if(Suffix.contains("✯")) {
+	sb.setLine(6, "§fPremium §8» §a✔");
 	} else {
-		sb.setLine(6, "§fAbonnement §8» §cx");
+		sb.setLine(6, "§fPremium §8» §cx");
 	}
 	sb.setLine(5, "§fGrade §8» §f"+Preffix);
 	sb.setLine(4, "§fPing §8» §f" + GetPlayerPingFormatted(player));
@@ -62,10 +62,10 @@ public class ScoreBoardNMS {
 			board.getValue().setLine(10, "§fEn ligne §8»§f §c" + online);
 			board.getValue().setLine(5, "§fGrade §8» §f"+Preffix);
 			
-			if(Suffix.equalsIgnoreCase("§d✯")) {
-				board.getValue().setLine(6, "§fAbonnement §8» §a✔");
+			if(Suffix.contains("✯")) {
+				board.getValue().setLine(6, "§fPremium §8» §a✔");
 				} else {
-					board.getValue().setLine(6, "§fAbonnement §8» §cx");
+					board.getValue().setLine(6, "§fPremium §8» §cx");
 				}
 		    
 		}
