@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -17,6 +18,7 @@ import fr.verymc.commands.CommandServeur;
 import fr.verymc.commands.CommandSite;
 import fr.verymc.commands.CommandSkyblock;
 import fr.verymc.events.JoinLeaveHub;
+import fr.verymc.events.TchatManager;
 import fr.verymc.events.WeatherEvent;
 import fr.verymc.guis.GuisManager;
 import fr.verymc.jump.InteractJump;
@@ -56,6 +58,7 @@ public class main extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new InteractJump(), this);
 		getServer().getPluginManager().registerEvents(new GuisManager(), this);
 		getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
+		getServer().getPluginManager().registerEvents(new TchatManager(), this);
 		
 		this.getCommand("builder").setExecutor(new CommandBuilder());
 		this.getCommand("serveur").setExecutor(new CommandServeur());
@@ -86,6 +89,10 @@ public class main extends JavaPlugin implements Listener {
 		MakeTop.Classement.clear();
 		
 		ServerQueueManager.Every5sec();
+		
+		for(Player player:Bukkit.getOnlinePlayers()) {
+			ScoreBoardNMS.MakeScoreBoardForPlayer(player);
+		}
 		
 		ScoreBoardNMS.UpdateScorePings();
 		ScoreBoardNMSRanksJump.AutoUpdate();
