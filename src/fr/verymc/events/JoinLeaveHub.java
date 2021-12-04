@@ -68,7 +68,6 @@ public class JoinLeaveHub implements Listener
             playerInventory.setItem(3, FeatherFly);
         }
         
-        ScoreBoardNMS.GetPlayerPing(player);
         ScoreBoardNMS.MakeScoreBoardForPlayer(player);
         
         if(!player.hasPermission("broadcast.join")) {

@@ -94,7 +94,6 @@ public class main extends JavaPlugin implements Listener {
 			ScoreBoardNMS.MakeScoreBoardForPlayer(player);
 		}
 		
-		ScoreBoardNMS.UpdateScorePings();
 		ScoreBoardNMSRanksJump.AutoUpdate();
 		ScoreBoardNMS.UpdateScoreBoard();
 	}

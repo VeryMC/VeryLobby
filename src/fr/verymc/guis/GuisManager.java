@@ -1,6 +1,5 @@
 package fr.verymc.guis;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -92,7 +91,7 @@ public class GuisManager implements Listener {
 			if(current.getType() == Material.SKULL_ITEM) {
 				MakeGuis.MakeProfil(player);
 			}
-			if(current.getType() == Material.IRON_SWORD) {
+			/*if(current.getType() == Material.IRON_SWORD) {
 				if(player.hasPermission("rusher")){
 					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
 					current.setType(Material.BARRIER);
@@ -112,91 +111,7 @@ public class GuisManager implements Listener {
 					     }
 					}, 40);
 				}
-			}
-			if(current.getType() == Material.DIAMOND_SWORD) {
-				if(player.hasPermission("mania")){
-					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
-					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
-					     public void run() {
-					    	 current.setType(Material.DIAMOND_SWORD);
-					     }
-					}, 80);
-				}
-				else {
-					player.sendMessage("§6Vérification de la disponibilité du grade...");
-					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
-					     public void run() {
-					    	 player.sendMessage("§cErreur, achat indisponible !");
-					    	 current.setType(Material.DIAMOND_SWORD);
-					     }
-					}, 40);
-				}
-			}
-			if(current.getType() == Material.GOLD_BLOCK) {
-				if(player.hasPermission("vip")){
-					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
-					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
-					     public void run() {
-					    	 current.setType(Material.GOLD_BLOCK);
-					     }
-					}, 80);
-				}
-				else {
-					player.sendMessage("§6Vérification de la disponibilité du grade...");
-					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
-					     public void run() {
-					    	 player.sendMessage("§cErreur, achat indisponible !");
-					    	 current.setType(Material.GOLD_BLOCK);
-					     }
-					}, 40);
-				}
-			}
-			if(current.getType() == Material.DIAMOND_BLOCK) {
-				if(player.hasPermission("premium")){
-					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
-					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
-					     public void run() {
-					    	 current.setType(Material.DIAMOND_BLOCK);
-					     }
-					}, 80);
-				}
-				else {
-					player.sendMessage("§6Vérification de la disponibilité du grade...");
-					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
-					     public void run() {
-					    	 player.sendMessage("§cErreur, achat indisponible !");
-					    	 current.setType(Material.DIAMOND_BLOCK);
-					     }
-					}, 40);
-				}
-			}
-			if(current.getType() == Material.EMERALD_BLOCK) {
-				if(player.hasPermission("elite")){
-					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
-					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
-					     public void run() {
-					    	 current.setType(Material.EMERALD_BLOCK);
-					     }
-					}, 80);
-				}
-				else {
-					player.sendMessage("§6Vérification de la disponibilité du grade...");
-					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
-					     public void run() {
-					    	 player.sendMessage("§cErreur, achat indisponible !");
-					    	 current.setType(Material.EMERALD_BLOCK);
-					     }
-					}, 40);
-				}
-			}
+			}*/
 		}
 		if(event.getInventory().getName() == "§6Very§fMc §f➔ §6Mini-jeux") {
 			
@@ -206,7 +121,6 @@ public class GuisManager implements Listener {
 			if(current.getType() == Material.SKULL_ITEM) {
 				MakeGuis.MakeProfil(player);
 				}
-			
 			if(current.getType() == Material.GRASS) {
 				player.chat("/skyblock");
 			}

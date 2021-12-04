@@ -1,6 +1,5 @@
 package fr.verymc;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -13,7 +12,6 @@ import fr.verymc.utils.ScoreboardSign;
 public class ScoreBoardNMS {
 	
 	public static Map<Player, ScoreboardSign> boards = new HashMap<>();
-	public static Map<Player, Integer> pings = new HashMap<>();
 	public static Map<Player, String> preffixes = new HashMap<>();
 	public static Map<Player, String> suffixes = new HashMap<>();
 	
@@ -39,7 +37,7 @@ public class ScoreBoardNMS {
 	
 	sb.setLine(7, "§7Hub §7▸ §6"+serveurname);
 	sb.setLine(6, "§7Verycoins §7▸ §csoon");
-	if(Suffix.contains("✯")) {
+	if(Suffix.contains("✰")) {
 		sb.setLine(5, "§7Premium §7▸ §a§l✔");
 		} else {
 			sb.setLine(5, "§7Premium §7▸ §c§lx");
@@ -58,18 +56,13 @@ public class ScoreBoardNMS {
 	public static void UpdateScoreBoard() {
 		for (Entry<Player, ScoreboardSign> board : boards.entrySet()) {
 			
-			if(board.getKey().isOnline() == false) {
-				board.getKey().remove();
-				pings.remove(board.getKey());
-			}
-			
 			String Preffix = ScoreBoardNMSRanksJump.GetPrefix(board.getKey());
 			String Suffix = ScoreBoardNMSRanksJump.GetSuffix(board.getKey());
 			int online = Bukkit.getServer().getOnlinePlayers().size();
 			board.getValue().setLine(12, "§7Lobby §7▸ §a" + online);
 			board.getValue().setLine(4, "§7Grade §7▸ "+Preffix);
 			
-			if(Suffix.contains("✯")) {
+			if(Suffix.contains("✰")) {
 				board.getValue().setLine(5, "§7Premium §8» §a§l✔");
 				} else {
 					board.getValue().setLine(5, "§7Premium §8» §c§lx");
@@ -81,83 +74,6 @@ public class ScoreBoardNMS {
 				UpdateScoreBoard();
 			}
 		}, 40);
-	}
-	@SuppressWarnings("deprecation")
-	public static void UpdateScorePings() {
-		for(Player player : Bukkit.getOnlinePlayers()) {
-			int ping = 0;
-			try {
-				  Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
-				  ping = (int) entityPlayer.getClass().getField("ping").get(entityPlayer);
-				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | NoSuchFieldException e) {
-				  ((Throwable) e).printStackTrace();
-				}
-			pings.put(player, ping);
-		}
-		Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
-			public void run() {
-				UpdateScorePings();
-			}
-		}, 40);
-	}
-	public static void GetPlayerPing(Player player) {
-			int ping = 0;
-			try {
-				  Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
-				  ping = (int) entityPlayer.getClass().getField("ping").get(entityPlayer);
-				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | NoSuchFieldException e) {
-				  ((Throwable) e).printStackTrace();
-				}
-			pings.put(player, ping);
-	}
-	public static String GetPlayerPingFormatted(Player player) {
-		String pingcolor = "§2";
-		int ping = 0;
-		if(!pings.containsKey(player)) {
-			try {
-				  Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
-				  ping = (int) entityPlayer.getClass().getField("ping").get(entityPlayer);
-				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | NoSuchFieldException e) {
-				  ((Throwable) e).printStackTrace();
-				}
-			if(ping >= 0 && ping <= 35) {
-				pingcolor = "§2";
-			}
-			if(ping >= 36 && ping <= 65) {
-				pingcolor = "§a";
-			}
-			if(ping >= 66 && ping <= 95) {
-				pingcolor = "§e";
-			}
-			if(ping >= 96 && ping <= 125) {
-				pingcolor = "§c";
-			}
-			if(ping >= 126) {
-				pingcolor = "§4";
-			}
-			String formatteda = pingcolor+ping;
-			return formatteda;
-		}
-		ping = pings.get(player);
-		
-		if(ping >= 0 && ping <= 35) {
-			pingcolor = "§2";
-		}
-		if(ping >= 36 && ping <= 65) {
-			pingcolor = "§a";
-		}
-		if(ping >= 66 && ping <= 95) {
-			pingcolor = "§e";
-		}
-		if(ping >= 96 && ping <= 125) {
-			pingcolor = "§c";
-		}
-		if(ping >= 126) {
-			pingcolor = "§4";
-		}
-		
-		String formatted = pingcolor + ping;
-		return formatted;
 	}
 	public static void DeleteScoreBoard() {
 		for (Entry<Player, ScoreboardSign> board : boards.entrySet()) {
