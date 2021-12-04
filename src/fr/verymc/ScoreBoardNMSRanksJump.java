@@ -27,7 +27,7 @@ public class ScoreBoardNMSRanksJump {
 			public void run() {
 				AutoUpdate();
 			}
-		}, 40);
+		}, 20);
 	}
 	public static String GetPrefix(Player player) {
 		

@@ -73,7 +73,7 @@ public class ScoreBoardNMS {
 			public void run() {
 				UpdateScoreBoard();
 			}
-		}, 40);
+		}, 20);
 	}
 	public static void DeleteScoreBoard() {
 		for (Entry<Player, ScoreboardSign> board : boards.entrySet()) {
