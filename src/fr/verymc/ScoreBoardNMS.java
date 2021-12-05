@@ -29,7 +29,7 @@ public class ScoreBoardNMS {
 	sb.setLine(13, "§f");
 	
 	sb.setLine(12, "§7Lobby §7▸ §a"+online);
-	sb.setLine(11, "§7Boutique §7▸ §§e/boutique");
+	sb.setLine(11, "§7Boutique §7▸ \u00A7e/boutique");
 	sb.setLine(10, "§7Discord §7▸ §d/discord");
 	sb.setLine(9, "§c§l➔ Informations");
 	
