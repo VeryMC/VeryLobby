@@ -34,7 +34,15 @@ public class TchatManager implements Listener {
 		
 		TextComponent message = new TextComponent();
         TextComponent symbole = new TextComponent();
-        message.setText(Prefix + " " + player.getName() + Suffix + "§7: "+e.getMessage());
+        
+        String temp = e.getMessage();
+        String end = "";
+        
+        for(char a : temp.toCharArray()) {
+        	end = end + "§7" + a;
+        }
+        
+        message.setText(Prefix + " " + player.getName() + Suffix + "§7: "+end);
         symbole.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cCliquez ici pour report le message de " +
                 player.getName()).create()));
         message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("").create()));
