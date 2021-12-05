@@ -9,6 +9,8 @@ import org.bukkit.event.player.PlayerChatEvent;
 
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ClickEvent.Action;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -45,7 +47,8 @@ public class TchatManager implements Listener {
         message.setText(Prefix + " " + player.getName() + Suffix + "§7: "+end);
         symbole.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cCliquez ici pour report le message de " +
                 player.getName()).create()));
-        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("").create()));
+        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Cliquez ici pour envoyer un message privé à §6"+player.getName()).create()));
+        message.setClickEvent(new ClickEvent(Action.SUGGEST_COMMAND, "/msg "+player.getName()+" "));
         symbole.setText("§cx ");
         symbole.addExtra(message);
         for(Player p : Bukkit.getOnlinePlayers()) {

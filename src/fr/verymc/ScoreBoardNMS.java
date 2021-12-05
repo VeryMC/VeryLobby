@@ -16,7 +16,7 @@ public class ScoreBoardNMS {
 	public static Map<Player, String> suffixes = new HashMap<>();
 	
 	public static void MakeScoreBoardForPlayer(Player player) {
-	ScoreboardSign sb = new ScoreboardSign(player, "§6§l✯ Very§f§lMc ✯");
+	ScoreboardSign sb = new ScoreboardSign(player, "\u00A76\u00A7l✯ Very\u00A7f\u00A7lMc ✯");
 	
 	String Preffix = ScoreBoardNMSRanksJump.GetPrefix(player);
 	String Suffix = ScoreBoardNMSRanksJump.GetSuffix(player);
@@ -24,30 +24,30 @@ public class ScoreBoardNMS {
 	int online = Bukkit.getServer().getOnlinePlayers().size();
 	String serveurname = Bukkit.getServerName();
 	sb.create();
-	sb.setLine(14, "§f§lwww.§6§lvery§f§lmc§f§l.fr");
+	sb.setLine(14, "\u00A7f\u00A7lwww.\u00A76\u00A7lvery\u00A7f\u00A7lmc\u00A7f\u00A7l.fr");
 	
-	sb.setLine(13, "§f");
+	sb.setLine(13, "\u00A7f");
 	
-	sb.setLine(12, "§7Lobby §7▸ §a"+online);
-	sb.setLine(11, "§7Boutique §7▸ \u00A7e/boutique");
-	sb.setLine(10, "§7Discord §7▸ §d/discord");
-	sb.setLine(9, "§c§l➔ Informations");
+	sb.setLine(12, "\u00A77Lobby \u00A77▸ \u00A7a"+online);
+	sb.setLine(11, "\u00A77Boutique \u00A77▸ \u00A7e/boutique");
+	sb.setLine(10, "\u00A77Discord \u00A77▸ \u00A7d/discord");
+	sb.setLine(9, "\u00A7c\u00A7l➔ Informations");
 	
-	sb.setLine(8, "§1");
+	sb.setLine(8, "\u00A71");
 	
-	sb.setLine(7, "§7Hub §7▸ §6"+serveurname);
-	sb.setLine(6, "§7Verycoins §7▸ §csoon");
+	sb.setLine(7, "\u00A77Hub \u00A77▸ \u00A76"+serveurname);
+	sb.setLine(6, "\u00A77Verycoins \u00A77▸ \u00A7csoon");
 	if(Suffix.contains("✰")) {
-		sb.setLine(5, "§7Premium §7▸ §a§l✔");
+		sb.setLine(5, "\u00A77Premium \u00A77▸ \u00A7a\u00A7l✔");
 		} else {
-			sb.setLine(5, "§7Premium §7▸ §c§lx");
+			sb.setLine(5, "\u00A77Premium \u00A77▸ \u00A7c\u00A7lx");
 		}
-	sb.setLine(4, "§7Grade §7▸ "+Preffix);
-	sb.setLine(3, "§7Pseudo §7▸ §f"+player.getName());
+	sb.setLine(4, "\u00A77Grade \u00A77▸ "+Preffix);
+	sb.setLine(3, "\u00A77Pseudo \u00A77▸ \u00A7f"+player.getName());
 	
-	sb.setLine(2, "§a§l➔ Profil");
+	sb.setLine(2, "\u00A7a\u00A7l➔ Profil");
 	
-	sb.setLine(1, "§3");
+	sb.setLine(1, "\u00A73");
 
 	boards.put(player, sb);
 
@@ -59,13 +59,13 @@ public class ScoreBoardNMS {
 			String Preffix = ScoreBoardNMSRanksJump.GetPrefix(board.getKey());
 			String Suffix = ScoreBoardNMSRanksJump.GetSuffix(board.getKey());
 			int online = Bukkit.getServer().getOnlinePlayers().size();
-			board.getValue().setLine(12, "§7Lobby §7▸ §a" + online);
-			board.getValue().setLine(4, "§7Grade §7▸ "+Preffix);
+			board.getValue().setLine(12, "\u00A77Lobby \u00A77▸ \u00A7a" + online);
+			board.getValue().setLine(4, "\u00A77Grade \u00A77▸ "+Preffix);
 			
 			if(Suffix.contains("✰")) {
-				board.getValue().setLine(5, "§7Premium §8» §a§l✔");
+				board.getValue().setLine(5, "\u00A77Premium \u00A78» \u00A7a\u00A7l✔");
 				} else {
-					board.getValue().setLine(5, "§7Premium §8» §c§lx");
+					board.getValue().setLine(5, "\u00A77Premium \u00A78» \u00A7c\u00A7lx");
 				}
 		    
 		}
