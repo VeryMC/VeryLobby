@@ -29,8 +29,8 @@ public class ScoreBoardNMS {
 	sb.setLine(13, "\u00A7f");
 	
 	sb.setLine(12, "\u00A77Lobby \u00A77▸ \u00A7a"+online);
-	sb.setLine(11, "\u00A77Boutique \u00A77▸ \u00A7e/boutique");
-	sb.setLine(10, "\u00A77Discord \u00A77▸ \u00A7d/discord");
+	sb.setLine(11, "\u00A77Boutique \u00A77▸\u00A7e /boutique");
+	sb.setLine(10, "\u00A77Discord \u00A77▸\u00A7d /discord");
 	sb.setLine(9, "\u00A7c\u00A7l➔ Informations");
 	
 	sb.setLine(8, "\u00A71");

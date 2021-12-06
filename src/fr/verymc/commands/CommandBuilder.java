@@ -22,7 +22,7 @@ public class CommandBuilder implements CommandExecutor
             return false;
         }
         final Player player = (Player)sender;
-        if (!player.hasPermission("build.permission.premsi")) {
+        if (!player.hasPermission("builder")) {
             player.sendMessage("§cVous n'avez pas la permission requise pour effectuer cette commande !");
             return true;
         }

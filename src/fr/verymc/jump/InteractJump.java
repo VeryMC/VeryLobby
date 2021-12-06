@@ -92,6 +92,9 @@ public class InteractJump implements Listener {
 			if(player.getItemInHand().getItemMeta() == null) {
 				return;
 			}
+			if(player.getItemInHand().getItemMeta().getDisplayName() == null) {
+				return;
+			}
 			if(player.getItemInHand().getItemMeta().getDisplayName() != null) {
 			if(player.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("§aArrêter le jump §8| §7(clic droit)")) {
 			JoinLeaveHub.GiveItem(player);
