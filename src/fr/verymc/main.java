@@ -19,6 +19,7 @@ import fr.verymc.commands.CommandServeur;
 import fr.verymc.commands.CommandSite;
 import fr.verymc.commands.CommandSkyblock;
 import fr.verymc.events.JoinLeaveHub;
+import fr.verymc.events.MovementManager;
 import fr.verymc.events.TchatManager;
 import fr.verymc.events.WeatherEvent;
 import fr.verymc.guis.GuisManager;
@@ -60,6 +61,7 @@ public class main extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new GuisManager(), this);
 		getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
 		getServer().getPluginManager().registerEvents(new TchatManager(), this);
+		getServer().getPluginManager().registerEvents(new MovementManager(), this);
 		
 		this.getCommand("builder").setExecutor(new CommandBuilder());
 		this.getCommand("serveur").setExecutor(new CommandServeur());
