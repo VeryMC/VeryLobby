@@ -81,7 +81,7 @@ public class GuisManager implements Listener {
 				MakeGuis.MakeBoutiqueRank(player);
             }
             if(current.getType() == Material.BLAZE_POWDER) {
-            player.sendMessage("§cPas encore disponnible !");
+                player.sendMessage("§cPas encore disponnible !");
             }
         }
 		if(event.getInventory().getName() == "§6Very§fMc §f➔ §6Boutique des grades") {

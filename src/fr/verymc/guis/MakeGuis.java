@@ -11,9 +11,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 
 import fr.verymc.main;
+import fr.verymc.utils.PreBuildItemStacks;
 import fr.verymc.utils.RankExpiry;
 import net.luckperms.api.model.user.User;
 
@@ -41,33 +41,7 @@ public class MakeGuis {
         meta23.setLore(Arrays.asList("§c<<---"));
         stack23.setItemMeta(meta23);
 		
-		
-        ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
-        ItemMeta meta = head.getItemMeta();
-        meta.setDisplayName("§6Profil");
-        ((SkullMeta) meta).setOwner(player.getName());
-        if(RankExpiry.GetTimeLeft(player) >= 1) {
-            long aaa = RankExpiry.GetTimeLeft(player);
-            long dayleft = TimeUnit.MILLISECONDS.toDays(aaa);
-            long hourleft = TimeUnit.MILLISECONDS.toHours(aaa);
-            long minleft = TimeUnit.MILLISECONDS.toMinutes(aaa);
-            long secleft = TimeUnit.MILLISECONDS.toSeconds(aaa);
-            long realsecleft = secleft - 60*minleft;
-            long realminleft = minleft - 60*hourleft;
-            long realhourleft = hourleft - 24*dayleft;
-            meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §a§lTemporaire","§6"+dayleft+" §7jour(s) §6"+realhourleft+" §7heure(s) §6"+realminleft+" §7minute(s) §6"
-            +realsecleft+" §7seconde(s) restantes"));
-            meta.addEnchant(Enchantment.SILK_TOUCH, 0, true);
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-            } else if(player.hasPermission("group.premium")){
-            	meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §2§lPermanant"));
-            	meta.addEnchant(Enchantment.SILK_TOUCH, 0, true);
-                meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-    	    } else {
-    	    	meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §c§lInactif"));
-    	    }
-        head.setItemMeta(meta);
-        inv.setItem(0, head);
+        inv.setItem(0, PreBuildItemStacks.GetHead(player));
         
         ItemStack stack1 = new ItemStack(Material.GOLD_INGOT, 1);
         ItemMeta meta1 = stack1.getItemMeta();
@@ -131,32 +105,6 @@ public class MakeGuis {
 			Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
 		}
 		
-		ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
-        ItemMeta meta = head.getItemMeta();
-        meta.setDisplayName("§6Profil");
-        ((SkullMeta) meta).setOwner(player.getName());
-        if(RankExpiry.GetTimeLeft(player) >= 1) {
-            long aaa = RankExpiry.GetTimeLeft(player);
-            long dayleft = TimeUnit.MILLISECONDS.toDays(aaa);
-            long hourleft = TimeUnit.MILLISECONDS.toHours(aaa);
-            long minleft = TimeUnit.MILLISECONDS.toMinutes(aaa);
-            long secleft = TimeUnit.MILLISECONDS.toSeconds(aaa);
-            long realsecleft = secleft - 60*minleft;
-            long realminleft = minleft - 60*hourleft;
-            long realhourleft = hourleft - 24*dayleft;
-            meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §a§lTemporaire","§6"+dayleft+" §7jour(s) §6"+realhourleft+" §7heure(s) §6"+realminleft+" §7minute(s) §6"
-            +realsecleft+" §7seconde(s) restantes"));
-            meta.addEnchant(Enchantment.SILK_TOUCH, 0, true);
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-            } else if(player.hasPermission("group.premium")){
-            	meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §2§lPermanant"));
-            	meta.addEnchant(Enchantment.SILK_TOUCH, 0, true);
-                meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-    	    } else {
-    	    	meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §c§lInactif"));
-    	    }
-        head.setItemMeta(meta);
-		
 		ItemStack stack8 = new ItemStack(Material.STAINED_GLASS_PANE, 1);
         ItemMeta meta8 = stack8.getItemMeta();
         meta8.setDisplayName("§6");
@@ -170,7 +118,7 @@ public class MakeGuis {
 		
 		Inventory profil = Bukkit.createInventory(null, 45, "§6Very§fMc §f➔ Votre profil");
         
-        profil.setItem(22, head);
+		profil.setItem(22, PreBuildItemStacks.GetHead(player));
         profil.setItem(0, stack8);
         profil.setItem(1, stack8);
         profil.setItem(2, stack8);
@@ -216,32 +164,6 @@ public class MakeGuis {
 		if (user.getCachedData().getMetaData().getPrefix() != null) {
 			Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
 		}
-		
-		ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
-        ItemMeta meta = head.getItemMeta();
-        meta.setDisplayName("§6Profil");
-        ((SkullMeta) meta).setOwner(player.getName());
-        if(RankExpiry.GetTimeLeft(player) >= 1) {
-            long aaa = RankExpiry.GetTimeLeft(player);
-            long dayleft = TimeUnit.MILLISECONDS.toDays(aaa);
-            long hourleft = TimeUnit.MILLISECONDS.toHours(aaa);
-            long minleft = TimeUnit.MILLISECONDS.toMinutes(aaa);
-            long secleft = TimeUnit.MILLISECONDS.toSeconds(aaa);
-            long realsecleft = secleft - 60*minleft;
-            long realminleft = minleft - 60*hourleft;
-            long realhourleft = hourleft - 24*dayleft;
-            meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §a§lTemporaire","§6"+dayleft+" §7jour(s) §6"+realhourleft+" §7heure(s) §6"+realminleft+" §7minute(s) §6"
-            +realsecleft+" §7seconde(s) restantes"));
-            meta.addEnchant(Enchantment.SILK_TOUCH, 0, true);
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-            } else if(player.hasPermission("group.premium")){
-            	meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §2§lPermanant"));
-            	meta.addEnchant(Enchantment.SILK_TOUCH, 0, true);
-                meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-    	    } else {
-    	    	meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §c§lInactif"));
-    	    }
-        head.setItemMeta(meta);
         
         ItemStack stacku = new ItemStack(Material.GOLD_INGOT, 1);
         ItemMeta metau = stacku.getItemMeta();
@@ -255,7 +177,7 @@ public class MakeGuis {
         meta30.setLore(Arrays.asList("§c<<---"));
         stack30.setItemMeta(meta30);
         
-        sous.setItem(13, head);
+        sous.setItem(13, PreBuildItemStacks.GetHead(player));
         sous.setItem(1, stack8);
         sous.setItem(2, stack8);
         sous.setItem(3, stack8);
@@ -352,33 +274,6 @@ public class MakeGuis {
         inv.setItem(30, stackc);
         inv.setItem(31, stacke);
         inv.setItem(32, stackd);
-		
-		
-        ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
-        ItemMeta meta = head.getItemMeta();
-        meta.setDisplayName("§6Profil");
-        ((SkullMeta) meta).setOwner(player.getName());
-        if(RankExpiry.GetTimeLeft(player) >= 1) {
-            long aaa = RankExpiry.GetTimeLeft(player);
-            long dayleft = TimeUnit.MILLISECONDS.toDays(aaa);
-            long hourleft = TimeUnit.MILLISECONDS.toHours(aaa);
-            long minleft = TimeUnit.MILLISECONDS.toMinutes(aaa);
-            long secleft = TimeUnit.MILLISECONDS.toSeconds(aaa);
-            long realsecleft = secleft - 60*minleft;
-            long realminleft = minleft - 60*hourleft;
-            long realhourleft = hourleft - 24*dayleft;
-            meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §a§lTemporaire","§6"+dayleft+" §7jour(s) §6"+realhourleft+" §7heure(s) §6"+realminleft+" §7minute(s) §6"
-            +realsecleft+" §7seconde(s) restantes"));
-            meta.addEnchant(Enchantment.SILK_TOUCH, 0, true);
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-            } else if(player.hasPermission("group.premium")){
-            	meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §2§lPermanant"));
-            	meta.addEnchant(Enchantment.SILK_TOUCH, 0, true);
-                meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-    	    } else {
-    	    	meta.setLore(Arrays.asList("§7Grade: " + Grade,"§7Status du Premium: §c§lInactif"));
-    	    }
-        head.setItemMeta(meta);
         
         ItemStack stack7 = new ItemStack(Material.BOOK, 1);
         ItemMeta meta7 = stack7.getItemMeta();
@@ -401,7 +296,7 @@ public class MakeGuis {
         ItemMeta meta8 = stack8.getItemMeta();
         meta8.setDisplayName("§6");
         stack8.setItemMeta(meta8);
-        inv.setItem(0, head);
+        inv.setItem(0, PreBuildItemStacks.GetHead(player));
         inv.setItem(1, stack8);
         inv.setItem(2, stack8);
         inv.setItem(3, stack8);
