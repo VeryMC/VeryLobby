@@ -35,7 +35,8 @@ public class ServerQueueManager {
 			  if(entry.getValue() == 0) {
 				  if(Bukkit.getPlayer(entry.getKey()) != null) {
 					  if(Bukkit.getPlayer(entry.getKey()).isOnline() == true) {
-				  player = Bukkit.getPlayer(entry.getKey());
+				        player = Bukkit.getPlayer(entry.getKey());
+				        break;
 					  } else {
 						  position.remove(entry.getKey());
 					  }
@@ -43,8 +44,7 @@ public class ServerQueueManager {
 					  position.remove(entry.getKey());
 				  }
 			  }
-			}
-		
+		}		
 		if(player != null) {
 			if(player.isOnline() == true) {
 		final ByteArrayDataOutput out = ByteStreams.newDataOutput();
@@ -61,18 +61,26 @@ public class ServerQueueManager {
 		     public void run() {
 		    	 if(p != null) {
 		    		 if(!p.isOnline()) {
-		    			 int aaa = 0;
-		    			 for (Map.Entry<String, Integer> entry : position.entrySet()){
-		    				 if(aaa <= entry.getValue()) {
-		    					 aaa = entry.getValue();
-		    				 }
+		    			 int bestvalue = position.size();
+		    			 while (bestvalue != 0) {
+		    			   for (Map.Entry<String, Integer> entry : position.entrySet()){
+		    				   if(entry.getValue()<bestvalue) {
+		    					   bestvalue=entry.getValue();
+		    				   }
+		    			    }
+		    			   if(bestvalue >= 1) {
+		    				   for (Map.Entry<String, Integer> entry : position.entrySet()){
+			    				   if(entry.getValue()>=1) {
+			    					   if(!position.containsValue(entry.getValue()-1)) {
+			    					     setPosition(entry.getKey(), entry.getValue()-1);
+			    					     if(entry.getValue()<bestvalue) {
+					    					   bestvalue=entry.getValue();
+					    				   }
+			    					   }
+			    				   }
+			    			    }
+		    			    }
 		    			 }
-		    			 for (Map.Entry<String, Integer> entry : position.entrySet()){
-		    				 if(aaa >= 1) {
-	    						entry.setValue(entry.getValue() - 1);
-		    				 }
-	    				}
-		    			 aaa = 0;
 		    		 }
 		    	 }
 		    	 for (Map.Entry<String, Integer> entry : position.entrySet()){
@@ -86,7 +94,9 @@ public class ServerQueueManager {
 		 			message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, 
 		 					new ComponentBuilder("§c§lCliquez sur ce message pour quitter la file d'attente").create()));
 		 			Bukkit.getPlayer(entry.getKey()).sendMessage(message);
-		 				}
+		 				} else {
+			 				position.remove(entry.getKey());
+			 			}
 		 			} else {
 		 				position.remove(entry.getKey());
 		 			}

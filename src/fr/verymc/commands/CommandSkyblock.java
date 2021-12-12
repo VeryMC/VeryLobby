@@ -36,7 +36,9 @@ public class CommandSkyblock implements CommandExecutor {
 			} else {
 				ServerQueueManager.setPosition(player.getName(), pos);
 			}
-		player.sendMessage("\n§a§lFile d'attente §7» §aVous rejoignez la file d'attente du Skyblock avec la position §6" + pos);
+			int tmp = ServerQueueManager.position.size()-1;
+		player.sendMessage("\n§a§lFile d'attente §7» §aVous rejoignez la file d'attente du skyblock en position §6" + 
+					pos + "§a sur §6" + tmp + "§a.");
 		TextComponent message = new TextComponent("\n §c§l» §c§lCliquez ici pour quitter la file d'attente §c§l« \n");
 			message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/leavequeues"));
 			message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, 
