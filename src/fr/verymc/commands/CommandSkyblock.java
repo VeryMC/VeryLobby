@@ -29,8 +29,9 @@ public class CommandSkyblock implements CommandExecutor {
 		if(sender instanceof Player) {
 			final Player player = (Player) sender;
 			ViaAPI api = Via.getAPI();
-			if(api.getPlayerVersion(player) >= 754) {
-				int pos = ServerQueueManager.position.size();
+			int playerversion = api.getPlayerVersion(player);
+			int pos = ServerQueueManager.position.size();
+			if(playerversion >= 754) {
 			if(player.hasPermission("fastjoin")) {
 		        ServerQueueManager.setPosition(player.getName(), 0);
 			} else {
@@ -45,7 +46,7 @@ public class CommandSkyblock implements CommandExecutor {
 					new ComponentBuilder("§c§lCliquez sur ce message pour quitter la file d'attente").create()));
 			player.sendMessage(message);
 			} else {
-				player.sendMessage("\n§a§lFile d'attente §7» §cVous devez utilisez la version 1.16.5 ou supérieure pour jouer au skyblock !");
+				player.sendMessage("\n§a§lFile d'attente §7» §cVous devez posséder la version 1.16.5 ou supérieure pour rejoindre le skyblock."+playerversion);
 			}
 		}
 		return true;	
