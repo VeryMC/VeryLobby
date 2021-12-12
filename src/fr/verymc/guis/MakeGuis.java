@@ -1,20 +1,16 @@
 package fr.verymc.guis;
 
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import fr.verymc.main;
 import fr.verymc.utils.PreBuildItemStacks;
-import fr.verymc.utils.RankExpiry;
 import net.luckperms.api.model.user.User;
 
 public class MakeGuis {
@@ -210,39 +206,53 @@ public class MakeGuis {
 		}
 		
 		final Inventory inv = Bukkit.createInventory(null, 54, "§6Very§fMc §f➔ §6Boutique des grades");
+        
+        ItemStack stack7 = new ItemStack(Material.BOOK, 1);
+        ItemMeta meta7 = stack7.getItemMeta();
+        meta7.setDisplayName("§6Informations");
+        meta7.setLore(Arrays.asList("§7Site §8» §awww.verymc.fr", "§7Discord §8» §9https://discord.gg/FnePjz6rAh"));
+        stack7.setItemMeta(meta7);
+        
+        ItemStack stack1 = new ItemStack(Material.ARROW, 1);
+        ItemMeta meta1 = stack1.getItemMeta();
+        meta1.setDisplayName("§6Retourner en arrière");
+        meta1.setLore(Arrays.asList("§c<<---"));
+        stack1.setItemMeta(meta1);
 		
-		
-		ItemStack stacku = new ItemStack(Material.BEACON, 1);
-        ItemMeta metau = stacku.getItemMeta();
-        metau.setDisplayName("§d7 Jours de Premium");
-        metau.setLore(Arrays.asList("§c..."));
-        stacku.setItemMeta(metau);
+		ItemStack stack8 = new ItemStack(Material.STAINED_GLASS_PANE, 1);
+        ItemMeta meta8 = stack8.getItemMeta();
+        meta8.setDisplayName("§6");
+        stack8.setItemMeta(meta8);
+        inv.setItem(0, PreBuildItemStacks.GetHead(player));
+        inv.setItem(1, stack8);
+        inv.setItem(2, stack8);
+        inv.setItem(3, stack8);
+        inv.setItem(4, stack8);
+        inv.setItem(5, stack8);
+        inv.setItem(6, stack8);
+        inv.setItem(7, stack8);
+        inv.setItem(8, stack8);
+        inv.setItem(9, stack8);
+        inv.setItem(18, stack8);
+        inv.setItem(17, stack8);
+        inv.setItem(27, stack8);
+        inv.setItem(26, stack8);
+        inv.setItem(36, stack8);
+        inv.setItem(35, stack8);
+        inv.setItem(44, stack8);
+        inv.setItem(45, stack7);
+        inv.setItem(46, stack8);
+        inv.setItem(47, stack8);
+        inv.setItem(48, stack8);
+        inv.setItem(49, stack8);
+        inv.setItem(50, stack8);
+        inv.setItem(51, stack8);
+        inv.setItem(52, stack8);
+        inv.setItem(53, stack1);
         
-        ItemStack stacka = new ItemStack(Material.BEACON, 1);
-        ItemMeta metaa = stacka.getItemMeta();
-        metaa.setDisplayName("§d14 Jours de Premium");
-        metaa.setLore(Arrays.asList("§c..."));
-        stacka.setItemMeta(metaa);
+        player.openInventory(inv);
         
-        ItemStack stackb= new ItemStack(Material.BEACON, 1);
-        ItemMeta metab = stackb.getItemMeta();
-        metab.setDisplayName("§d30 Jours de Premium");
-        metab.setLore(Arrays.asList("§c..."));
-        stackb.setItemMeta(metab);
-        
-        ItemStack stackc = new ItemStack(Material.BEACON, 1);
-        ItemMeta metac = stackc.getItemMeta();
-        metac.setDisplayName("§d60 Jours de Premium");
-        metac.setLore(Arrays.asList("§c..."));
-        stackc.setItemMeta(metac);
-        
-        ItemStack stackd = new ItemStack(Material.BEACON, 1);
-        ItemMeta metad = stackd.getItemMeta();
-        metad.setDisplayName("§d90 Jours de Premium");
-        metad.setLore(Arrays.asList("§c..."));
-        stackd.setItemMeta(metad);
-        
-        ItemStack stacke = new ItemStack(Material.PAPER, 1);
+        /*ItemStack stacke = new ItemStack(Material.PAPER, 1);
         ItemMeta metae = stacke.getItemMeta();
         if(RankExpiry.GetTimeLeft(player) >= 1) {
         long aaa = RankExpiry.GetTimeLeft(player);
@@ -266,64 +276,7 @@ public class MakeGuis {
 	    } else {
         	metae.setDisplayName("§eStatus du Premium §c(§lINACTIF§c)");
         }
-        stacke.setItemMeta(metae);
-        
-        inv.setItem(20, stacku);
-        inv.setItem(22, stacka);
-        inv.setItem(24, stackb);
-        inv.setItem(30, stackc);
-        inv.setItem(31, stacke);
-        inv.setItem(32, stackd);
-        
-        ItemStack stack7 = new ItemStack(Material.BOOK, 1);
-        ItemMeta meta7 = stack7.getItemMeta();
-        meta7.setDisplayName("§6Informations");
-        meta7.setLore(Arrays.asList("§7Site §8» §awww.verymc.fr", "§7Discord §8» §9https://discord.gg/FnePjz6rAh"));
-        stack7.setItemMeta(meta7);
-        
-        ItemStack stack1 = new ItemStack(Material.ARROW, 1);
-        ItemMeta meta1 = stack1.getItemMeta();
-        meta1.setDisplayName("§6Retourner en arrière");
-        meta1.setLore(Arrays.asList("§c<<---"));
-        stack1.setItemMeta(meta1);
-        
-        ItemStack stackf = new ItemStack(Material.WOOL, 1, (short) 5);
-        ItemMeta metaf = stackf.getItemMeta();
-        metaf.setDisplayName("§aActualiser la page");
-        stackf.setItemMeta(metaf);
-		
-		ItemStack stack8 = new ItemStack(Material.STAINED_GLASS_PANE, 1);
-        ItemMeta meta8 = stack8.getItemMeta();
-        meta8.setDisplayName("§6");
-        stack8.setItemMeta(meta8);
-        inv.setItem(0, PreBuildItemStacks.GetHead(player));
-        inv.setItem(1, stack8);
-        inv.setItem(2, stack8);
-        inv.setItem(3, stack8);
-        inv.setItem(4, stack8);
-        inv.setItem(5, stack8);
-        inv.setItem(6, stack8);
-        inv.setItem(7, stack8);
-        inv.setItem(8, stackf);
-        inv.setItem(9, stack8);
-        inv.setItem(18, stack8);
-        inv.setItem(17, stack8);
-        inv.setItem(27, stack8);
-        inv.setItem(26, stack8);
-        inv.setItem(36, stack8);
-        inv.setItem(35, stack8);
-        inv.setItem(44, stack8);
-        inv.setItem(45, stack7);
-        inv.setItem(46, stack8);
-        inv.setItem(47, stack8);
-        inv.setItem(48, stack8);
-        inv.setItem(49, stack8);
-        inv.setItem(50, stack8);
-        inv.setItem(51, stack8);
-        inv.setItem(52, stack8);
-        inv.setItem(53, stack1);
-        
-        player.openInventory(inv);
+        stacke.setItemMeta(metae);*/
 	}
 
 }

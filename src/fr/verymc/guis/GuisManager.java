@@ -66,9 +66,6 @@ public class GuisManager implements Listener {
 			if(current.getType() == Material.SKULL_ITEM) {
 				MakeGuis.MakeProfil(player);
 			}
-			if(current.getType() == Material.WOOL) {
-				MakeGuis.MakeBoutiqueRank(player);
-			}
         }
         if(event.getInventory().getName() == "§6Very§fMc §f➔ §6Boutiques") {
 			if(current.getType() == Material.ARROW) {
@@ -81,7 +78,7 @@ public class GuisManager implements Listener {
 				MakeGuis.MakeBoutiqueRank(player);
             }
             if(current.getType() == Material.BLAZE_POWDER) {
-                player.sendMessage("§cPas encore disponnible !");
+               
             }
         }
 		if(event.getInventory().getName() == "§6Very§fMc §f➔ §6Boutique des grades") {
