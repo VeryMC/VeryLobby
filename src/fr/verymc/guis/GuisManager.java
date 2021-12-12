@@ -1,5 +1,6 @@
 package fr.verymc.guis;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -39,6 +40,7 @@ public class GuisManager implements Listener {
 			}
 		}
 	}
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void Onclick(InventoryClickEvent event) {
 		final Player player = (Player) event.getWhoClicked();
@@ -88,27 +90,27 @@ public class GuisManager implements Listener {
 			if(current.getType() == Material.SKULL_ITEM) {
 				MakeGuis.MakeProfil(player);
 			}
-			/*if(current.getType() == Material.IRON_SWORD) {
-				if(player.hasPermission("rusher")){
+			if(current.getType() == Material.GOLD_INGOT) {
+				if(player.hasPermission("group.vip")){
 					player.sendMessage("§cErreur, vous possédez déjà ce grade !");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
 					     public void run() {
-					    	 current.setType(Material.IRON_SWORD);
+					    	 current.setType(Material.GOLD_INGOT);
 					     }
-					}, 80);
+					}, 50);
 				}
 				else {
 					player.sendMessage("§6Vérification de la disponibilité du grade...");
 					current.setType(Material.BARRIER);
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+					Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
 					     public void run() {
 					    	 player.sendMessage("§cErreur, achat indisponible !");
-					    	 current.setType(Material.IRON_SWORD);
+					    	 current.setType(Material.GOLD_INGOT);
 					     }
-					}, 40);
+					}, 50);
 				}
-			}*/
+			}
 		}
 		if(event.getInventory().getName() == "§6Very§fMc §f➔ §6Mini-jeux") {
 			

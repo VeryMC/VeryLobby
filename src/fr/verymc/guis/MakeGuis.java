@@ -213,6 +213,13 @@ public class MakeGuis {
         meta7.setLore(Arrays.asList("§7Site §8» §awww.verymc.fr", "§7Discord §8» §9https://discord.gg/FnePjz6rAh"));
         stack7.setItemMeta(meta7);
         
+        ItemStack stack2 = new ItemStack(Material.GOLD_INGOT, 1);
+        ItemMeta meta2 = stack2.getItemMeta();
+        meta2.setDisplayName("§6Grade VIP");
+        meta2.setLore(Arrays.asList("§cN/A"));
+        stack2.setItemMeta(meta2);
+        inv.setItem(8, stack2);
+        
         ItemStack stack1 = new ItemStack(Material.ARROW, 1);
         ItemMeta meta1 = stack1.getItemMeta();
         meta1.setDisplayName("§6Retourner en arrière");
@@ -235,6 +242,7 @@ public class MakeGuis {
         inv.setItem(9, stack8);
         inv.setItem(18, stack8);
         inv.setItem(17, stack8);
+        inv.setItem(22, stack2);
         inv.setItem(27, stack8);
         inv.setItem(26, stack8);
         inv.setItem(36, stack8);
