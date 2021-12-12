@@ -63,9 +63,9 @@ public class ScoreBoardNMS {
 			board.getValue().setLine(4, "\u00A77Grade \u00A77▸ "+Preffix);
 			
 			if(Suffix.contains("✰")) {
-				board.getValue().setLine(5, "\u00A77Premium \u00A78▸ \u00A7a\u00A7l✔");
+				board.getValue().setLine(5, "\u00A77Premium \u00A77▸ \u00A7a\u00A7l✔");
 				} else {
-					board.getValue().setLine(5, "\u00A77Premium \u00A78▸ \u00A7c\u00A7lx");
+					board.getValue().setLine(5, "\u00A77Premium \u00A77▸ \u00A7c\u00A7lx");
 				}
 		    
 		}
