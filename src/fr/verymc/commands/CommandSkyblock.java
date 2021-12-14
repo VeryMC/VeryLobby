@@ -28,6 +28,10 @@ public class CommandSkyblock implements CommandExecutor {
 		
 		if(sender instanceof Player) {
 			final Player player = (Player) sender;
+			if(ServerQueueManager.position.containsKey(player.getName())){
+				player.sendMessage("\n§a§lFile d'attente §7» §cVous êtes déjà dans une file d'attente !");
+				return true;
+			}
 			ViaAPI api = Via.getAPI();
 			int playerversion = api.getPlayerVersion(player);
 			int pos = ServerQueueManager.position.size();
