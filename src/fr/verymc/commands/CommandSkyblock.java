@@ -41,6 +41,7 @@ public class CommandSkyblock implements CommandExecutor {
 			} else {
 				ServerQueueManager.setPosition(player.getName(), pos);
 			}
+			player.closeInventory();
 			int tmp = ServerQueueManager.position.size()-1;
 		player.sendMessage("\n§a§lFile d'attente §7» §aVous rejoignez la file d'attente du skyblock en position §6" + 
 					pos + "§a sur §6" + tmp + "§a.");

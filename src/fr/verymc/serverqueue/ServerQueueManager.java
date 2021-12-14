@@ -49,7 +49,6 @@ public class ServerQueueManager {
 			if(player.isOnline() == true) {
 		final ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Bukkit.getPluginManager().getPlugin("VeryLobby"), "BungeeCord");
-		player.closeInventory();
 		out.writeUTF("Connect");
 	    out.writeUTF("skyblock");
 		player.sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
