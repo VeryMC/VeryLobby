@@ -26,22 +26,55 @@ public class ServerQueueManager {
         return (position.get(playername) == null ? 0 : position.get(playername));
     }
 	
+    @SuppressWarnings("deprecation")
+	public static void DisplayActionBarForA() {
+    	Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+		     public void run() {
+		    	 for (Map.Entry<String, Integer> entry : position.entrySet()){
+		 			if(Bukkit.getPlayer(entry.getKey()) != null) {
+		 				if(Bukkit.getPlayer(entry.getKey()).isOnline() == true) {
+		 					int tmp = position.size()-1;
+		 					PlayerNMS.sendActionBar(Bukkit.getPlayer(entry.getKey()), "§7Position §6" + 
+				 					entry.getValue() + "§7 sur §6" + tmp + "§7 dans la file d'attente du §6Skyblock");
+		 				} else {
+			 				position.remove(entry.getKey());
+			 			}
+		 			} else {
+		 				position.remove(entry.getKey());
+		 			}
+		 		}
+		    	 DisplayActionBarForA();
+		     }
+		}, 20);
+    }
+    
 	public static void Every5sec() {	
 		Player player = null;
-		for (Map.Entry<String, Integer> entry : position.entrySet()){
-			  if(entry.getValue() == 0) {
-				  if(Bukkit.getPlayer(entry.getKey()) != null) {
-					  if(Bukkit.getPlayer(entry.getKey()).isOnline() == true) {
-				        player = Bukkit.getPlayer(entry.getKey());
-				        break;
-					  } else {
-						  position.remove(entry.getKey());
-					  }
-				  } else {
-					  position.remove(entry.getKey());
-				  }
-			  }
+		if(position.size() > 0) {
+			int value = 0;
+			while (player == null) {
+				if(position.containsValue(value)){
+		      for (Map.Entry<String, Integer> entry : position.entrySet()){
+			    	if(entry.getValue() == value) {
+						  if(Bukkit.getPlayer(entry.getKey()) != null) {
+							  if(Bukkit.getPlayer(entry.getKey()).isOnline() == true) {
+						        player = Bukkit.getPlayer(entry.getKey());
+						        break;
+							  } else {
+								  position.remove(entry.getKey());
+							  }
+						  } else {
+							  position.remove(entry.getKey());
+						  }
+			    	} else {
+			    		continue;
+			    	}
+			    }
+			    } else {
+					  value+=1;
+					  continue;
 		}		
+			}
 		if(player != null) {
 			if(player.isOnline() == true) {
 		final ByteArrayDataOutput out = ByteStreams.newDataOutput();
@@ -49,6 +82,7 @@ public class ServerQueueManager {
 		out.writeUTF("Connect");
 	    out.writeUTF("skyblock");
 		player.sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
+		}
 		}
 		}
 		final Player p = player;
@@ -79,19 +113,6 @@ public class ServerQueueManager {
 		    			 }
 		    		 }
 		    	 }
-		    	 for (Map.Entry<String, Integer> entry : position.entrySet()){
-		 			if(Bukkit.getPlayer(entry.getKey()) != null) {
-		 				if(Bukkit.getPlayer(entry.getKey()).isOnline() == true) {
-		 					int tmp = position.size()-1;
-		 					PlayerNMS.sendActionBar(Bukkit.getPlayer(entry.getKey()), "§7Position §6" + 
-				 					entry.getValue() + "§7 sur §6" + tmp + "§7 dans la file d'attente du §6Skyblock");
-		 				} else {
-			 				position.remove(entry.getKey());
-			 			}
-		 			} else {
-		 				position.remove(entry.getKey());
-		 			}
-		 		}
 		    	 Every5sec();
 		     }
 		}, 100);

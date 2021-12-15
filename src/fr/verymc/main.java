@@ -92,6 +92,7 @@ public class main extends JavaPlugin implements Listener {
 		MakeTop.Classement.clear();
 		
 		ServerQueueManager.Every5sec();
+		ServerQueueManager.DisplayActionBarForA();
 		
 		for(Player player:Bukkit.getOnlinePlayers()) {
 			ScoreBoardNMS.MakeScoreBoardForPlayer(player);
