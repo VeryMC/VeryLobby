@@ -14,7 +14,7 @@ import fr.verymc.utils.PlayerNMS;
 
 public class ServerQueueManager {
 	
-	public static HashMap <String, Integer > position = new HashMap < > ();
+	public static HashMap <String, Integer> position = new HashMap < > ();
 
 	public static void setPosition(String playername, Integer time) {
 		if (time == null)

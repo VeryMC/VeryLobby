@@ -63,11 +63,19 @@ public class MakeGuis {
         ItemStack stack4 = new ItemStack(Material.GRASS, 1);
         ItemMeta meta4 = stack4.getItemMeta();
         meta4.setDisplayName("§6Skyblock");
-        meta4.setLore(Arrays.asList("§7SkyBlock, vous commencez avec une petite île", 
+        meta4.setLore(Arrays.asList("§7En SkyBlock, vous commencez avec une petite île", 
         		"§7où vous devez survivre, agrandir votre terrain pour forger", "§7votre empire !", "§7", 
         		"§d§lInformations","§7","§7Version: §e1.16.5 et supérieur","§7Développeur: Farmeurimmo"));
         stack4.setItemMeta(meta4);
         inv.setItem(21, stack4);
+        
+        ItemStack stack5 = new ItemStack(Material.DIAMOND_SWORD, 1);
+        ItemMeta meta5 = stack5.getItemMeta();
+        meta5.setDisplayName("§6Skywars");
+        meta5.setLore(Arrays.asList("§7En Skywars, ...", "§7", 
+        		"§d§lInformations","§7","§7Version: §e1.8.8 et supérieur","§7Développeur: Zendraft"));
+        stack5.setItemMeta(meta5);
+        inv.setItem(23, stack5);
         
         inv.setItem(1, stack8);
         inv.setItem(2, stack8);
