@@ -10,10 +10,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 
 import fr.verymc.main;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
+import fr.verymc.utils.PlayerNMS;
 
 public class ServerQueueManager {
 	
@@ -86,13 +83,8 @@ public class ServerQueueManager {
 		 			if(Bukkit.getPlayer(entry.getKey()) != null) {
 		 				if(Bukkit.getPlayer(entry.getKey()).isOnline() == true) {
 		 					int tmp = position.size()-1;
-		 					Bukkit.getPlayer(entry.getKey()).sendMessage("\n§a§lFile d'attente §7» §aVous êtes en position §6" + 
-		 					entry.getValue() + "§a sur §6" + tmp + " §adans la file d'attente du skyblock.");
-		 			TextComponent message = new TextComponent("\n §c§l» §c§lCliquez ici pour quitter la file d'attente §c§l« \n");
-		 			message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/leavequeues"));
-		 			message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, 
-		 					new ComponentBuilder("§c§lCliquez sur ce message pour quitter la file d'attente").create()));
-		 			Bukkit.getPlayer(entry.getKey()).sendMessage(message);
+		 					PlayerNMS.sendActionBar(Bukkit.getPlayer(entry.getKey()), "§7Position §6" + 
+				 					entry.getValue() + "§7 sur §6" + tmp + "§7 dans la file d'attente du §6Skyblock");
 		 				} else {
 			 				position.remove(entry.getKey());
 			 			}

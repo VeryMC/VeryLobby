@@ -16,12 +16,16 @@ public class CommandLeaveQueues implements CommandExecutor {
 		if(sender instanceof Player) {
 			Player player = (Player) sender;
 			if(ServerQueueManager.position.containsKey(player.getName())) {
-				ServerQueueManager.position.remove(player.getName());
+				removefromqueues(player);
 				player.sendMessage("§a§lFile d'attente §7» §aVous avez quitté la file d'attente du skyblock avec succès !");
 			}
 		}
 		
 		return false;
+	}
+	
+	public static void removefromqueues(Player player) {
+		ServerQueueManager.position.remove(player.getName());
 	}
 
 }
