@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -79,12 +78,11 @@ public class InteractJump implements Listener {
 	@EventHandler
 	public void OnInteract(PlayerInteractEvent e) {
 		double timeintotal = (long) 0;
-		long min = 0;
 		Player player = e.getPlayer();
 		Block bb = e.getClickedBlock();
-		Location start = new Location(Bukkit.getServer().getWorld("Lobby-01"), 260.5, 66, 279.5, -22, 14);
-		Location checkpointnum1 = new Location(Bukkit.getServer().getWorld("Lobby-01"), 281.5, 78, 257.5, 136, 16);
-		Location checkpointnum2 = new Location(Bukkit.getServer().getWorld("Lobby-01"), 253.5, 82, 252.5, 45, 12);
+		Location start = new Location(Bukkit.getServer().getWorld("world"), 110.5, 44, 169.5, 180, 0);
+		Location checkpointnum1 = new Location(Bukkit.getServer().getWorld("world"), 78.5, 47, 128.5, 0, 0);
+		Location checkpointnum2 = new Location(Bukkit.getServer().getWorld("world"), 75.5, 75, 154.5, 45, 15);
 		if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if(player.getItemInHand() == null) {
 				return;
@@ -139,7 +137,7 @@ public class InteractJump implements Listener {
 		}
 		if(e.getAction().equals(Action.PHYSICAL)) {
 			if(e.getClickedBlock().getType() == Material.GOLD_PLATE) {
-			if(bb.getX() == 260 && bb.getZ() == 279 && bb.getY() == 66) {
+			if(bb.getX() == 110 && bb.getZ() == 169 && bb.getY() == 44) {
 				if(!Jump.contains(player.getUniqueId())) {
 				if(statutbuilder.get(player) != null) {
 					if(statutbuilder.get(player) == true) {
@@ -162,34 +160,33 @@ public class InteractJump implements Listener {
 					Valeurs.put(player.getName(), (double) System.currentTimeMillis());
 				}
 			}
-			if(bb.getX() == 281 && bb.getZ() == 257 && bb.getY() == 78) {
+			if(bb.getX() == 78 && bb.getZ() == 128 && bb.getY() == 47) {
 				if(Jump.contains(player.getUniqueId()) && !Checkpoint1.contains(player.getUniqueId())) {
 					Checkpoint1.add(player.getUniqueId());
 					player.sendMessage("§a§lJump §7» §aTu viens de passer le checkpoint 1 !");
 				}
 				}
-			if(bb.getX() == 253 && bb.getZ() == 252 && bb.getY() == 82) {
+			if(bb.getX() == 75 && bb.getZ() == 154 && bb.getY() == 75) {
 				if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && !Checkpoint2.contains(player.getUniqueId())) {
 					Checkpoint2.add(player.getUniqueId());
 					player.sendMessage("§a§lJump §7» §aTu viens de passer le checkpoint 2 !");
 				}
 				}
-			if(bb.getX() == 241 && bb.getY() == 88 && bb.getZ() == 285) {
+			if(bb.getX() == 68 && bb.getY() == 95 && bb.getZ() == 149) {
 					if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && Checkpoint2.contains(player.getUniqueId())) {
 						timeintotal = System.currentTimeMillis()-Valeurs.get(player.getName());
 						
-						if(Valeurs.get(player.getName()) != null) {
-							if(timeintotal < Valeurs.get(player.getName())) {
-								Valeurs.put(player.getName(), timeintotal);
+						if(MakeTop.toclass.containsKey(player.getName())) {
+							if(MakeTop.toclass.get(player.getName()) > timeintotal) {
+								MakeTop.toclass.put(player.getName(), timeintotal);
 							}
+						} else {
+						  MakeTop.toclass.put(player.getName(), timeintotal);
 						}
-						else {
-							Valeurs.put(player.getName(), timeintotal);
-						}
-						min = TimeUnit.MILLISECONDS.toMinutes((long) timeintotal);
 						
-				Bukkit.broadcastMessage("§a§lJump §7» §aGG à " + player.getName() + " qui vient de finir le jump en " + min + " minutes et " + 
-				TimeUnit.MILLISECONDS.toSeconds((long) timeintotal) + " secondes !");
+						Valeurs.remove(player.getName());
+						
+				Bukkit.broadcastMessage("§a§lJump §7» §aGG à " + player.getName() + " qui vient de finir le jump en "+timeintotal/1000+" secondes !");
 				player.setGameMode(GameMode.ADVENTURE);
 				Jump.remove(player.getUniqueId());
 				JoinLeaveHub.GiveItem(player);

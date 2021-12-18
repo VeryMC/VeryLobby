@@ -1,5 +1,6 @@
 package fr.verymc.jump;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -14,51 +15,78 @@ import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 public class MakeTop {
 	
 	public static Map<String, Double> Classement = new HashMap < > ();
+	public static Map<String, Double> toclass = new HashMap < > ();
 	public static Map<String, Double> Valeurs = InteractJump.Valeurs;
+	public static ArrayList<String> alreadyin = new ArrayList<String>();
 	static String NumberOne = null;
 	static Integer NumberToReachForSecond = null;
 	static Integer NumberToReachForTrois = null;
 	static String NumberTwo = null;
 	
-	static Location holo = new Location(Bukkit.getServer().getWorld("world"), 257, 70, 285);
+	static Location holo = new Location(Bukkit.getServer().getWorld("world"), 111, 48, 160);
 	static Plugin plugin = Bukkit.getPluginManager().getPlugin("VeryLobby");
 	static Hologram hologram = HologramsAPI.createHologram(plugin, holo);
 	
 	public static void GenClassement() {
 		Classement.clear();
-		String un = "",deux = "",trois = "",quatre = "",cinq = "";
+		alreadyin.clear();
 		int current = 0;
 		int maxi = 5;
+		String un = "",deux = "",trois = "",quatre = "",cinq = "";
 		while (current <= maxi) {
 			Double bestvalue = (double) 0;
 			String playerlayer = "N/A";
-		for(Entry<String, Double> aa : Valeurs.entrySet()) {
-			if(Classement.containsKey(aa.getKey())) {
+		for(Entry<String, Double> aa : toclass.entrySet()) {
+			if(alreadyin.contains(aa.getKey())) {
 				continue;
 			}
-			if(aa.getValue() > bestvalue) {
-				bestvalue = aa.getValue();
-				if(Classement.containsKey(playerlayer)) {
-					Classement.remove(playerlayer);
+			if(bestvalue == 0) {
+				if(!alreadyin.contains(playerlayer)) {
+					bestvalue = aa.getValue();
+					playerlayer = aa.getKey();
+					alreadyin.add(aa.getKey());
+					continue;
 				}
+			}
+			if(aa.getValue() < bestvalue) {
+				if(alreadyin.contains(playerlayer)) {
+				  alreadyin.remove(playerlayer);
+				}
+				bestvalue = aa.getValue();
 				playerlayer = aa.getKey();
-				Classement.put(aa.getKey(), aa.getValue());
+				alreadyin.add(aa.getKey());
+				continue;
+			}
+		}
+		if (current == 0) {
+			un = playerlayer;
+			if(playerlayer != "N/A") {
+			  Classement.put(playerlayer, bestvalue/1000);
 			}
 		}
 		if (current == 1) {
-			un = playerlayer;
+			deux = playerlayer;
+			if(playerlayer != "N/A") {
+				  Classement.put(playerlayer, bestvalue/1000);
+			}
 		}
 		if (current == 2) {
-			deux = playerlayer;
+			trois = playerlayer;
+			if(playerlayer != "N/A") {
+				  Classement.put(playerlayer, bestvalue/1000);
+			}
 		}
 		if (current == 3) {
-			trois = playerlayer;
+			quatre = playerlayer;
+			if(playerlayer != "N/A") {
+				  Classement.put(playerlayer, bestvalue/1000);
+			}
 		}
 		if (current == 4) {
-			quatre = playerlayer;
-		}
-		if (current == 5) {
 			cinq = playerlayer;
+			if(playerlayer != "N/A") {
+				  Classement.put(playerlayer, bestvalue/1000);
+			}
 		}
 		
 		current += 1;
@@ -70,7 +98,7 @@ public class MakeTop {
 		String sc5 = Classement.get(cinq)+"";
 		hologram.clearLines();
 		hologram = HologramsAPI.createHologram(plugin, holo);
-		hologram.appendTextLine("§7▸ §6Classement §7◂ ");
+		hologram.appendTextLine("§7▸ §6Classement Jump §7◂ ");
 		hologram.appendTextLine("§7");
 		hologram.appendTextLine("1.§7 §e" + un + "§7 en §e" + sc1.replace("null", "N/A") + " §7secondes");
 		hologram.appendTextLine("2.§7 §e" + deux + "§7 en §e" + sc2.replace("null", "N/A") + " §7secondes");	
