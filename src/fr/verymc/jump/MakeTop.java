@@ -23,7 +23,7 @@ public class MakeTop {
 	static Integer NumberToReachForTrois = null;
 	static String NumberTwo = null;
 	
-	static Location holo = new Location(Bukkit.getServer().getWorld("world"), 111, 48, 160);
+	static Location holo = new Location(Bukkit.getServer().getWorld("world"), 111.5, 47, 160.5);
 	static Plugin plugin = Bukkit.getPluginManager().getPlugin("VeryLobby");
 	static Hologram hologram = HologramsAPI.createHologram(plugin, holo);
 	
