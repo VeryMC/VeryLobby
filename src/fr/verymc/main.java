@@ -1,5 +1,6 @@
 package fr.verymc;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -23,6 +24,7 @@ import fr.verymc.events.TchatManager;
 import fr.verymc.events.WeatherEvent;
 import fr.verymc.guis.GuisManager;
 import fr.verymc.jump.InteractJump;
+import fr.verymc.jump.JumpParticleManager;
 import fr.verymc.jump.MakeTop;
 import fr.verymc.serverqueue.ServerQueueManager;
 import fr.verymc.utils.ChooseEffect;
@@ -100,6 +102,10 @@ public class main extends JavaPlugin implements Listener {
 		ScoreBoardNMS.UpdateScoreBoard();
 		
 		InteractJump.ShowChronoForEvery();
+		
+		JumpParticleManager.locs.addAll(Arrays.asList(InteractJump.checkpointnum1,InteractJump.checkpointnum2,InteractJump.checkpointnum3,
+				InteractJump.checkpointnum4,InteractJump.checkpointnum5,InteractJump.start,InteractJump.end));
+		JumpParticleManager.CheckForParticuleApply();
 	}
 	@Override
 	public void onDisable() {

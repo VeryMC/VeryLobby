@@ -43,6 +43,14 @@ public class InteractJump implements Listener {
 	public static Map<String, Double> Valeurs = new HashMap < > ();
 	public static Map<Player, Boolean> permchangeeffect = ChooseEffect.permchangeeffect;
 	
+	public static Location start = new Location(Bukkit.getServer().getWorld("world"), 110.5, 44, 169.5, 180, 0);
+	public static Location end = new Location(Bukkit.getServer().getWorld("world"), 68.5, 95, 149.5, 180, 0);
+	public static Location checkpointnum1 = new Location(Bukkit.getServer().getWorld("world"), 93.5, 40, 131.5, 110, 10);
+	public static Location checkpointnum2 = new Location(Bukkit.getServer().getWorld("world"), 75.5, 51, 127.5, 0, 0);
+	public static Location checkpointnum3 = new Location(Bukkit.getServer().getWorld("world"), 71.5, 60, 149.5, 125, 10);
+	public static Location checkpointnum4 = new Location(Bukkit.getServer().getWorld("world"), 67.5, 69, 147.5, -160, 10);
+	public static Location checkpointnum5 = new Location(Bukkit.getServer().getWorld("world"), 62.5, 81, 137.5, -30, 0);
+	
 	
 	public static void PrepareJump(Player player) {
 		PlayerInventory aa = player.getInventory();
@@ -153,9 +161,6 @@ public class InteractJump implements Listener {
 		InteractJump.Checkpoint4.remove(player.getUniqueId());
 		InteractJump.Checkpoint5.remove(player.getUniqueId());
 		}
-		else {
-			player.sendMessage("§a§lJump §7» §aErreur, vous n'avez pas commencé le jump !");
-		}
 	}
 		if(x >= 109 && x <= 111 && z >= 168 && z <= 170 && y >= 43 && y <= 45) {
 			if(!InteractJump.Jump.contains(player.getUniqueId())) {
@@ -210,12 +215,6 @@ public class InteractJump implements Listener {
 	@EventHandler
 	public void OnInteract(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
-		Location start = new Location(Bukkit.getServer().getWorld("world"), 110.5, 44, 169.5, 180, 0);
-		Location checkpointnum1 = new Location(Bukkit.getServer().getWorld("world"), 93.5, 40, 131.5, 110, 10);
-		Location checkpointnum2 = new Location(Bukkit.getServer().getWorld("world"), 75.5, 51, 127.5, 0, 0);
-		Location checkpointnum3 = new Location(Bukkit.getServer().getWorld("world"), 71.5, 60, 149.5, 125, 10);
-		Location checkpointnum4 = new Location(Bukkit.getServer().getWorld("world"), 67.5, 69, 147.5, -160, 10);
-		Location checkpointnum5 = new Location(Bukkit.getServer().getWorld("world"), 62.5, 81, 137.5, -30, 0);
 		if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if(player.getItemInHand() == null) {
 				return;
