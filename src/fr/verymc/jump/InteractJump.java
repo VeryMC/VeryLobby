@@ -90,26 +90,26 @@ public class InteractJump implements Listener {
 		int x = (int) bb.getX();
 		int y = (int) bb.getY();
 		int z = (int) bb.getZ();
-		if(x == 82 && z == 128 && y >= 40 && y <= 41) {
+		if(x == 93 && z == 131 && y >= 40 && y <= 41) {
 			if(InteractJump.Jump.contains(player.getUniqueId()) && !InteractJump.Checkpoint1.contains(player.getUniqueId())) {
 				InteractJump.Checkpoint1.add(player.getUniqueId());
 				player.sendMessage("§a§lJump §7» §aTu viens de passer le checkpoint 1 !");
 			}
 			}
-		if(x == 75 && z == 134 && y >= 53 && y <= 54) {
+		if(x == 75 && z == 127 && y >= 51 && y <= 52) {
 			if(InteractJump.Jump.contains(player.getUniqueId()) && InteractJump.Checkpoint1.contains(player.getUniqueId()) && !InteractJump.Checkpoint2.contains(player.getUniqueId())) {
 				InteractJump.Checkpoint2.add(player.getUniqueId());
 				player.sendMessage("§a§lJump §7» §aTu viens de passer le checkpoint 2 !");
 			}
 			}
-		if(x == 71 && z == 141 && y >= 64 && y <= 65) {
+		if(x == 71 && z == 149 && y >= 60 && y <= 61) {
 			if(InteractJump.Jump.contains(player.getUniqueId()) && InteractJump.Checkpoint1.contains(player.getUniqueId()) && InteractJump.Checkpoint2.contains(player.getUniqueId()) 
 					&& !InteractJump.Checkpoint3.contains(player.getUniqueId())) {
 				InteractJump.Checkpoint3.add(player.getUniqueId());
 				player.sendMessage("§a§lJump §7» §aTu viens de passer le checkpoint 3 !");
 			}
 			}
-		if(x == 75 && z == 154 && y >= 75 && y <= 76) {
+		if(x == 67 && z == 147 && y >= 69 && y <= 70) {
 			if(InteractJump.Jump.contains(player.getUniqueId()) && InteractJump.Checkpoint1.contains(player.getUniqueId()) && !InteractJump.Checkpoint4.contains(player.getUniqueId())
 					&& InteractJump.Checkpoint2.contains(player.getUniqueId()) && InteractJump.Checkpoint3.contains(player.getUniqueId())) {
 				InteractJump.Checkpoint4.add(player.getUniqueId());
@@ -211,10 +211,10 @@ public class InteractJump implements Listener {
 	public void OnInteract(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
 		Location start = new Location(Bukkit.getServer().getWorld("world"), 110.5, 44, 169.5, 180, 0);
-		Location checkpointnum1 = new Location(Bukkit.getServer().getWorld("world"), 82.5, 40, 128.5, 90, 0);
-		Location checkpointnum2 = new Location(Bukkit.getServer().getWorld("world"), 75.5, 53, 134.5, 0, 0);
-		Location checkpointnum3 = new Location(Bukkit.getServer().getWorld("world"), 71.5, 64, 141.5, -40, 0);
-		Location checkpointnum4 = new Location(Bukkit.getServer().getWorld("world"), 75.5, 75, 154.5, 45, 20);
+		Location checkpointnum1 = new Location(Bukkit.getServer().getWorld("world"), 93.5, 40, 131.5, 110, 10);
+		Location checkpointnum2 = new Location(Bukkit.getServer().getWorld("world"), 75.5, 51, 127.5, 0, 0);
+		Location checkpointnum3 = new Location(Bukkit.getServer().getWorld("world"), 71.5, 60, 149.5, 125, 10);
+		Location checkpointnum4 = new Location(Bukkit.getServer().getWorld("world"), 67.5, 69, 147.5, -160, 10);
 		Location checkpointnum5 = new Location(Bukkit.getServer().getWorld("world"), 62.5, 81, 137.5, -30, 0);
 		if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if(player.getItemInHand() == null) {
