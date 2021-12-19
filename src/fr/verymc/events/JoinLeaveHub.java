@@ -25,6 +25,7 @@ import net.luckperms.api.model.user.User;
 
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.event.Listener;
@@ -35,6 +36,13 @@ public class JoinLeaveHub implements Listener
     public static ItemStack gamesNether;
     
     public static Location spawn = new Location(Bukkit.getWorld("world"), 120.5, 44.5, 173.5, 180, 0);
+    
+    @EventHandler
+    public void OnKick(PlayerKickEvent e) {
+    	if(e.getReason().equalsIgnoreCase("disconnect.spam")) {
+    		e.setCancelled(true);
+    	}
+    }
     
     @EventHandler
     public void onPlayerJoin(final PlayerJoinEvent event) {
