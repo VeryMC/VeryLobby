@@ -33,6 +33,9 @@ public class InteractJump implements Listener {
 	public static ArrayList<UUID> Jump = new ArrayList<UUID>();
 	public static ArrayList<UUID> Checkpoint1 = new ArrayList<UUID>();
 	public static ArrayList<UUID> Checkpoint2 = new ArrayList<UUID>();
+	public static ArrayList<UUID> Checkpoint3 = new ArrayList<UUID>();
+	public static ArrayList<UUID> Checkpoint4 = new ArrayList<UUID>();
+	public static ArrayList<UUID> Checkpoint5 = new ArrayList<UUID>();
 	public static ArrayList<UUID> Reset = new ArrayList<UUID>();
 	public static ArrayList<String> haseffect = new ArrayList<String>();
 	public static Map<String, Double> Valeurs = new HashMap < > ();
@@ -81,8 +84,11 @@ public class InteractJump implements Listener {
 		Player player = e.getPlayer();
 		Block bb = e.getClickedBlock();
 		Location start = new Location(Bukkit.getServer().getWorld("world"), 110.5, 44, 169.5, 180, 0);
-		Location checkpointnum1 = new Location(Bukkit.getServer().getWorld("world"), 78.5, 47, 128.5, 0, 0);
-		Location checkpointnum2 = new Location(Bukkit.getServer().getWorld("world"), 75.5, 75, 154.5, 45, 15);
+		Location checkpointnum1 = new Location(Bukkit.getServer().getWorld("world"), 82.5, 40, 128.5, 90, 0);
+		Location checkpointnum2 = new Location(Bukkit.getServer().getWorld("world"), 75.5, 53, 134.5, 0, 0);
+		Location checkpointnum3 = new Location(Bukkit.getServer().getWorld("world"), 71.5, 64, 141.5, -40, 0);
+		Location checkpointnum4 = new Location(Bukkit.getServer().getWorld("world"), 75.5, 75, 154.5, 45, 20);
+		Location checkpointnum5 = new Location(Bukkit.getServer().getWorld("world"), 62.5, 81, 137.5, -30, 0);
 		if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if(player.getItemInHand() == null) {
 				return;
@@ -110,6 +116,15 @@ public class InteractJump implements Listener {
 			if(Checkpoint2.contains(player.getUniqueId())) {
 				Checkpoint2.remove(player.getUniqueId());
 			}
+			if(Checkpoint3.contains(player.getUniqueId())) {
+				Checkpoint3.remove(player.getUniqueId());
+			}
+			if(Checkpoint4.contains(player.getUniqueId())) {
+				Checkpoint4.remove(player.getUniqueId());
+			}
+			if(Checkpoint5.contains(player.getUniqueId())) {
+				Checkpoint5.remove(player.getUniqueId());
+			}
 			}
 			}
 			if(player.getItemInHand() == null) {
@@ -122,11 +137,23 @@ public class InteractJump implements Listener {
 			if(Jump.contains(player.getUniqueId()) && !Checkpoint1.contains(player.getUniqueId())) {
 				player.teleport(start);
 			}
-			else if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && !Checkpoint2.contains(player.getUniqueId())) {
-				player.teleport(checkpointnum1);
+			else if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && Checkpoint2.contains(player.getUniqueId())
+					&& Checkpoint3.contains(player.getUniqueId()) && Checkpoint4.contains(player.getUniqueId()) && Checkpoint5.contains(player.getUniqueId())) {
+				player.teleport(checkpointnum5);
+			}
+			else if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && Checkpoint2.contains(player.getUniqueId())
+					&& Checkpoint3.contains(player.getUniqueId()) && Checkpoint4.contains(player.getUniqueId())) {
+				player.teleport(checkpointnum4);
+			}
+			else if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && Checkpoint2.contains(player.getUniqueId())
+					&& Checkpoint3.contains(player.getUniqueId())) {
+				player.teleport(checkpointnum3);
 			}
 			else if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && Checkpoint2.contains(player.getUniqueId())) {
 				player.teleport(checkpointnum2);
+			}
+			else if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && !Checkpoint2.contains(player.getUniqueId())) {
+				player.teleport(checkpointnum1);
 			}
 			else {
 				player.sendMessage("§a§lJump §7» §aImpossible de trouver le dernier check point enregistré !");
@@ -160,20 +187,42 @@ public class InteractJump implements Listener {
 					Valeurs.put(player.getName(), (double) System.currentTimeMillis());
 				}
 			}
-			if(bb.getX() == 78 && bb.getZ() == 128 && bb.getY() == 47) {
+			if(bb.getX() == 82 && bb.getZ() == 128 && bb.getY() == 40) {
 				if(Jump.contains(player.getUniqueId()) && !Checkpoint1.contains(player.getUniqueId())) {
 					Checkpoint1.add(player.getUniqueId());
 					player.sendMessage("§a§lJump §7» §aTu viens de passer le checkpoint 1 !");
 				}
 				}
-			if(bb.getX() == 75 && bb.getZ() == 154 && bb.getY() == 75) {
+			if(bb.getX() == 75 && bb.getZ() == 134 && bb.getY() == 53) {
 				if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && !Checkpoint2.contains(player.getUniqueId())) {
 					Checkpoint2.add(player.getUniqueId());
 					player.sendMessage("§a§lJump §7» §aTu viens de passer le checkpoint 2 !");
 				}
 				}
+			if(bb.getX() == 71 && bb.getZ() == 141 && bb.getY() == 64) {
+				if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && Checkpoint2.contains(player.getUniqueId()) 
+						&& !Checkpoint3.contains(player.getUniqueId())) {
+					Checkpoint3.add(player.getUniqueId());
+					player.sendMessage("§a§lJump §7» §aTu viens de passer le checkpoint 3 !");
+				}
+				}
+			if(bb.getX() == 75 && bb.getZ() == 154 && bb.getY() == 75) {
+				if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && !Checkpoint4.contains(player.getUniqueId())
+						&& Checkpoint2.contains(player.getUniqueId()) && Checkpoint3.contains(player.getUniqueId())) {
+					Checkpoint4.add(player.getUniqueId());
+					player.sendMessage("§a§lJump §7» §aTu viens de passer le checkpoint 4 !");
+				}
+				}
+			if(bb.getX() == 62 && bb.getZ() == 137 && bb.getY() == 81) {
+				if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && !Checkpoint5.contains(player.getUniqueId())
+						&& Checkpoint2.contains(player.getUniqueId()) && Checkpoint3.contains(player.getUniqueId()) && Checkpoint4.contains(player.getUniqueId())) {
+					Checkpoint5.add(player.getUniqueId());
+					player.sendMessage("§a§lJump §7» §aTu viens de passer le checkpoint 5 !");
+				}
+				}
 			if(bb.getX() == 68 && bb.getY() == 95 && bb.getZ() == 149) {
-					if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && Checkpoint2.contains(player.getUniqueId())) {
+					if(Jump.contains(player.getUniqueId()) && Checkpoint1.contains(player.getUniqueId()) && Checkpoint2.contains(player.getUniqueId())
+							&& Checkpoint3.contains(player.getUniqueId()) && Checkpoint4.contains(player.getUniqueId()) && Checkpoint5.contains(player.getUniqueId())) {
 						timeintotal = System.currentTimeMillis()-Valeurs.get(player.getName());
 						
 						if(MakeTop.toclass.containsKey(player.getName())) {
@@ -196,6 +245,9 @@ public class InteractJump implements Listener {
 				}
 				Checkpoint1.remove(player.getUniqueId());
 				Checkpoint2.remove(player.getUniqueId());
+				Checkpoint3.remove(player.getUniqueId());
+				Checkpoint4.remove(player.getUniqueId());
+				Checkpoint5.remove(player.getUniqueId());
 				}
 				else {
 					player.sendMessage("§a§lJump §7» §aErreur, vous n'avez pas commencé le jump !");
