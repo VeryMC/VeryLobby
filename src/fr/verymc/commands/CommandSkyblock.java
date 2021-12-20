@@ -2,21 +2,20 @@ package fr.verymc.commands;
 
 import java.util.HashMap;
 import java.util.UUID;
+
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 import com.viaversion.viaversion.api.Via;
 import com.viaversion.viaversion.api.ViaAPI;
 
 import fr.verymc.main;
 import fr.verymc.serverqueue.ServerQueueManager;
-import fr.verymc.utils.PlayerNMS;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class CommandSkyblock implements CommandExecutor {
 	
@@ -34,9 +33,14 @@ public class CommandSkyblock implements CommandExecutor {
 			}
 			ViaAPI api = Via.getAPI();
 			int playerversion = api.getPlayerVersion(player);
-			int pos = ServerQueueManager.position.size();
+			//int pos = ServerQueueManager.position.size();
 			if(playerversion >= 754) {
-			if(player.hasPermission("fastjoin")) {
+				final ByteArrayDataOutput out = ByteStreams.newDataOutput();
+				Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Bukkit.getPluginManager().getPlugin("VeryLobby"), "BungeeCord");
+				out.writeUTF("Connect");
+			    out.writeUTF("skyblock");
+				player.sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
+			/*if(player.hasPermission("fastjoin")) {
 		        ServerQueueManager.setPosition(player.getName(), 0);
 		        pos = 0;
 			} else {
@@ -50,7 +54,7 @@ public class CommandSkyblock implements CommandExecutor {
 			message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/leavequeues"));
 			message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, 
 					new ComponentBuilder("§c§lCliquez sur ce message pour quitter la file d'attente").create()));
-			player.sendMessage(message);
+			player.sendMessage(message);*/
 			} else {
 				player.sendMessage("\n§a§lFile d'attente §7» §cVous devez posséder la version 1.16.5 ou supérieure pour rejoindre le skyblock."+playerversion);
 			}

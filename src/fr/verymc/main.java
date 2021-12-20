@@ -26,7 +26,6 @@ import fr.verymc.guis.GuisManager;
 import fr.verymc.jump.InteractJump;
 import fr.verymc.jump.JumpParticleManager;
 import fr.verymc.jump.MakeTop;
-import fr.verymc.serverqueue.ServerQueueManager;
 import fr.verymc.utils.ChooseEffect;
 import net.luckperms.api.LuckPerms;
 public class main extends JavaPlugin implements Listener {
@@ -91,8 +90,8 @@ public class main extends JavaPlugin implements Listener {
 		MakeTop.Valeurs.clear();
 		MakeTop.Classement.clear();
 		
-		ServerQueueManager.Every5sec();
-		ServerQueueManager.DisplayActionBarForA();
+		//ServerQueueManager.Every5sec();
+		//ServerQueueManager.DisplayActionBarForA();
 		
 		for(Player player:Bukkit.getOnlinePlayers()) {
 			ScoreBoardNMS.MakeScoreBoardForPlayer(player);
