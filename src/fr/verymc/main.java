@@ -21,7 +21,7 @@ import fr.verymc.commands.CommandSite;
 import fr.verymc.commands.CommandSkyblock;
 import fr.verymc.events.JoinLeaveHub;
 import fr.verymc.events.TchatManager;
-import fr.verymc.events.WeatherEvent;
+import fr.verymc.events.ProtectExplo;
 import fr.verymc.guis.GuisManager;
 import fr.verymc.jump.InteractJump;
 import fr.verymc.jump.JumpParticleManager;
@@ -59,7 +59,7 @@ public class main extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new ChooseEffect(), this);
 		getServer().getPluginManager().registerEvents(new InteractJump(), this);
 		getServer().getPluginManager().registerEvents(new GuisManager(), this);
-		getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
+		getServer().getPluginManager().registerEvents(new ProtectExplo(), this);
 		getServer().getPluginManager().registerEvents(new TchatManager(), this);
 		
 		this.getCommand("builder").setExecutor(new CommandBuilder());
