@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import fr.verymc.events.JoinLeaveHub;
+import fr.verymc.jump.InteractJump;
 
 import java.util.Map;
 import org.bukkit.command.CommandExecutor;
@@ -25,6 +26,10 @@ public class CommandBuilder implements CommandExecutor
         if (!player.hasPermission("builder")) {
             player.sendMessage("§cVous n'avez pas la permission requise pour effectuer cette commande !");
             return true;
+        }
+        if(InteractJump.Jump.contains(player.getUniqueId())) {
+        	player.sendMessage("§a§lMode Builder §8>> §fVous ne pouvez pas entrer en mode buildeur pendant le jump !");
+        	return true;
         }
         if(CommandBuilder.statutbuilder.containsKey(player)) {
         	if(CommandBuilder.statutbuilder.get(player) == true) {

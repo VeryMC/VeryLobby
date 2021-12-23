@@ -4,7 +4,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.ExplosionPrimeEvent;
+import org.bukkit.event.player.PlayerGameModeChangeEvent;
+import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
+
+import fr.verymc.jump.InteractJump;
 
 public class ProtectExplo implements Listener {
 	
@@ -19,5 +23,17 @@ public class ProtectExplo implements Listener {
 	@EventHandler
 	public void Explo1(EntityExplodeEvent e) {
 		e.setCancelled(true);
+	}
+	@EventHandler
+	public void ToggleFlight(PlayerToggleFlightEvent e) {
+		if(InteractJump.Jump.contains(e.getPlayer().getUniqueId())) {
+			e.setCancelled(true);
+		}
+	}
+	@EventHandler
+	public void GamemodeChange(PlayerGameModeChangeEvent e) {
+		if(InteractJump.Jump.contains(e.getPlayer().getUniqueId())) {
+			e.setCancelled(true);
+		}
 	}
 }
