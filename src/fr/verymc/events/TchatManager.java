@@ -42,8 +42,11 @@ public class TchatManager implements Listener {
         for(char a : temp.toCharArray()) {
         	end = end + "§7" + a;
         }
-        
+        if(Prefix.contains("§7Joueur")) {
+        	message.setText("§7" + player.getName() + Suffix + "§7: "+end);
+        } else {
         message.setText(Prefix + " " + player.getName() + Suffix + "§7: "+end);
+        }
         symbole.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cCliquez ici pour report le message de " +
                 player.getName()).create()));
         message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Cliquez ici pour envoyer un message privé à §6"+player.getName()).create()));
