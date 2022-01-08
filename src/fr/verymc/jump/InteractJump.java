@@ -199,7 +199,11 @@ public class InteractJump implements Listener {
 					if(x >= 109 && x <= 111 && z >= 168 && z <= 170 && y >= 43 && y <= 45) {
 						continue;
 					} else {
-					PlayerNMS.sendActionBar(player, "§a"+time/1000);
+						if(time/1000 >= 2) {
+					        PlayerNMS.sendActionBar(player, "§a"+time/1000+" secondes");
+						} else {
+							PlayerNMS.sendActionBar(player, "§a"+time/1000+" seconde");
+						}
 					}
 				}
 			}
