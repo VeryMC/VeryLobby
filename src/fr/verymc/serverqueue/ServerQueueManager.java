@@ -26,7 +26,6 @@ public class ServerQueueManager {
         return (position.get(playername) == null ? 0 : position.get(playername));
     }
 	
-    @SuppressWarnings("deprecation")
 	public static void DisplayActionBarForA() {
     	Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
 		     public void run() {

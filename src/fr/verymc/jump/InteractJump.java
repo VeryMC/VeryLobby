@@ -187,7 +187,6 @@ public class InteractJump implements Listener {
 		}
 	}
 	
-	@SuppressWarnings("deprecation")
 	public static void ShowChronoForEvery() {
 		for(Entry<String, Double> a : Valeurs.entrySet()) {
 			Player player = Bukkit.getPlayer(a.getKey());

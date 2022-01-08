@@ -40,7 +40,6 @@ public class GuisManager implements Listener {
 			}
 		}
 	}
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void Onclick(InventoryClickEvent event) {
 		final Player player = (Player) event.getWhoClicked();
@@ -70,9 +69,6 @@ public class GuisManager implements Listener {
 			}
         }
         if(event.getInventory().getName() == "§6Very§fMc §f➔ §6Boutiques") {
-			if(current.getType() == Material.ARROW) {
-				MakeGuis.MakeMainGui(player);
-			}
 			if(current.getType() == Material.SKULL_ITEM) {
 				MakeGuis.MakeProfil(player);
 			}
@@ -114,12 +110,6 @@ public class GuisManager implements Listener {
 		}
 		if(event.getInventory().getName() == "§6Very§fMc §f➔ §6Mini-jeux") {
 			
-			if(current.getType() == Material.GOLD_INGOT) {
-				MakeGuis.MakeBoutiquesGui(player);
-				}
-			if(current.getType() == Material.SKULL_ITEM) {
-				MakeGuis.MakeProfil(player);
-				}
 			if(current.getType() == Material.GRASS) {
 				player.chat("/skyblock");
 			}

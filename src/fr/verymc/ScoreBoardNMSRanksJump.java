@@ -7,7 +7,6 @@ import net.luckperms.api.model.user.User;
 
 public class ScoreBoardNMSRanksJump {
 	
-	@SuppressWarnings("deprecation")
 	public static void AutoUpdate() {
 		for(Player player : Bukkit.getOnlinePlayers()) {
 			String Preffix = "§7N/A";

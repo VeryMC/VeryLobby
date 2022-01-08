@@ -15,7 +15,6 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
-@SuppressWarnings("deprecation")
 public class TchatManager implements Listener {
 	
 	@EventHandler(priority = EventPriority.MONITOR)

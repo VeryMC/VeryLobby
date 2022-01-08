@@ -14,7 +14,6 @@ public class JumpParticleManager {
 	
 	public static ArrayList<Location> locs = new ArrayList<Location>();
 	
-	@SuppressWarnings("deprecation")
 	public static void CheckForParticuleApply(){
 		for(Location loc : locs) {
     	double radius = 1.0;

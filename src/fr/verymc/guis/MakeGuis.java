@@ -19,46 +19,12 @@ public class MakeGuis {
 	static String Suffix = "";
 	
 	public static void MakeMainGui(Player player) {
-		Inventory inv = Bukkit.createInventory(null, 54, "§6Very§fMc §f➔ §6Mini-jeux");
+		Inventory inv = Bukkit.createInventory(null, 45, "§6Very§fMc §f➔ §6Mini-jeux");
 		
 		User user = main.api.getUserManager().getUser(player.getUniqueId());
 		if (user.getCachedData().getMetaData().getPrefix() != null) {
 			Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
 		}
-		
-		ItemStack stack8 = new ItemStack(Material.STAINED_GLASS_PANE, 1);
-        ItemMeta meta8 = stack8.getItemMeta();
-        meta8.setDisplayName("§6");
-        stack8.setItemMeta(meta8);
-		
-        ItemStack stack23 = new ItemStack(Material.ARROW, 1);
-        ItemMeta meta23 = stack23.getItemMeta();
-        meta23.setDisplayName("§6Retourner en arrière");
-        meta23.setLore(Arrays.asList("§c<<---"));
-        stack23.setItemMeta(meta23);
-		
-        inv.setItem(0, PreBuildItemStacks.GetHead(player));
-        
-        ItemStack stack1 = new ItemStack(Material.GOLD_INGOT, 1);
-        ItemMeta meta1 = stack1.getItemMeta();
-        meta1.setDisplayName("§6Boutique");
-        meta1.setLore(Arrays.asList("§cAchat des grades bientôt disponible !", "§cLes particules ne sont pas encore disponibles !"));
-        stack1.setItemMeta(meta1);
-        inv.setItem(8, stack1);
-        
-        ItemStack stack2 = new ItemStack(Material.BOOK, 1);
-        ItemMeta meta2 = stack2.getItemMeta();
-        meta2.setDisplayName("§6Informations");
-        meta2.setLore(Arrays.asList("§7Site §8» §awww.verymc.fr", "§7Discord §8» §9https://discord.gg/FnePjz6rAh"));
-        stack2.setItemMeta(meta2);
-        inv.setItem(45, stack2);
-        
-        ItemStack stack3 = new ItemStack(Material.NAME_TAG, 1);
-        ItemMeta meta3 = stack3.getItemMeta();
-        meta3.setDisplayName("§6Amis");
-        meta3.setLore(Arrays.asList("§cSoon"));
-        stack3.setItemMeta(meta3);
-        inv.setItem(53, stack3);
         
         ItemStack stack4 = new ItemStack(Material.GRASS, 1);
         ItemMeta meta4 = stack4.getItemMeta();
@@ -77,29 +43,6 @@ public class MakeGuis {
         stack5.setItemMeta(meta5);
         inv.setItem(23, stack5);
         
-        inv.setItem(1, stack8);
-        inv.setItem(2, stack8);
-        inv.setItem(3, stack8);
-        inv.setItem(4, stack8);
-        inv.setItem(5, stack8);
-        inv.setItem(6, stack8);
-        inv.setItem(7, stack8);
-        inv.setItem(9, stack8);
-        inv.setItem(18, stack8);
-        inv.setItem(17, stack8);
-        inv.setItem(27, stack8);
-        inv.setItem(26, stack8);
-        inv.setItem(36, stack8);
-        inv.setItem(35, stack8);
-        inv.setItem(44, stack8);
-        inv.setItem(46, stack8);
-        inv.setItem(47, stack8);
-        inv.setItem(48, stack8);
-        inv.setItem(49, stack8);
-        inv.setItem(50, stack8);
-        inv.setItem(51, stack8);
-        inv.setItem(52, stack8);
-        
         player.openInventory(inv);
 		
 	}
@@ -109,44 +52,9 @@ public class MakeGuis {
 			Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
 		}
 		
-		ItemStack stack8 = new ItemStack(Material.STAINED_GLASS_PANE, 1);
-        ItemMeta meta8 = stack8.getItemMeta();
-        meta8.setDisplayName("§6");
-        stack8.setItemMeta(meta8);
-		
-        ItemStack stack23 = new ItemStack(Material.ARROW, 1);
-        ItemMeta meta23 = stack23.getItemMeta();
-        meta23.setDisplayName("§6Retourner en arrière");
-        meta23.setLore(Arrays.asList("§c<<---"));
-        stack23.setItemMeta(meta23);
-		
 		Inventory profil = Bukkit.createInventory(null, 45, "§6Very§fMc §f➔ Votre profil");
         
 		profil.setItem(22, PreBuildItemStacks.GetHead(player));
-        profil.setItem(0, stack8);
-        profil.setItem(1, stack8);
-        profil.setItem(2, stack8);
-        profil.setItem(3, stack8);
-        profil.setItem(4, stack8);
-        profil.setItem(5, stack8);
-        profil.setItem(6, stack8);
-        profil.setItem(7, stack8);
-        profil.setItem(8, stack8);
-        profil.setItem(9, stack8);
-        profil.setItem(17, stack8);
-        profil.setItem(18, stack8);
-        profil.setItem(26, stack8);
-        profil.setItem(27, stack8);
-        profil.setItem(35, stack8);
-        profil.setItem(36, stack8);
-        profil.setItem(37, stack8);
-        profil.setItem(38, stack8);
-        profil.setItem(39, stack8);
-        profil.setItem(40, stack8);
-        profil.setItem(41, stack8);
-        profil.setItem(42, stack8);
-        profil.setItem(43, stack8);
-        profil.setItem(44, stack23);
         
         player.openInventory(profil);
 	}
@@ -159,11 +67,6 @@ public class MakeGuis {
         metam.setLore(Arrays.asList("§cSoon"));
         stackm.setItemMeta(metam);
         
-        ItemStack stack8 = new ItemStack(Material.STAINED_GLASS_PANE, 1);
-        ItemMeta meta8 = stack8.getItemMeta();
-        meta8.setDisplayName("§6");
-        stack8.setItemMeta(meta8);
-        
         User user = main.api.getUserManager().getUser(player.getUniqueId());
 		if (user.getCachedData().getMetaData().getPrefix() != null) {
 			Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
@@ -175,35 +78,9 @@ public class MakeGuis {
         metau.setLore(Arrays.asList("§cAchats bientôt disponibles !"));
         stacku.setItemMeta(metau);
         
-        ItemStack stack30 = new ItemStack(Material.ARROW, 1);
-        ItemMeta meta30 = stack30.getItemMeta();
-        meta30.setDisplayName("§6Retourner en arrière");
-        meta30.setLore(Arrays.asList("§c<<---"));
-        stack30.setItemMeta(meta30);
-        
         sous.setItem(13, PreBuildItemStacks.GetHead(player));
-        sous.setItem(1, stack8);
-        sous.setItem(2, stack8);
-        sous.setItem(3, stack8);
-        sous.setItem(4, stack8);
-        sous.setItem(5, stack8);
-        sous.setItem(6, stack8);
-        sous.setItem(7, stack8);
-        sous.setItem(8, stack8);
-        sous.setItem(9, stack8);
-        sous.setItem(0, stack8);
         sous.setItem(15, stackm);
-        sous.setItem(17, stack8);
-        sous.setItem(18, stack8);
-        sous.setItem(19, stack8);
-        sous.setItem(20, stack8);
-        sous.setItem(21, stack8);
-        sous.setItem(22, stack8);
-        sous.setItem(23, stack8);
-        sous.setItem(24, stack8);
         sous.setItem(11, stacku);
-        sous.setItem(25, stack8);
-        sous.setItem(26, stack30);
         
         player.openInventory(sous);
 	}
@@ -213,20 +90,13 @@ public class MakeGuis {
 			Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
 		}
 		
-		final Inventory inv = Bukkit.createInventory(null, 54, "§6Very§fMc §f➔ §6Boutique des grades");
-        
-        ItemStack stack7 = new ItemStack(Material.BOOK, 1);
-        ItemMeta meta7 = stack7.getItemMeta();
-        meta7.setDisplayName("§6Informations");
-        meta7.setLore(Arrays.asList("§7Site §8» §awww.verymc.fr", "§7Discord §8» §9https://discord.gg/FnePjz6rAh"));
-        stack7.setItemMeta(meta7);
+		final Inventory inv = Bukkit.createInventory(null, 27, "§6Very§fMc §f➔ §6Boutique des grades");
         
         ItemStack stack2 = new ItemStack(Material.GOLD_INGOT, 1);
         ItemMeta meta2 = stack2.getItemMeta();
         meta2.setDisplayName("§6Grade VIP");
         meta2.setLore(Arrays.asList("§cN/A"));
         stack2.setItemMeta(meta2);
-        inv.setItem(8, stack2);
         
         ItemStack stack1 = new ItemStack(Material.ARROW, 1);
         ItemMeta meta1 = stack1.getItemMeta();
@@ -234,37 +104,8 @@ public class MakeGuis {
         meta1.setLore(Arrays.asList("§c<<---"));
         stack1.setItemMeta(meta1);
 		
-		ItemStack stack8 = new ItemStack(Material.STAINED_GLASS_PANE, 1);
-        ItemMeta meta8 = stack8.getItemMeta();
-        meta8.setDisplayName("§6");
-        stack8.setItemMeta(meta8);
-        inv.setItem(0, PreBuildItemStacks.GetHead(player));
-        inv.setItem(1, stack8);
-        inv.setItem(2, stack8);
-        inv.setItem(3, stack8);
-        inv.setItem(4, stack8);
-        inv.setItem(5, stack8);
-        inv.setItem(6, stack8);
-        inv.setItem(7, stack8);
-        inv.setItem(8, stack8);
-        inv.setItem(9, stack8);
-        inv.setItem(18, stack8);
-        inv.setItem(17, stack8);
-        inv.setItem(22, stack2);
-        inv.setItem(27, stack8);
-        inv.setItem(26, stack8);
-        inv.setItem(36, stack8);
-        inv.setItem(35, stack8);
-        inv.setItem(44, stack8);
-        inv.setItem(45, stack7);
-        inv.setItem(46, stack8);
-        inv.setItem(47, stack8);
-        inv.setItem(48, stack8);
-        inv.setItem(49, stack8);
-        inv.setItem(50, stack8);
-        inv.setItem(51, stack8);
-        inv.setItem(52, stack8);
-        inv.setItem(53, stack1);
+        inv.setItem(13, stack2);
+        inv.setItem(26, stack1);
         
         player.openInventory(inv);
         

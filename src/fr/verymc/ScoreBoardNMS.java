@@ -52,7 +52,6 @@ public class ScoreBoardNMS {
 	boards.put(player, sb);
 
 	}
-	@SuppressWarnings("deprecation")
 	public static void UpdateScoreBoard() {
 		for (Entry<Player, ScoreboardSign> board : boards.entrySet()) {
 			
