@@ -166,11 +166,6 @@ public class JoinLeaveHub implements Listener
     }
     
     @EventHandler
-    public void onDamage(final EntityDamageEvent event) {
-        event.setCancelled(true);
-    }
-    
-    @EventHandler
     public void onPlayerHunger(final FoodLevelChangeEvent event) {
         event.setCancelled(true);
     }

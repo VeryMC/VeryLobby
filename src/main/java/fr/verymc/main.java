@@ -1,6 +1,7 @@
 package fr.verymc;
 
 import fr.verymc.commands.*;
+import fr.verymc.events.DamageManager;
 import fr.verymc.events.JoinLeaveHub;
 import fr.verymc.events.ProtectExplo;
 import fr.verymc.events.TchatManager;
@@ -58,6 +59,7 @@ public class main extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new GuisManager(), this);
 		getServer().getPluginManager().registerEvents(new ProtectExplo(), this);
 		getServer().getPluginManager().registerEvents(new TchatManager(), this);
+		getServer().getPluginManager().registerEvents(new DamageManager(), this);
 		
 		this.getCommand("builder").setExecutor(new CommandBuilder());
 		this.getCommand("serveur").setExecutor(new CommandServeur());
