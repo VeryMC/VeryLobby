@@ -1,31 +1,32 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  <groupId>VeryLobby</groupId>
-  <artifactId>VeryLobby</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
-  <name>VeryMc lobby</name>
-  <description>Plugin du lobby</description>
-  <repositories>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <groupId>VeryLobby</groupId>
+    <artifactId>VeryLobby</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>VeryMc lobby</name>
+    <description>Plugin du lobby</description>
+    <repositories>
         <repository>
             <id>net.luckperms</id>
             <url>https://repo1.maven.org/maven2/net/luckperms/api/5.3/</url>
         </repository>
         <repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-    <repository>
-    <id>codemc-repo</id>
-    <url>https://repo.codemc.io/repository/maven-public/</url>
-</repository>
-<repository>
-    <id>viaversion-repo</id>
-    <url>https://repo.viaversion.com</url>
-</repository>
-  </repositories>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.io/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>viaversion-repo</id>
+            <url>https://repo.viaversion.com</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>net.luckperms</groupId>
@@ -34,22 +35,17 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-	    <groupId>com.github.CobbleSword</groupId>
-	    <artifactId>NachoSpigot</artifactId>
-	    <version>LATEST</version>
-	</dependency>
-    <dependency>
-    <groupId>com.gmail.filoghost.holographicdisplays</groupId>
-    <artifactId>holographicdisplays-api</artifactId>
-    <version>2.4.0</version>
-    <scope>provided</scope>
-</dependency>
-<dependency>
-    <groupId>com.viaversion</groupId>
-    <artifactId>viaversion-api</artifactId>
-    <version>LATEST</version>
-    <scope>provided</scope>
-</dependency>
+            <groupId>com.gmail.filoghost.holographicdisplays</groupId>
+            <artifactId>holographicdisplays-api</artifactId>
+            <version>2.4.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.viaversion</groupId>
+            <artifactId>viaversion-api</artifactId>
+            <version>LATEST</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
@@ -57,6 +53,19 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.CobbleSword.NachoSpigot</groupId>
+            <artifactId>api</artifactId>
+            <version>1.4_PC97</version>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <scope>system</scope>
+            <version>1.16.5-R0.1-SNAPSHOT</version> <!--En vrai un peu osef de la version mais met la quand même -->
+            <systemPath>${project.basedir}/libs/spigot-1.8.8.jar</systemPath>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

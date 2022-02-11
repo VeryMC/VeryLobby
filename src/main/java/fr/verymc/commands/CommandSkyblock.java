@@ -16,28 +16,28 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class CommandSkyblock implements CommandExecutor {
-	
-	public static HashMap <UUID, Integer > cooldowns = main.cooldowns;
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		
-		if(sender instanceof Player) {
-			final Player player = (Player) sender;
-			if(ServerQueueManager.position.containsKey(player.getName())){
-				player.sendMessage("\n§a§lFile d'attente §7» §cVous êtes déjà dans une file d'attente !");
-				return true;
-			}
-			ViaAPI api = Via.getAPI();
-			int playerversion = api.getPlayerVersion(player);
-			//int pos = ServerQueueManager.position.size();
-			if(playerversion >= 754) {
-				final ByteArrayDataOutput out = ByteStreams.newDataOutput();
-				Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Bukkit.getPluginManager().getPlugin("VeryLobby"), "BungeeCord");
-				out.writeUTF("Connect");
-			    out.writeUTF("skyblock");
-				player.sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
+    public static HashMap<UUID, Integer> cooldowns = main.cooldowns;
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        if (sender instanceof Player) {
+            final Player player = (Player) sender;
+            if (ServerQueueManager.position.containsKey(player.getName())) {
+                player.sendMessage("\n§a§lFile d'attente §7» §cVous êtes déjà dans une file d'attente !");
+                return true;
+            }
+            ViaAPI api = Via.getAPI();
+            int playerversion = api.getPlayerVersion(player);
+            //int pos = ServerQueueManager.position.size();
+            if (playerversion >= 754) {
+                final ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Bukkit.getPluginManager().getPlugin("VeryLobby"), "BungeeCord");
+                out.writeUTF("Connect");
+                out.writeUTF("skyblock");
+                player.sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
 			/*if(player.hasPermission("fastjoin")) {
 		        ServerQueueManager.setPosition(player.getName(), 0);
 		        pos = 0;
@@ -53,11 +53,11 @@ public class CommandSkyblock implements CommandExecutor {
 			message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, 
 					new ComponentBuilder("§c§lCliquez sur ce message pour quitter la file d'attente").create()));
 			player.sendMessage(message);*/
-			} else {
-				player.sendMessage("\n§a§lFile d'attente §7» §cVous devez posséder la version 1.16.5 ou supérieure pour rejoindre le skyblock."+playerversion);
-			}
-		}
-		return true;	
-		}
+            } else {
+                player.sendMessage("\n§a§lFile d'attente §7» §cVous devez posséder la version 1.16.5 ou supérieure pour rejoindre le skyblock." + playerversion);
+            }
+        }
+        return true;
+    }
 
 }

@@ -5,11 +5,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CommandSite implements CommandExecutor
-{
+public class CommandSite implements CommandExecutor {
     public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
         if (sender instanceof Player) {
-            final Player p = (Player)sender;
+            final Player p = (Player) sender;
             p.sendMessage("§e§lSite » §fhttps://verymc.fr/");
             return true;
         }

@@ -7,10 +7,10 @@ import org.bukkit.entity.Player;
 
 public class CommandBoutique implements CommandExecutor {
 
-	@Override
-	public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
+    @Override
+    public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
         if (sender instanceof Player) {
-            final Player p = (Player)sender;
+            final Player p = (Player) sender;
             p.sendMessage("§e§lBoutique » §fhttps://verymcfr/boutique");
             return true;
         }
