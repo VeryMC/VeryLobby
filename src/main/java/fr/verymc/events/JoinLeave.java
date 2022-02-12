@@ -41,14 +41,14 @@ public class JoinLeave implements Listener {
         } else {
             playerInventory.setItem(8, JoinLeave.effecttrue = new ItemStackBuilder(Material.FIREWORK_CHARGE).setName("§c§lEffets désactivés §8| §7(clic droit) ").getItemStack());
         }
-        playerInventory.setItem(4, JoinLeave.gamesNether = new ItemStackBuilder(Material.NETHER_STAR).setName("§a§lMenu §8| §7(clic-droit) ").getItemStack());
+        playerInventory.setItem(0, JoinLeave.gamesNether = new ItemStackBuilder(Material.NETHER_STAR).setName("§a§lMenu §8| §7(clic-droit) ").getItemStack());
         final ItemStack skullProfile = new SkullBuilder(player.getName()).setDisplayName("§d§lProfil §8| §7(clic-droit)").getItemStack();
-        playerInventory.setItem(0, skullProfile);
+        playerInventory.setItem(4, skullProfile);
         final ItemStack boutique = new ItemStackBuilder(Material.GOLD_INGOT).setName("§e§lBoutique §8| §7(clic-droit)").getItemStack();
-        playerInventory.setItem(5, boutique);
+        playerInventory.setItem(2, boutique);
         final ItemStack FeatherFly = new ItemStackBuilder(Material.FEATHER).setName("§e§lFly §8| §7(clic-droit)").getItemStack();
         if (player.hasPermission("fly")) {
-            playerInventory.setItem(3, FeatherFly);
+            playerInventory.setItem(6, FeatherFly);
         }
         player.teleport(spawn);
     }
@@ -74,16 +74,7 @@ public class JoinLeave implements Listener {
             InteractJump.haseffect.remove(player.getName());
         }
         player.setGameMode(GameMode.ADVENTURE);
-        playerInventory.setItem(8, JoinLeave.effecttrue = new ItemStackBuilder(Material.FIREWORK_CHARGE).setName("§c§lEffets désactivés §8| §7(clic droit) ").getItemStack());
-        playerInventory.setItem(4, JoinLeave.gamesNether = new ItemStackBuilder(Material.NETHER_STAR).setName("§a§lMenu §8| §7(clic-droit) ").getItemStack());
-        final ItemStack skullProfile = new SkullBuilder(player.getName()).setDisplayName("§d§lProfil §8| §7(clic-droit)").getItemStack();
-        playerInventory.setItem(0, skullProfile);
-        final ItemStack boutique = new ItemStackBuilder(Material.GOLD_INGOT).setName("§e§lBoutique §8| §7(clic-droit)").getItemStack();
-        playerInventory.setItem(5, boutique);
-        final ItemStack FeatherFly = new ItemStackBuilder(Material.FEATHER).setName("§e§lFly §8| §7(clic-droit)").getItemStack();
-        if (player.hasPermission("fly")) {
-            playerInventory.setItem(3, FeatherFly);
-        }
+        GiveItem(player);
 
         ScoreBoardNMS.instance.MakeScoreBoardForPlayer(player);
         if (!player.hasPermission("broadcast.join")) {
