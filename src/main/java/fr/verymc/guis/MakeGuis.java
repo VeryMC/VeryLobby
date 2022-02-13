@@ -32,15 +32,7 @@ public class MakeGuis {
                 "§7où vous devez survivre, agrandir votre terrain pour forger", "§7votre empire !", "§7",
                 "§d§lInformations", "§7", "§7Version: §e1.16.5 et supérieur", "§7Développeur: Farmeurimmo"));
         stack4.setItemMeta(meta4);
-        inv.setItem(21, stack4);
-
-        ItemStack stack5 = new ItemStack(Material.DIAMOND_SWORD, 1);
-        ItemMeta meta5 = stack5.getItemMeta();
-        meta5.setDisplayName("§6Skywars");
-        meta5.setLore(Arrays.asList("§7En Skywars, ...", "§7",
-                "§d§lInformations", "§7", "§7Version: §e1.8.8 et supérieur", "§7Développeur: Zendraft"));
-        stack5.setItemMeta(meta5);
-        inv.setItem(23, stack5);
+        inv.setItem(22, stack4);
 
         player.openInventory(inv);
 
