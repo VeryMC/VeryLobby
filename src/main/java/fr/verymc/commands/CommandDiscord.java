@@ -9,7 +9,7 @@ public class CommandDiscord implements CommandExecutor {
     public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
         if (sender instanceof Player) {
             final Player p = (Player) sender;
-            p.sendMessage("§e§lDiscord » §fhttps://discord.gg/FnePjz6rAh");
+            p.sendMessage("§e§lDiscord » §fhttps://discord.gg/hQ3tkSZQnP");
             return true;
         }
         System.out.println("Merci d'éxecuter cette comande en jeu");
