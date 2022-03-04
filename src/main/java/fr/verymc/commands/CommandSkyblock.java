@@ -34,7 +34,7 @@ public class CommandSkyblock implements CommandExecutor {
             //int pos = ServerQueueManager.position.size();
             if (playerversion >= 754) {
                 final ByteArrayDataOutput out = ByteStreams.newDataOutput();
-                Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Bukkit.getPluginManager().getPlugin("VeryLobby"), "BungeeCord");
+                Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(main.instance, "BungeeCord");
                 out.writeUTF("Connect");
                 out.writeUTF("skyblock");
                 player.sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());

@@ -13,7 +13,7 @@ public class TABManager {
 
     public void SendTab() {
         int online = ScoreBoardNMS.instance.online;
-        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     BaseComponent header = new TextComponent("\n§f• §6§lVery§f§lMc §f•\n\n§7Global §7▸ §a" + online +

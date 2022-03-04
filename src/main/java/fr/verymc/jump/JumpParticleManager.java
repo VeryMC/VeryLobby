@@ -1,5 +1,6 @@
 package fr.verymc.jump;
 
+import fr.verymc.main;
 import net.minecraft.server.v1_8_R3.EnumParticle;
 import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
 import org.bukkit.Bukkit;
@@ -26,7 +27,7 @@ public class JumpParticleManager {
                 }
             }
         }
-        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {
             public void run() {
                 CheckForParticuleApply();
             }

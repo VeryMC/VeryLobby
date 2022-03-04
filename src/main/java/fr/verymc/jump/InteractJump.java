@@ -2,6 +2,7 @@ package fr.verymc.jump;
 
 import fr.verymc.commands.CommandBuilder;
 import fr.verymc.events.JoinLeave;
+import fr.verymc.main;
 import fr.verymc.utils.ChooseEffect;
 import fr.verymc.utils.PlayerNMS;
 import org.bukkit.Bukkit;
@@ -95,7 +96,7 @@ public class InteractJump implements Listener {
                 }
             }
         }
-        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {
             public void run() {
                 ShowChronoForEvery();
             }

@@ -1,6 +1,7 @@
 package fr.verymc.guis;
 
 import fr.verymc.commands.CommandBuilder;
+import fr.verymc.main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -89,7 +90,7 @@ public class GuisManager implements Listener {
                 if (player.hasPermission("group.vip")) {
                     player.sendMessage("§cErreur, vous possédez déjà ce grade !");
                     current.setType(Material.BARRIER);
-                    Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+                    Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {
                         public void run() {
                             current.setType(Material.GOLD_INGOT);
                         }
@@ -97,7 +98,7 @@ public class GuisManager implements Listener {
                 } else {
                     player.sendMessage("§6Vérification de la disponibilité du grade...");
                     current.setType(Material.BARRIER);
-                    Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+                    Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {
                         public void run() {
                             player.sendMessage("§cErreur, achat indisponible !");
                             current.setType(Material.GOLD_INGOT);

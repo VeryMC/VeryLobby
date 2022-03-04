@@ -2,6 +2,7 @@ package fr.verymc.jump;
 
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
+import fr.verymc.main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
@@ -23,7 +24,7 @@ public class MakeTop {
     static String NumberTwo = null;
 
     static Location holo = new Location(Bukkit.getServer().getWorld("world"), 111.5, 47, 160.5);
-    static Plugin plugin = Bukkit.getPluginManager().getPlugin("VeryLobby");
+    static Plugin plugin = main.instance;
     static Hologram hologram = HologramsAPI.createHologram(plugin, holo);
 
     public static void GenClassement() {
@@ -103,7 +104,7 @@ public class MakeTop {
         hologram.appendTextLine("4.§7 §e" + quatre + "§7 en §e" + sc4.replace("null", "N/A") + " §7secondes");
         hologram.appendTextLine("5.§7 §e" + cinq + "§7 en §e" + sc5.replace("null", "N/A") + " §7secondes");
 
-        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(main.instance, new Runnable() {
             public void run() {
                 GenClassement();
             }

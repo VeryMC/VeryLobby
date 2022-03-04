@@ -26,7 +26,7 @@ public class ServerQueueManager {
     }
 
     public static void DisplayActionBarForA() {
-        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {
             public void run() {
                 for (Map.Entry<String, Integer> entry : position.entrySet()) {
                     if (Bukkit.getPlayer(entry.getKey()) != null) {
@@ -76,7 +76,7 @@ public class ServerQueueManager {
             if (player != null) {
                 if (player.isOnline() == true) {
                     final ByteArrayDataOutput out = ByteStreams.newDataOutput();
-                    Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(Bukkit.getPluginManager().getPlugin("VeryLobby"), "BungeeCord");
+                    Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(main.instance, "BungeeCord");
                     out.writeUTF("Connect");
                     out.writeUTF("skyblock");
                     player.sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
@@ -85,7 +85,7 @@ public class ServerQueueManager {
         }
         final Player p = player;
 
-        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(main.instance, new Runnable() {
             public void run() {
                 if (p != null) {
                     if (!p.isOnline()) {

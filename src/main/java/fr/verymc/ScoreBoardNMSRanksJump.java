@@ -23,7 +23,7 @@ public class ScoreBoardNMSRanksJump {
             ScoreBoardNMS.preffixes.put(player.getUniqueId(), Preffix);
             ScoreBoardNMS.suffixes.put(player.getUniqueId(), Suffix);
         }
-        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Bukkit.getPluginManager().getPlugin("VeryLobby"), new Runnable() {
+        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {
             public void run() {
                 AutoUpdate();
             }

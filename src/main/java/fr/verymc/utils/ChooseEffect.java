@@ -1,7 +1,7 @@
 package fr.verymc.utils;
 
 import fr.verymc.jump.InteractJump;
-import org.bukkit.Bukkit;
+import fr.verymc.main;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -113,7 +113,7 @@ public class ChooseEffect implements Listener {
                                     }
                                 }
                             }
-                        }.runTaskTimer(Bukkit.getPluginManager().getPlugin("VeryLobby"), 20, 20);
+                        }.runTaskTimer(main.instance, 20, 20);
                     }
                 }
             }
@@ -173,7 +173,7 @@ public class ChooseEffect implements Listener {
                                     }
                                 }
                             }
-                        }.runTaskTimer(Bukkit.getPluginManager().getPlugin("VeryLobby"), 20, 20);
+                        }.runTaskTimer(main.instance, 20, 20);
                     }
                 }
             }
