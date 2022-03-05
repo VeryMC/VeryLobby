@@ -50,9 +50,9 @@ public class ScoreBoardNMS {
         sb.setLine(7, "\u00A77Hub \u00A77▸ \u00A76" + serveurname);
         sb.setLine(6, "\u00A77Verycoins \u00A77▸ \u00A7csoon");
         if (Suffix.contains("✰")) {
-            sb.setLine(5, "\u00A77Premium \u00A77▸ \u00A7a\u00A7l✔");
+            sb.setLine(5, "\u00A77Abonnement \u00A77▸ \u00A7a\u00A7l✔");
         } else {
-            sb.setLine(5, "\u00A77Premium \u00A77▸ \u00A7c\u00A7lx");
+            sb.setLine(5, "\u00A77Abonnement \u00A77▸ \u00A7c\u00A7lx");
         }
         sb.setLine(4, "\u00A77Grade \u00A77▸ " + Preffix);
         sb.setLine(3, "\u00A77Pseudo \u00A77▸ \u00A7f" + player.getName());
@@ -86,35 +86,21 @@ public class ScoreBoardNMS {
         } finally {
             j.close();
         }*/
-        ArrayList<String> players = new ArrayList<String>();
-        players.clear();
+        ArrayList<String> Vanished = new ArrayList<String>();
+        Vanished.clear();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (p.getMetadata("vanished").isEmpty()) {
-                players.add(p.getName());
-                continue;
-            }
-            if(p.getMetadata("vanished").equals("false")){
-                players.add(p.getName());
-                break;
+            if (!p.getMetadata("vanished").isEmpty()) {
+                Vanished.add(p.getName());
             }
         }
-        online = players.size();
+        online = Bukkit.getOnlinePlayers().size() - Vanished.size();
         for (Entry<UUID, ScoreboardSign> board : boards.entrySet()) {
 
             String Preffix = ScoreBoardNMSRanksJump.GetPrefix(Bukkit.getPlayer(board.getKey()));
             String Suffix = ScoreBoardNMSRanksJump.GetSuffix(Bukkit.getPlayer(board.getKey()));
             if(!board.getValue().getLine(12).equalsIgnoreCase("\u00A77Lobby \u00A77▸ \u00A7a" + online))
             board.getValue().setLine(12, "\u00A77Lobby \u00A77▸ \u00A7a" + online);
-            if(!board.getValue().getLine(4).equalsIgnoreCase("\u00A77Grade \u00A77▸ " + Preffix))
             board.getValue().setLine(4, "\u00A77Grade \u00A77▸ " + Preffix);
-
-            if (Suffix.contains("✰")) {
-                if(!board.getValue().getLine(5).equalsIgnoreCase("\u00A77Premium \u00A77▸ \u00A7a\u00A7l✔"))
-                board.getValue().setLine(5, "\u00A77Premium \u00A77▸ \u00A7a\u00A7l✔");
-            } else {
-                if(!board.getValue().getLine(5).equalsIgnoreCase("\u00A77Premium \u00A77▸ \u00A7c\u00A7lx"))
-                board.getValue().setLine(5, "\u00A77Premium \u00A77▸ \u00A7c\u00A7lx");
-            }
 
         }
         Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {
