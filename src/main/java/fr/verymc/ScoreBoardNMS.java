@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import redis.clients.jedis.Jedis;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -39,7 +40,7 @@ public class ScoreBoardNMS {
 
         sb.setLine(13, "\u00A7f");
 
-        sb.setLine(12, "\u00A77Global \u00A77▸ \u00A7a" + online);
+        sb.setLine(12, "\u00A77Lobby \u00A77▸ \u00A7a" + online);
         sb.setLine(11, "\u00A77Boutique \u00A77▸\u00A7e /boutique");
         sb.setLine(10, "\u00A77Discord \u00A77▸\u00A7d /discord");
         sb.setLine(9, "\u00A7c\u00A7l➔ Informations");
@@ -65,9 +66,8 @@ public class ScoreBoardNMS {
     }
 
     public void UpdateScoreBoard() {
-        online = 0;
-        int vanisheds = 0;
-        try {
+        //int vanisheds = 0;
+        /*try {
             j = main.pool.getResource();
             // If you want to use a password, use
             j.auth(System.getenv("REDIS_PASSWORD"));
@@ -85,18 +85,29 @@ public class ScoreBoardNMS {
 
         } finally {
             j.close();
+        }*/
+        ArrayList<String> players = new ArrayList<String>();
+        players.clear();
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (p.getMetadata("vanished").isEmpty()) {
+                players.add(p.getName());
+            }
         }
-        online = online - vanisheds;
+        online = players.size();
         for (Entry<UUID, ScoreboardSign> board : boards.entrySet()) {
 
             String Preffix = ScoreBoardNMSRanksJump.GetPrefix(Bukkit.getPlayer(board.getKey()));
             String Suffix = ScoreBoardNMSRanksJump.GetSuffix(Bukkit.getPlayer(board.getKey()));
-            board.getValue().setLine(12, "\u00A77Global \u00A77▸ \u00A7a" + online);
+            if(!board.getValue().getLine(12).equalsIgnoreCase("\u00A77Lobby \u00A77▸ \u00A7a" + online))
+            board.getValue().setLine(12, "\u00A77Lobby \u00A77▸ \u00A7a" + online);
+            if(!board.getValue().getLine(4).equalsIgnoreCase("\u00A77Grade \u00A77▸ " + Preffix))
             board.getValue().setLine(4, "\u00A77Grade \u00A77▸ " + Preffix);
 
             if (Suffix.contains("✰")) {
+                if(!board.getValue().getLine(5).equalsIgnoreCase("\u00A77Premium \u00A77▸ \u00A7a\u00A7l✔"))
                 board.getValue().setLine(5, "\u00A77Premium \u00A77▸ \u00A7a\u00A7l✔");
             } else {
+                if(!board.getValue().getLine(5).equalsIgnoreCase("\u00A77Premium \u00A77▸ \u00A7c\u00A7lx"))
                 board.getValue().setLine(5, "\u00A77Premium \u00A77▸ \u00A7c\u00A7lx");
             }
 
