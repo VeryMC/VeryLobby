@@ -91,6 +91,11 @@ public class ScoreBoardNMS {
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (p.getMetadata("vanished").isEmpty()) {
                 players.add(p.getName());
+                continue;
+            }
+            if(p.getMetadata("vanished").equals("false")){
+                players.add(p.getName());
+                break;
             }
         }
         online = players.size();
