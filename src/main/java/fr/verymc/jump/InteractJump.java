@@ -30,7 +30,7 @@ import java.util.UUID;
 
 public class InteractJump implements Listener {
 
-    public static Map<Player, Boolean> statutbuilder = CommandBuilder.statutbuilder;
+    public static ArrayList<UUID> statutbuilder = CommandBuilder.statutbuilder;
 
     public static ArrayList<UUID> Jump = new ArrayList<UUID>();
     public static ArrayList<UUID> Checkpoint1 = new ArrayList<UUID>();
@@ -188,11 +188,9 @@ public class InteractJump implements Listener {
         }
         if (x >= 109 && x <= 111 && z >= 168 && z <= 170 && y >= 43 && y <= 45) {
             if (!InteractJump.Jump.contains(player.getUniqueId())) {
-                if (statutbuilder.get(player) != null) {
-                    if (statutbuilder.get(player) == true) {
-                        statutbuilder.put(player, false);
-                        player.sendMessage("§a§lMode Builder §8>> §fTu es désormais en mode Joueur !");
-                    }
+                if (statutbuilder.contains(player.getUniqueId())) {
+                    statutbuilder.remove(player.getUniqueId());
+                    player.sendMessage("§a§lMode Builder §8>> §fTu es désormais en mode Joueur !");
                 }
                 if (player.getAllowFlight() == true) {
                     player.setAllowFlight(false);

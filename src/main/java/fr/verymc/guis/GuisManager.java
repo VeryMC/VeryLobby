@@ -45,7 +45,7 @@ public class GuisManager implements Listener {
     public void Onclick(InventoryClickEvent event) {
         final Player player = (Player) event.getWhoClicked();
         final ItemStack current = event.getCurrentItem();
-        if (CommandBuilder.statutbuilder.containsKey(player) && CommandBuilder.statutbuilder.get(player) == true) {
+        if (CommandBuilder.statutbuilder.contains(player.getUniqueId())) {
             event.setCancelled(false);
             return;
         } else {

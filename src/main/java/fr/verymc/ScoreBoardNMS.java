@@ -43,7 +43,7 @@ public class ScoreBoardNMS {
         sb.setLine(12, "\u00A77Lobby \u00A77▸ \u00A7a" + online);
         sb.setLine(11, "\u00A77Boutique \u00A77▸\u00A7e /boutique");
         sb.setLine(10, "\u00A77Discord \u00A77▸\u00A7d /discord");
-        sb.setLine(9, "\u00A7c\u00A7l➔ \u00A7c\u00A7lInformations");
+        sb.setLine(9, "\u00A7c\u00A7l➔ \u00A7c\u00A7lInfo\u00A7c\u00A7lrmat\u00A7c\u00A7lions");
 
         sb.setLine(8, "\u00A71");
 
@@ -96,11 +96,17 @@ public class ScoreBoardNMS {
         online = Bukkit.getOnlinePlayers().size() - Vanished.size();
         for (Entry<UUID, ScoreboardSign> board : boards.entrySet()) {
 
+            if (Bukkit.getPlayer(board.getKey()) == null) {
+                boards.remove(board.getKey());
+                continue;
+            }
+
             String Preffix = ScoreBoardNMSRanksJump.GetPrefix(Bukkit.getPlayer(board.getKey()));
             String Suffix = ScoreBoardNMSRanksJump.GetSuffix(Bukkit.getPlayer(board.getKey()));
-            if(!board.getValue().getLine(12).equalsIgnoreCase("\u00A77Lobby \u00A77▸ \u00A7a" + online))
-            board.getValue().setLine(12, "\u00A77Lobby \u00A77▸ \u00A7a" + online);
-            board.getValue().setLine(4, "\u00A77Grade \u00A77▸ " + Preffix);
+            if (!board.getValue().getLine(12).equalsIgnoreCase("\u00A77Lobby \u00A77▸ \u00A7a" + online))
+                board.getValue().setLine(12, "\u00A77Lobby \u00A77▸ \u00A7a" + online);
+            if (!board.getValue().getLine(4).equalsIgnoreCase("\u00A77Grade \u00A77▸ " + Preffix))
+                board.getValue().setLine(4, "\u00A77Grade \u00A77▸ " + Preffix);
 
         }
         Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {

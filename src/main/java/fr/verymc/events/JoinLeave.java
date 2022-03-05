@@ -16,10 +16,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
@@ -61,7 +57,6 @@ public class JoinLeave implements Listener {
         if (!ChooseEffect.permchangeeffect.containsKey(player)) {
             ChooseEffect.permchangeeffect.put(player, true);
         }
-        CommandBuilder.statutbuilder.put(player, false);
         player.teleport(spawn);
         player.sendMessage("\n ");
         player.sendMessage("§6§lVery§f§lMc §f| Version §cBêta §d1.8x1.18.1 \n  \n§aBon jeu sur VeryMc ! \n ");
@@ -127,44 +122,6 @@ public class JoinLeave implements Listener {
         }
         if (ServerQueueManager.position.containsKey(player.getName())) {
             ServerQueueManager.position.remove(player.getName());
-        }
-    }
-
-    @EventHandler
-    public void OnPlayerDrop(PlayerDropItemEvent event) {
-        event.setCancelled(true);
-    }
-
-    @EventHandler
-    public void onPlayerHunger(final FoodLevelChangeEvent event) {
-        event.setCancelled(true);
-    }
-
-    @EventHandler
-    public void onBlockBreak(final BlockBreakEvent event) {
-        if (CommandBuilder.statutbuilder.get(event.getPlayer())) {
-            return;
-        }
-        event.setCancelled(true);
-    }
-
-    @EventHandler
-    public void onBlockPlace(final BlockPlaceEvent event) {
-        if (CommandBuilder.statutbuilder.get(event.getPlayer())) {
-            return;
-        }
-        event.setCancelled(true);
-    }
-
-    @EventHandler
-    public void onBlockPlaceOnPlayer(final BlockPlaceEvent event) {
-        if (CommandBuilder.statutbuilder.get(event.getPlayer())) {
-            return;
-        }
-        final Location playerlocation = event.getPlayer().getLocation();
-        final Location blocklocation = event.getBlock().getLocation();
-        if (playerlocation == blocklocation) {
-            event.setCancelled(true);
         }
     }
 }
