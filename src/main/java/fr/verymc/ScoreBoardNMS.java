@@ -95,12 +95,16 @@ public class ScoreBoardNMS {
         }
         online = Bukkit.getOnlinePlayers().size() - Vanished.size();
 
-        Map<UUID, ScoreboardSign> boa = boards;
+        Map<UUID, ScoreboardSign> toremove = new HashMap<>();
 
-        for(Entry<UUID, ScoreboardSign> board : boa.entrySet()){
+        for(Entry<UUID, ScoreboardSign> board : boards.entrySet()){
             if(Bukkit.getPlayer(board.getKey())==null){
-                boards.remove(board.getKey());
+                toremove.put(board.getKey(), board.getValue());
             }
+        }
+
+        for(Entry<UUID, ScoreboardSign> board : toremove.entrySet()){
+            boards.remove(board.getKey());
         }
 
 
