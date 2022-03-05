@@ -119,7 +119,7 @@ public class ScoreBoardNMS {
                 board.getValue().setLine(4, "\u00A77Grade \u00A77▸ " + Preffix);
 
         }
-        Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(main.instance, new Runnable() {
             public void run() {
                 UpdateScoreBoard();
             }
