@@ -6,6 +6,11 @@ import com.viaversion.viaversion.api.Via;
 import com.viaversion.viaversion.api.ViaAPI;
 import fr.verymc.main;
 import fr.verymc.serverqueue.ServerQueueManager;
+import fr.verymc.utils.PlayerNMS;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -31,14 +36,9 @@ public class CommandSkyblock implements CommandExecutor {
             }
             ViaAPI api = Via.getAPI();
             int playerversion = api.getPlayerVersion(player);
-            //int pos = ServerQueueManager.position.size();
+            int pos = ServerQueueManager.position.size();
             if (playerversion >= 754) {
-                final ByteArrayDataOutput out = ByteStreams.newDataOutput();
-                Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(main.instance, "BungeeCord");
-                out.writeUTF("Connect");
-                out.writeUTF("skyblock");
-                player.sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
-			/*if(player.hasPermission("fastjoin")) {
+			if(player.hasPermission("fastjoin")) {
 		        ServerQueueManager.setPosition(player.getName(), 0);
 		        pos = 0;
 			} else {
@@ -46,15 +46,15 @@ public class CommandSkyblock implements CommandExecutor {
 			}
 			player.closeInventory();
 			int tmp = ServerQueueManager.position.size()-1;
-			PlayerNMS.sendActionBar(player, "§7Position §6" + 
+			PlayerNMS.sendActionBar(player, "§7Position §6" +
  					pos + "§7 sur §6" + tmp + "§7 dans la file d'attente du §6Skyblock");
 		    TextComponent message = new TextComponent("\n §c§l» §c§lCliquez ici pour quitter la file d'attente §c§l« \n");
 			message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/leavequeues"));
-			message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, 
+			message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
 					new ComponentBuilder("§c§lCliquez sur ce message pour quitter la file d'attente").create()));
-			player.sendMessage(message);*/
+			player.sendMessage(message);
             } else {
-                player.sendMessage("\n§a§lFile d'attente §7» §cVous devez posséder la version 1.16.5 ou supérieure pour rejoindre le skyblock." + playerversion);
+                player.sendMessage("\n§a§lFile d'attente §7» §cVous devez posséder la version 1.16.5 ou supérieure pour rejoindre le skyblock.");
             }
         }
         return true;

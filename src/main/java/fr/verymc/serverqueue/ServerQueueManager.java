@@ -12,6 +12,8 @@ import java.util.Map;
 
 public class ServerQueueManager {
 
+    public static int delayInSec = 3;
+
     public static HashMap<String, Integer> position = new HashMap<>();
 
     public static void setPosition(String playername, Integer time) {
@@ -113,6 +115,6 @@ public class ServerQueueManager {
                 }
                 Every5sec();
             }
-        }, 100);
+        }, 20*delayInSec);
     }
 }

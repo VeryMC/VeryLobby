@@ -9,6 +9,7 @@ import fr.verymc.guis.GuisManager;
 import fr.verymc.jump.InteractJump;
 import fr.verymc.jump.JumpParticleManager;
 import fr.verymc.jump.MakeTop;
+import fr.verymc.serverqueue.ServerQueueManager;
 import fr.verymc.utils.ChooseEffect;
 import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
@@ -88,8 +89,8 @@ public class main extends JavaPlugin implements Listener {
         MakeTop.Valeurs.clear();
         MakeTop.Classement.clear();
 
-        //ServerQueueManager.Every5sec();
-        //ServerQueueManager.DisplayActionBarForA();
+        ServerQueueManager.Every5sec();
+        ServerQueueManager.DisplayActionBarForA();
 
         pool = new JedisPool(System.getenv("REDIS_HOST"), 6379);
         new ScoreBoardNMS();
