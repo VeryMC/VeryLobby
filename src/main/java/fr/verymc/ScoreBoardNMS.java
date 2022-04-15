@@ -97,13 +97,13 @@ public class ScoreBoardNMS {
 
         Map<UUID, ScoreboardSign> toremove = new HashMap<>();
 
-        for(Entry<UUID, ScoreboardSign> board : boards.entrySet()){
-            if(Bukkit.getPlayer(board.getKey())==null){
+        for (Entry<UUID, ScoreboardSign> board : boards.entrySet()) {
+            if (Bukkit.getPlayer(board.getKey()) == null) {
                 toremove.put(board.getKey(), board.getValue());
             }
         }
 
-        for(Entry<UUID, ScoreboardSign> board : toremove.entrySet()){
+        for (Entry<UUID, ScoreboardSign> board : toremove.entrySet()) {
             boards.remove(board.getKey());
         }
 

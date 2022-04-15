@@ -1,7 +1,5 @@
 package fr.verymc.commands;
 
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
 import com.viaversion.viaversion.api.Via;
 import com.viaversion.viaversion.api.ViaAPI;
 import fr.verymc.main;
@@ -11,7 +9,6 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -38,21 +35,21 @@ public class CommandSkyblock implements CommandExecutor {
             int playerversion = api.getPlayerVersion(player);
             int pos = ServerQueueManager.position.size();
             if (playerversion >= 754) {
-			if(player.hasPermission("fastjoin")) {
-		        ServerQueueManager.setPosition(player.getName(), 0);
-		        pos = 0;
-			} else {
-				ServerQueueManager.setPosition(player.getName(), pos);
-			}
-			player.closeInventory();
-			int tmp = ServerQueueManager.position.size()-1;
-			PlayerNMS.sendActionBar(player, "§7Position §6" +
- 					pos + "§7 sur §6" + tmp + "§7 dans la file d'attente du §6Skyblock");
-		    TextComponent message = new TextComponent("\n §c§l» §c§lCliquez ici pour quitter la file d'attente §c§l« \n");
-			message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/leavequeues"));
-			message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-					new ComponentBuilder("§c§lCliquez sur ce message pour quitter la file d'attente").create()));
-			player.sendMessage(message);
+                if (player.hasPermission("fastjoin")) {
+                    ServerQueueManager.setPosition(player.getName(), 0);
+                    pos = 0;
+                } else {
+                    ServerQueueManager.setPosition(player.getName(), pos);
+                }
+                player.closeInventory();
+                int tmp = ServerQueueManager.position.size() - 1;
+                PlayerNMS.sendActionBar(player, "§7Position §6" +
+                        pos + "§7 sur §6" + tmp + "§7 dans la file d'attente du §6Skyblock");
+                TextComponent message = new TextComponent("\n §c§l» §c§lCliquez ici pour quitter la file d'attente §c§l« \n");
+                message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/leavequeues"));
+                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                        new ComponentBuilder("§c§lCliquez sur ce message pour quitter la file d'attente").create()));
+                player.sendMessage(message);
             } else {
                 player.sendMessage("\n§a§lFile d'attente §7» §cVous devez posséder la version 1.16.5 ou supérieure pour rejoindre le skyblock.");
             }

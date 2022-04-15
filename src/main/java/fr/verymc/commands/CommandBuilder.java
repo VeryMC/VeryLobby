@@ -9,8 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class CommandBuilder implements CommandExecutor {
@@ -32,11 +30,11 @@ public class CommandBuilder implements CommandExecutor {
             return true;
         }
         if (CommandBuilder.statutbuilder.contains(player.getUniqueId())) {
-                CommandBuilder.statutbuilder.remove(player.getUniqueId());
-                player.sendMessage("§a§lMode Builder §8>> §fTu es maintenant en mode Joueur !");
-                JoinLeave.GiveItem(player);
-                player.setGameMode(GameMode.ADVENTURE);
-                return true;
+            CommandBuilder.statutbuilder.remove(player.getUniqueId());
+            player.sendMessage("§a§lMode Builder §8>> §fTu es maintenant en mode Joueur !");
+            JoinLeave.GiveItem(player);
+            player.setGameMode(GameMode.ADVENTURE);
+            return true;
         } else {
             CommandBuilder.statutbuilder.add(player.getUniqueId());
             player.sendMessage("§a§lMode Builder §8>> §fTu es maintenant en mode Builder !");

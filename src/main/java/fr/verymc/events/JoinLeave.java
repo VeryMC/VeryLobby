@@ -1,7 +1,8 @@
 package fr.verymc.events;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 import fr.verymc.ScoreBoardNMS;
-import fr.verymc.commands.CommandBuilder;
 import fr.verymc.jump.InteractJump;
 import fr.verymc.main;
 import fr.verymc.serverqueue.ServerQueueManager;
@@ -52,6 +53,16 @@ public class JoinLeave implements Listener {
     @EventHandler
     public void onPlayerJoin(final PlayerJoinEvent event) {
         final Player player = event.getPlayer();
+        if (!player.hasPermission("maintenance")) {
+            ByteArrayDataOutput out = ByteStreams.newDataOutput();
+            Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(main.instance, "BungeeCord");
+
+            out.writeUTF("KickPlayer");
+            out.writeUTF(player.getName());
+            out.writeUTF("§cMaintenance en cours...\n §chttps://discord.gg/ZRsd85u9Yf");
+
+            Bukkit.getServer().sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
+        }
         final PlayerInventory playerInventory = player.getInventory();
         playerInventory.clear();
         if (!ChooseEffect.permchangeeffect.containsKey(player)) {

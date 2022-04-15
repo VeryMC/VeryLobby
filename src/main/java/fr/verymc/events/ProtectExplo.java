@@ -2,7 +2,6 @@ package fr.verymc.events;
 
 import fr.verymc.commands.CommandBuilder;
 import fr.verymc.jump.InteractJump;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
