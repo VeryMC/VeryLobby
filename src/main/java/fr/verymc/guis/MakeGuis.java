@@ -2,22 +2,32 @@ package fr.verymc.guis;
 
 import fr.verymc.main;
 import fr.verymc.utils.PreBuildItemStacks;
+import fr.verymc.utils.RankExpiry;
 import net.luckperms.api.model.user.User;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 public class MakeGuis {
 
+    public static MakeGuis instance;
     static String Grade = "§7N/A";
     static String Suffix = "";
+    public String playerCount = "§7N/A";
 
-    public static void MakeMainGui(Player player) {
+    public MakeGuis() {
+        instance = this;
+    }
+
+    public void MakeMainGui(Player player) {
         Inventory inv = Bukkit.createInventory(null, 45, "§6Very§fMc §f➔ §6Mini-jeux");
 
         User user = main.api.getUserManager().getUser(player.getUniqueId());
@@ -30,7 +40,7 @@ public class MakeGuis {
         meta4.setDisplayName("§6Skyblock");
         meta4.setLore(Arrays.asList("§7En SkyBlock, vous commencez avec une petite île",
                 "§7où vous devez survivre, agrandir votre terrain pour forger", "§7votre empire !", "§7",
-                "§d§lInformations", "§7", "§7Version: §e1.16.5 et supérieur", "§7Développeur: Farmeurimmo"));
+                "§d§lInformations", "§7Connectés: §a" + playerCount, "§7", "§7Version: §e1.16.5 et supérieur", "§7Développeur: Farmeurimmo"));
         stack4.setItemMeta(meta4);
         inv.setItem(22, stack4);
 
@@ -38,7 +48,7 @@ public class MakeGuis {
 
     }
 
-    public static void MakeProfil(Player player) {
+    public void MakeProfil(Player player) {
         User user = main.api.getUserManager().getUser(player.getUniqueId());
         if (user.getCachedData().getMetaData().getPrefix() != null) {
             Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
@@ -51,7 +61,7 @@ public class MakeGuis {
         player.openInventory(profil);
     }
 
-    public static void MakeBoutiquesGui(Player player) {
+    public void MakeBoutiquesGui(Player player) {
         final Inventory sous = Bukkit.createInventory(null, 27, "§6Very§fMc §f➔ §6Boutiques");
 
         ItemStack stackm = new ItemStack(Material.BLAZE_POWDER, 1);
@@ -78,7 +88,7 @@ public class MakeGuis {
         player.openInventory(sous);
     }
 
-    public static void MakeBoutiqueRank(Player player) {
+    public void MakeBoutiqueRank(Player player) {
         User user = main.api.getUserManager().getUser(player.getUniqueId());
         if (user.getCachedData().getMetaData().getPrefix() != null) {
             Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
@@ -86,24 +96,7 @@ public class MakeGuis {
 
         final Inventory inv = Bukkit.createInventory(null, 27, "§6Very§fMc §f➔ §6Boutique des grades");
 
-        ItemStack stack2 = new ItemStack(Material.GOLD_INGOT, 1);
-        ItemMeta meta2 = stack2.getItemMeta();
-        meta2.setDisplayName("§6Grade VIP");
-        meta2.setLore(Arrays.asList("§cN/A"));
-        stack2.setItemMeta(meta2);
-
-        ItemStack stack1 = new ItemStack(Material.ARROW, 1);
-        ItemMeta meta1 = stack1.getItemMeta();
-        meta1.setDisplayName("§6Retourner en arrière");
-        meta1.setLore(Arrays.asList("§c<<---"));
-        stack1.setItemMeta(meta1);
-
-        inv.setItem(13, stack2);
-        inv.setItem(26, stack1);
-
-        player.openInventory(inv);
-        
-        /*ItemStack stacke = new ItemStack(Material.PAPER, 1);
+        ItemStack stacke = new ItemStack(Material.GOLD_INGOT, 1);
         ItemMeta metae = stacke.getItemMeta();
         if(RankExpiry.GetTimeLeft(player) >= 1) {
         long aaa = RankExpiry.GetTimeLeft(player);
@@ -127,7 +120,18 @@ public class MakeGuis {
 	    } else {
         	metae.setDisplayName("§eStatus du Premium §c(§lINACTIF§c)");
         }
-        stacke.setItemMeta(metae);*/
+        stacke.setItemMeta(metae);
+
+        ItemStack stack1 = new ItemStack(Material.ARROW, 1);
+        ItemMeta meta1 = stack1.getItemMeta();
+        meta1.setDisplayName("§6Retourner en arrière");
+        meta1.setLore(Arrays.asList("§c<<---"));
+        stack1.setItemMeta(meta1);
+
+        inv.setItem(13, stacke);
+        inv.setItem(26, stack1);
+
+        player.openInventory(inv);
     }
 
 }

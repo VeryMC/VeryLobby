@@ -19,24 +19,24 @@ public class GuisManager implements Listener {
         Player player = event.getPlayer();
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (player.getItemInHand().getType() == Material.NETHER_STAR) {
-                MakeGuis.MakeMainGui(player);
+                MakeGuis.instance.MakeMainGui(player);
             }
             if (player.getItemInHand().getType() == Material.SKULL_ITEM) {
-                MakeGuis.MakeProfil(player);
+                MakeGuis.instance.MakeProfil(player);
             }
             if (player.getItemInHand().getType() == Material.GOLD_INGOT) {
-                MakeGuis.MakeBoutiquesGui(player);
+                MakeGuis.instance.MakeBoutiquesGui(player);
             }
         }
         if (event.getAction() == Action.RIGHT_CLICK_AIR) {
             if (player.getItemInHand().getType() == Material.NETHER_STAR) {
-                MakeGuis.MakeMainGui(player);
+                MakeGuis.instance.MakeMainGui(player);
             }
             if (player.getItemInHand().getType() == Material.SKULL_ITEM) {
-                MakeGuis.MakeProfil(player);
+                MakeGuis.instance.MakeProfil(player);
             }
             if (player.getItemInHand().getType() == Material.GOLD_INGOT) {
-                MakeGuis.MakeBoutiquesGui(player);
+                MakeGuis.instance.MakeBoutiquesGui(player);
             }
         }
     }
@@ -62,18 +62,18 @@ public class GuisManager implements Listener {
 
         if (event.getInventory().getName() == "§6Very§fMc §f➔ Votre profil") {
             if (current.getType() == Material.ARROW) {
-                MakeGuis.MakeMainGui(player);
+                MakeGuis.instance.MakeMainGui(player);
             }
             if (current.getType() == Material.SKULL_ITEM) {
-                MakeGuis.MakeProfil(player);
+                MakeGuis.instance.MakeProfil(player);
             }
         }
         if (event.getInventory().getName() == "§6Very§fMc §f➔ §6Boutiques") {
             if (current.getType() == Material.SKULL_ITEM) {
-                MakeGuis.MakeProfil(player);
+                MakeGuis.instance.MakeProfil(player);
             }
             if (current.getType() == Material.GOLD_INGOT) {
-                MakeGuis.MakeBoutiqueRank(player);
+                MakeGuis.instance.MakeBoutiqueRank(player);
             }
             if (current.getType() == Material.BLAZE_POWDER) {
 
@@ -81,10 +81,10 @@ public class GuisManager implements Listener {
         }
         if (event.getInventory().getName() == "§6Very§fMc §f➔ §6Boutique des grades") {
             if (current.getType() == Material.ARROW) {
-                MakeGuis.MakeBoutiquesGui(player);
+                MakeGuis.instance.MakeBoutiquesGui(player);
             }
             if (current.getType() == Material.SKULL_ITEM) {
-                MakeGuis.MakeProfil(player);
+                MakeGuis.instance.MakeProfil(player);
             }
             if (current.getType() == Material.GOLD_INGOT) {
                 if (player.hasPermission("group.vip")) {

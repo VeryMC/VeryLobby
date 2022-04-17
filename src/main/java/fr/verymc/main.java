@@ -1,11 +1,15 @@
 package fr.verymc;
 
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 import fr.verymc.commands.*;
 import fr.verymc.events.DamageManager;
 import fr.verymc.events.JoinLeave;
 import fr.verymc.events.ProtectExplo;
 import fr.verymc.events.TchatManager;
 import fr.verymc.guis.GuisManager;
+import fr.verymc.guis.MakeGuis;
 import fr.verymc.jump.InteractJump;
 import fr.verymc.jump.JumpParticleManager;
 import fr.verymc.jump.MakeTop;
@@ -19,13 +23,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListener;
 import redis.clients.jedis.JedisPool;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class main extends JavaPlugin implements Listener {
+public class main extends JavaPlugin implements Listener, PluginMessageListener {
 
     public static main instance;
     public static LuckPerms api;
@@ -102,11 +107,16 @@ public class main extends JavaPlugin implements Listener {
 
         new TABManager();
 
+        new MakeGuis();
+
         InteractJump.ShowChronoForEvery();
 
         JumpParticleManager.locs.addAll(Arrays.asList(InteractJump.checkpointnum1, InteractJump.checkpointnum2, InteractJump.checkpointnum3,
                 InteractJump.checkpointnum4, InteractJump.checkpointnum5, InteractJump.start, InteractJump.end));
         JumpParticleManager.CheckForParticuleApply();
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
+        playerCounts();
     }
 
     @Override
@@ -114,5 +124,35 @@ public class main extends JavaPlugin implements Listener {
         MakeTop.RemoveHolo();
         ScoreBoardNMS.instance.DeleteScoreBoard();
         pool.close();
+        this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
+        this.getServer().getMessenger().unregisterIncomingPluginChannel(this);
+    }
+
+    public void playerCounts() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(main.instance, new Runnable() {
+            @Override
+            public void run() {
+                ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(main.instance, "BungeeCord");
+
+                out.writeUTF("PlayerCount");
+                out.writeUTF("skyblock");
+
+                Bukkit.getServer().sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
+            }
+        }, 0L, ServerQueueManager.delayInSec * 20L);
+    }
+
+
+    @Override
+    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+        if (!channel.equals("BungeeCord")) {
+            return;
+        }
+        ByteArrayDataInput in = ByteStreams.newDataInput(message);
+        String subchannel = in.readUTF();
+        if (subchannel.equals("PlayerCount")) {
+            MakeGuis.instance.playerCount = String.valueOf(message[message.length - 1]);
+        }
     }
 }
