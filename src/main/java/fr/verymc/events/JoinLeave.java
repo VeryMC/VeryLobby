@@ -3,7 +3,7 @@ package fr.verymc.events;
 import fr.verymc.ScoreBoardNMS;
 import fr.verymc.jump.InteractJump;
 import fr.verymc.main;
-import fr.verymc.serverqueue.ServerQueueManager;
+import fr.verymc.serverqueue.ServerQueueSkyblockManager;
 import fr.verymc.utils.ChooseEffect;
 import fr.verymc.utils.ItemStackBuilder;
 import fr.verymc.utils.SkullBuilder;
@@ -51,9 +51,9 @@ public class JoinLeave implements Listener {
     @EventHandler
     public void onPlayerJoin(final PlayerJoinEvent event) {
         final Player player = event.getPlayer();
-        if (!player.hasPermission("maintenance")) {
+        /*if (!player.hasPermission("maintenance")) {
             player.kickPlayer("§cMaintenance en cours...\n §chttps://discord.gg/ZRsd85u9Yf");
-        }
+        }*/
         final PlayerInventory playerInventory = player.getInventory();
         playerInventory.clear();
         if (!ChooseEffect.permchangeeffect.containsKey(player)) {
@@ -122,8 +122,8 @@ public class JoinLeave implements Listener {
             Grade = "§fN/A";
             Suffix = "";
         }
-        if (ServerQueueManager.position.containsKey(player.getName())) {
-            ServerQueueManager.position.remove(player.getName());
+        if (ServerQueueSkyblockManager.instance.position.containsKey(player.getName())) {
+            ServerQueueSkyblockManager.instance.position.remove(player.getName());
         }
     }
 }

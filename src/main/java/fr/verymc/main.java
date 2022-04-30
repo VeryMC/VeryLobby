@@ -13,7 +13,8 @@ import fr.verymc.guis.MakeGuis;
 import fr.verymc.jump.InteractJump;
 import fr.verymc.jump.JumpParticleManager;
 import fr.verymc.jump.MakeTop;
-import fr.verymc.serverqueue.ServerQueueManager;
+import fr.verymc.serverqueue.ServerQueueComboFFAManager;
+import fr.verymc.serverqueue.ServerQueueSkyblockManager;
 import fr.verymc.utils.ChooseEffect;
 import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
@@ -72,6 +73,7 @@ public class main extends JavaPlugin implements Listener, PluginMessageListener 
         this.getCommand("site").setExecutor(new CommandSite());
         this.getCommand("boutique").setExecutor(new CommandBoutique());
         this.getCommand("skyblock").setExecutor(new CommandSkyblock());
+        this.getCommand("comboffa").setExecutor(new CommandComboFFA());
         this.getCommand("leavequeues").setExecutor(new CommandLeaveQueues());
 
         Bukkit.getPluginManager().isPluginEnabled("LuckPerms");
@@ -94,8 +96,8 @@ public class main extends JavaPlugin implements Listener, PluginMessageListener 
         MakeTop.Valeurs.clear();
         MakeTop.Classement.clear();
 
-        ServerQueueManager.Every5sec();
-        ServerQueueManager.DisplayActionBarForA();
+        new ServerQueueSkyblockManager();
+        new ServerQueueComboFFAManager();
 
         pool = new JedisPool(System.getenv("REDIS_HOST"), 6379);
         new ScoreBoardNMS();
@@ -132,15 +134,22 @@ public class main extends JavaPlugin implements Listener, PluginMessageListener 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(main.instance, new Runnable() {
             @Override
             public void run() {
-                ByteArrayDataOutput out = ByteStreams.newDataOutput();
                 Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(main.instance, "BungeeCord");
+                ByteArrayDataOutput out = ByteStreams.newDataOutput();
 
                 out.writeUTF("PlayerCount");
                 out.writeUTF("skyblock");
 
                 Bukkit.getServer().sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
+
+                ByteArrayDataOutput out2 = ByteStreams.newDataOutput();
+
+                out2.writeUTF("PlayerCount");
+                out2.writeUTF("comboffa");
+
+                Bukkit.getServer().sendPluginMessage(main.instance, "BungeeCord", out2.toByteArray());
             }
-        }, 0L, ServerQueueManager.delayInSec * 20L);
+        }, 0L, ServerQueueSkyblockManager.delayInSec * 20L);
     }
 
 
@@ -151,8 +160,13 @@ public class main extends JavaPlugin implements Listener, PluginMessageListener 
         }
         ByteArrayDataInput in = ByteStreams.newDataInput(message);
         String subchannel = in.readUTF();
+        String server = in.readUTF();
         if (subchannel.equals("PlayerCount")) {
-            MakeGuis.instance.playerCount = String.valueOf(message[message.length - 1]);
+            if (server.equalsIgnoreCase("skyblock")) {
+                MakeGuis.instance.playerCountSkyblock = String.valueOf(message[message.length - 1]);
+            } else if (server.equalsIgnoreCase("comboffa")) {
+                MakeGuis.instance.playerCountComboFFA = String.valueOf(message[message.length - 1]);
+            }
         }
     }
 }

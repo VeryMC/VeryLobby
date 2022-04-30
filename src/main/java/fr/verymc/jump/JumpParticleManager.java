@@ -1,12 +1,6 @@
 package fr.verymc.jump;
 
-import fr.verymc.main;
-import net.minecraft.server.v1_8_R3.EnumParticle;
-import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
-import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 
@@ -15,7 +9,7 @@ public class JumpParticleManager {
     public static ArrayList<Location> locs = new ArrayList<Location>();
 
     public static void CheckForParticuleApply() {
-        for (Location loc : locs) {
+        /*for (Location loc : locs) {
             double radius = 1.0;
             for (double y = 0; y <= 6.4; y += 0.1) {
                 double x = radius * Math.cos(y);
@@ -31,7 +25,7 @@ public class JumpParticleManager {
             public void run() {
                 CheckForParticuleApply();
             }
-        }, 20);
+        }, 20);*/
     }
 
 }

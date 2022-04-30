@@ -21,7 +21,8 @@ public class MakeGuis {
     public static MakeGuis instance;
     static String Grade = "§7N/A";
     static String Suffix = "";
-    public String playerCount = "§7N/A";
+    public String playerCountSkyblock = "§7N/A";
+    public String playerCountComboFFA = "§7N/A";
 
     public MakeGuis() {
         instance = this;
@@ -30,19 +31,23 @@ public class MakeGuis {
     public void MakeMainGui(Player player) {
         Inventory inv = Bukkit.createInventory(null, 45, "§6Very§fMc §f➔ §6Mini-jeux");
 
-        User user = main.api.getUserManager().getUser(player.getUniqueId());
-        if (user.getCachedData().getMetaData().getPrefix() != null) {
-            Grade = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
-        }
-
         ItemStack stack4 = new ItemStack(Material.GRASS, 1);
         ItemMeta meta4 = stack4.getItemMeta();
         meta4.setDisplayName("§6Skyblock");
         meta4.setLore(Arrays.asList("§7En SkyBlock, vous commencez avec une petite île",
                 "§7où vous devez survivre, agrandir votre terrain pour forger", "§7votre empire !", "§7",
-                "§d§lInformations", "§7Connectés: §a" + playerCount, "§7", "§7Version: §e1.16.5 et supérieur", "§7Développeur: Farmeurimmo"));
+                "§d§lInformations", "§7Connectés: §a" + playerCountSkyblock, "§7", "§7Version: §e1.16.5 et supérieur", "§7Développeur: Farmeurimmo"));
         stack4.setItemMeta(meta4);
-        inv.setItem(22, stack4);
+        inv.setItem(21, stack4);
+
+        ItemStack stack5 = new ItemStack(Material.IRON_SWORD, 1);
+        ItemMeta meta5 = stack5.getItemMeta();
+        meta5.setDisplayName("§6ComboFFA");
+        meta5.setLore(Arrays.asList("§7En ComboFFA, vous devez combattre",
+                "§7contre les autres joueurs avec un pvp modifié", "§7pour obtenir un max de kills.", "§7",
+                "§d§lInformations", "§7Connectés: §a" + playerCountComboFFA, "§7", "§7Version: §e1.8.9 et supérieur", "§7Développeur: Weathox_"));
+        stack5.setItemMeta(meta5);
+        inv.setItem(23, stack5);
 
         player.openInventory(inv);
 
@@ -98,27 +103,27 @@ public class MakeGuis {
 
         ItemStack stacke = new ItemStack(Material.GOLD_INGOT, 1);
         ItemMeta metae = stacke.getItemMeta();
-        if(RankExpiry.GetTimeLeft(player) >= 1) {
-        long aaa = RankExpiry.GetTimeLeft(player);
-        long dayleft = TimeUnit.MILLISECONDS.toDays(aaa);
-        long hourleft = TimeUnit.MILLISECONDS.toHours(aaa);
-        long minleft = TimeUnit.MILLISECONDS.toMinutes(aaa);
-        long secleft = TimeUnit.MILLISECONDS.toSeconds(aaa);
-        long realsecleft = secleft - 60*minleft;
-        long realminleft = minleft - 60*hourleft;
-        long realhourleft = hourleft - 24*dayleft;
-        metae.setDisplayName("§eStatus du Premium §a(§lACTIF§a)");
-        metae.setLore(Arrays.asList("§7Type: §a§lTemporaire","§6"+dayleft+" §7jour(s) §6"+realhourleft+" §7heure(s) §6"+realminleft+" §7minute(s) §6"
-        +realsecleft+" §7seconde(s) restantes"));
-        metae.addEnchant(Enchantment.SILK_TOUCH, 0, true);
-        metae.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        } else if(player.hasPermission("group.premium")){
-        	metae.setDisplayName("§eStatus du Premium §a(§lACTIF§a)");
-        	metae.setLore(Arrays.asList("§7Type: §2§lPermanant"));
-        	metae.addEnchant(Enchantment.SILK_TOUCH, 0, true);
+        if (RankExpiry.GetTimeLeft(player) >= 1) {
+            long aaa = RankExpiry.GetTimeLeft(player);
+            long dayleft = TimeUnit.MILLISECONDS.toDays(aaa);
+            long hourleft = TimeUnit.MILLISECONDS.toHours(aaa);
+            long minleft = TimeUnit.MILLISECONDS.toMinutes(aaa);
+            long secleft = TimeUnit.MILLISECONDS.toSeconds(aaa);
+            long realsecleft = secleft - 60 * minleft;
+            long realminleft = minleft - 60 * hourleft;
+            long realhourleft = hourleft - 24 * dayleft;
+            metae.setDisplayName("§eStatus du Premium §a(§lACTIF§a)");
+            metae.setLore(Arrays.asList("§7Type: §a§lTemporaire", "§6" + dayleft + " §7jour(s) §6" + realhourleft + " §7heure(s) §6" + realminleft + " §7minute(s) §6"
+                    + realsecleft + " §7seconde(s) restantes"));
+            metae.addEnchant(Enchantment.SILK_TOUCH, 0, true);
             metae.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-	    } else {
-        	metae.setDisplayName("§eStatus du Premium §c(§lINACTIF§c)");
+        } else if (player.hasPermission("group.premium")) {
+            metae.setDisplayName("§eStatus du Premium §a(§lACTIF§a)");
+            metae.setLore(Arrays.asList("§7Type: §2§lPermanant"));
+            metae.addEnchant(Enchantment.SILK_TOUCH, 0, true);
+            metae.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        } else {
+            metae.setDisplayName("§eStatus du Premium §c(§lINACTIF§c)");
         }
         stacke.setItemMeta(metae);
 

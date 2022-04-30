@@ -112,6 +112,9 @@ public class GuisManager implements Listener {
             if (current.getType() == Material.GRASS) {
                 player.chat("/skyblock");
             }
+            if (current.getType() == Material.IRON_SWORD) {
+                player.chat("/comboffa");
+            }
         }
     }
 

@@ -10,24 +10,30 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ServerQueueManager {
+public class ServerQueueComboFFAManager {
 
+    public static ServerQueueComboFFAManager instance;
     public static int delayInSec = 3;
+    public HashMap<String, Integer> position = new HashMap<>();
 
-    public static HashMap<String, Integer> position = new HashMap<>();
+    public ServerQueueComboFFAManager() {
+        instance = this;
+        every5sec();
+        displayActionBarForA();
+    }
 
-    public static void setPosition(String playername, Integer time) {
+    public void setPosition(String playername, Integer time) {
         if (time == null)
             position.remove(playername);
         else
             position.put(playername, time);
     }
 
-    public static int getPosition(String playername) {
+    public int getPosition(String playername) {
         return (position.get(playername) == null ? 0 : position.get(playername));
     }
 
-    public static void DisplayActionBarForA() {
+    public void displayActionBarForA() {
         Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(main.instance, new Runnable() {
             public void run() {
                 for (Map.Entry<String, Integer> entry : position.entrySet()) {
@@ -35,7 +41,7 @@ public class ServerQueueManager {
                         if (Bukkit.getPlayer(entry.getKey()).isOnline() == true) {
                             int tmp = position.size() - 1;
                             PlayerNMS.sendActionBar(Bukkit.getPlayer(entry.getKey()), "§7Position §6" +
-                                    entry.getValue() + "§7 sur §6" + tmp + "§7 dans la file d'attente du §6Skyblock");
+                                    entry.getValue() + "§7 sur §6" + tmp + "§7 dans la file d'attente du §6ComboFFA");
                         } else {
                             position.remove(entry.getKey());
                         }
@@ -43,12 +49,12 @@ public class ServerQueueManager {
                         position.remove(entry.getKey());
                     }
                 }
-                DisplayActionBarForA();
+                displayActionBarForA();
             }
         }, 20);
     }
 
-    public static void Every5sec() {
+    public void every5sec() {
         Player player = null;
         if (position.size() > 0) {
             int value = 0;
@@ -80,7 +86,7 @@ public class ServerQueueManager {
                     final ByteArrayDataOutput out = ByteStreams.newDataOutput();
                     Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(main.instance, "BungeeCord");
                     out.writeUTF("Connect");
-                    out.writeUTF("skyblock");
+                    out.writeUTF("comboffa");
                     player.sendPluginMessage(main.instance, "BungeeCord", out.toByteArray());
                 }
             }
@@ -113,7 +119,7 @@ public class ServerQueueManager {
                         }
                     }
                 }
-                Every5sec();
+                every5sec();
             }
         }, 20 * delayInSec);
     }
