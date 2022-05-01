@@ -3,7 +3,6 @@ package fr.verymc;
 import fr.verymc.utils.ScoreboardSign;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import redis.clients.jedis.Jedis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,8 +19,6 @@ public class ScoreBoardNMS {
     public static ScoreBoardNMS instance;
 
     public int online = 0;
-
-    Jedis j = null;
 
     public ScoreBoardNMS() {
         instance = this;
@@ -66,26 +63,6 @@ public class ScoreBoardNMS {
     }
 
     public void UpdateScoreBoard() {
-        //int vanisheds = 0;
-        /*try {
-            j = main.pool.getResource();
-            // If you want to use a password, use
-            j.auth(System.getenv("REDIS_PASSWORD"));
-            for (String van : j.keys("Mod:")) {
-                vanisheds += 1;
-            }
-            String returned = j.get("connected:global");
-            if (returned != null) {
-                try {
-                    online = Integer.parseInt(returned);
-                } catch (NumberFormatException e) {
-                    online = 0;
-                }
-            } else online = 0;
-
-        } finally {
-            j.close();
-        }*/
         ArrayList<String> Vanished = new ArrayList<String>();
         Vanished.clear();
         for (Player p : Bukkit.getOnlinePlayers()) {

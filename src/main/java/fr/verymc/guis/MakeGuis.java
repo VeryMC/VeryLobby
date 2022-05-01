@@ -45,7 +45,7 @@ public class MakeGuis {
         meta5.setDisplayName("§6ComboFFA §7| §eBêta");
         meta5.setLore(Arrays.asList("§7En ComboFFA, vous devez vous",
                 "§7battre contre les autres joueurs", "§7avec un knockback modifié.",
-                "§7Un seul objectif:", "§7-> Être le meilleur","§7",
+                "§7Un seul objectif:", "§7-> Être le meilleur", "§7",
                 "§d§lInformations", "§7Connectés: §a" + playerCountComboFFA, "§7", "§7Version du jeu: §e1.8.9 et supérieur"));
         stack5.setItemMeta(meta5);
         inv.setItem(23, stack5);

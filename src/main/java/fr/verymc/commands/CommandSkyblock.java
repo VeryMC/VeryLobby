@@ -2,7 +2,6 @@ package fr.verymc.commands;
 
 import com.viaversion.viaversion.api.Via;
 import com.viaversion.viaversion.api.ViaAPI;
-import fr.verymc.main;
 import fr.verymc.serverqueue.ServerQueueComboFFAManager;
 import fr.verymc.serverqueue.ServerQueueSkyblockManager;
 import fr.verymc.utils.PlayerNMS;
@@ -15,12 +14,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 public class CommandSkyblock implements CommandExecutor {
-
-    public static HashMap<UUID, Integer> cooldowns = main.cooldowns;
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override

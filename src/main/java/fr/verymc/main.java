@@ -18,38 +18,19 @@ import fr.verymc.serverqueue.ServerQueueSkyblockManager;
 import fr.verymc.utils.ChooseEffect;
 import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
-import redis.clients.jedis.JedisPool;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.UUID;
 
 public class main extends JavaPlugin implements Listener, PluginMessageListener {
 
     public static main instance;
     public static LuckPerms api;
-    public static JedisPool pool;
-    public static HashMap<UUID, Integer> cooldowns = new HashMap<>();
-    static String Grade = "N/A";
-    static Location spawnLocation = new Location(Bukkit.getWorld("Lobby-01"), 69.0, 165.0, -243.0);
-
-    public static void setCooldown(UUID player, Integer time) {
-        if (time == null)
-            cooldowns.remove(player);
-        else
-            cooldowns.put(player, time);
-    }
-
-    public static int getCooldown(UUID player) {
-        return (cooldowns.get(player) == null ? 0 : cooldowns.get(player));
-    }
 
     //✯
     //✔
@@ -98,7 +79,6 @@ public class main extends JavaPlugin implements Listener, PluginMessageListener 
         new ServerQueueSkyblockManager();
         new ServerQueueComboFFAManager();
 
-        pool = new JedisPool(System.getenv("REDIS_HOST"), 6379);
         new ScoreBoardNMS();
         ScoreBoardNMSRanksJump.AutoUpdate();
 
@@ -124,7 +104,6 @@ public class main extends JavaPlugin implements Listener, PluginMessageListener 
     public void onDisable() {
         MakeTop.RemoveHolo();
         ScoreBoardNMS.instance.DeleteScoreBoard();
-        pool.close();
         this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
         this.getServer().getMessenger().unregisterIncomingPluginChannel(this);
     }

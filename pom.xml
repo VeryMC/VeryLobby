@@ -47,13 +47,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>3.0.0</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>com.github.CobbleSword.NachoSpigot</groupId>
             <artifactId>api</artifactId>
             <version>1.4_PC97</version>
