@@ -28,11 +28,12 @@ public class CommandSkyblock implements CommandExecutor {
 
         if (sender instanceof Player) {
             final Player player = (Player) sender;
-            if (ServerQueueSkyblockManager.instance.position.containsKey(player.getName())) {
-                player.sendMessage("\n§a§lFile d'attente §7» §cVous êtes déjà dans une file d'attente !");
+            if (ServerQueueComboFFAManager.instance.position.containsKey(player.getName())) {
+                ServerQueueComboFFAManager.instance.position.containsKey(player.getName());
+                player.sendMessage("\n§an§a§lFile d'attente §7» §cVous avez été retiré de la file d'attente du ComboFFA !");
                 return true;
             }
-            if (ServerQueueComboFFAManager.instance.position.containsKey(player.getName())) {
+            if (ServerQueueSkyblockManager.instance.position.containsKey(player.getName())) {
                 player.sendMessage("\n§a§lFile d'attente §7» §cVous êtes déjà dans une file d'attente !");
                 return true;
             }

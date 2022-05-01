@@ -33,19 +33,20 @@ public class MakeGuis {
 
         ItemStack stack4 = new ItemStack(Material.GRASS, 1);
         ItemMeta meta4 = stack4.getItemMeta();
-        meta4.setDisplayName("§6Skyblock");
-        meta4.setLore(Arrays.asList("§7En SkyBlock, vous commencez avec une petite île",
-                "§7où vous devez survivre, agrandir votre terrain pour forger", "§7votre empire !", "§7",
-                "§d§lInformations", "§7Version: §e1.0.0","§7Connectés: §a" + playerCountSkyblock, "§7", "§7Version du jeu: §e1.16.5 et supérieur"));
+        meta4.setDisplayName("§6Skyblock §7| §e1.0.0");
+        meta4.setLore(Arrays.asList("§7En SkyBlock, vous commencez avec",
+                "§7une petite île où vous devez", "§7survivre, agrandir votre terrain", "§7pour forger votre empire !", "§7",
+                "§d§lInformations", "§7Connectés: §a" + playerCountSkyblock, "§7", "§7Version du jeu: §e1.16.5 et supérieur"));
         stack4.setItemMeta(meta4);
         inv.setItem(21, stack4);
 
         ItemStack stack5 = new ItemStack(Material.IRON_SWORD, 1);
         ItemMeta meta5 = stack5.getItemMeta();
-        meta5.setDisplayName("§6ComboFFA");
-        meta5.setLore(Arrays.asList("§7En ComboFFA, vous devez combattre",
-                "§7contre les autres joueurs avec un pvp modifié", "§7pour obtenir un max de kills.", "§7",
-                "§d§lInformations", "§7Version: §eBêta","§7Connectés: §a" + playerCountComboFFA, "§7", "§7Version du jeu: §e1.8.9 et supérieur"));
+        meta5.setDisplayName("§6ComboFFA §7| §eBêta");
+        meta5.setLore(Arrays.asList("§7En ComboFFA, vous devez vous",
+                "§7battre contre les autres joueurs", "§7avec un knockback modifié.",
+                "§7Un seul objectif:", "§7-> Être le meilleur","§7",
+                "§d§lInformations", "§7Connectés: §a" + playerCountComboFFA, "§7", "§7Version du jeu: §e1.8.9 et supérieur"));
         stack5.setItemMeta(meta5);
         inv.setItem(23, stack5);
 

@@ -6,7 +6,6 @@ softdepend: [ HolographicDisplays ]
 commands:
   site:
   discord:
-  serveur:
   builder:
   boutique:
   skyblock:

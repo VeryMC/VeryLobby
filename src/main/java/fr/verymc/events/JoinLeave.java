@@ -3,6 +3,7 @@ package fr.verymc.events;
 import fr.verymc.ScoreBoardNMS;
 import fr.verymc.jump.InteractJump;
 import fr.verymc.main;
+import fr.verymc.serverqueue.ServerQueueComboFFAManager;
 import fr.verymc.serverqueue.ServerQueueSkyblockManager;
 import fr.verymc.utils.ChooseEffect;
 import fr.verymc.utils.ItemStackBuilder;
@@ -61,7 +62,7 @@ public class JoinLeave implements Listener {
         }
         player.teleport(spawn);
         player.sendMessage("\n ");
-        player.sendMessage("§6§lVery§f§lMc §f| Version §cBêta §d1.8x1.18.1 \n  \n§aBon jeu sur VeryMc ! \n ");
+        player.sendMessage("§6§lVery§f§lMc §f| Version §aStable §d1.8x1.18.1 \n  \n§aBon jeu sur VeryMc ! \n ");
         player.setHealth(2.0);
         player.setMaxHealth(2.0);
         player.setFoodLevel(20);
@@ -93,8 +94,6 @@ public class JoinLeave implements Listener {
             } else {
                 event.setJoinMessage("§l§o" + Grade + " " + player.getName() + " " + Suffix + " §6§ovient de rejoindre le serveur.");
             }
-            Grade = "§fN/A";
-            Suffix = "";
         }
     }
 
@@ -119,11 +118,12 @@ public class JoinLeave implements Listener {
             } else {
                 event.setQuitMessage("§l§o" + Grade + " " + player.getName() + " " + Suffix + " §6§ovient de quitter le serveur.");
             }
-            Grade = "§fN/A";
-            Suffix = "";
         }
         if (ServerQueueSkyblockManager.instance.position.containsKey(player.getName())) {
             ServerQueueSkyblockManager.instance.position.remove(player.getName());
+        }
+        if (ServerQueueComboFFAManager.instance.position.containsKey(player.getName())) {
+            ServerQueueComboFFAManager.instance.position.remove(player.getName());
         }
     }
 }

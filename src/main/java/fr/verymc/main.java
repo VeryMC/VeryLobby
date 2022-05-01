@@ -68,7 +68,6 @@ public class main extends JavaPlugin implements Listener, PluginMessageListener 
         getServer().getPluginManager().registerEvents(new DamageManager(), this);
 
         this.getCommand("builder").setExecutor(new CommandBuilder());
-        this.getCommand("serveur").setExecutor(new CommandServeur());
         this.getCommand("discord").setExecutor(new CommandDiscord());
         this.getCommand("site").setExecutor(new CommandSite());
         this.getCommand("boutique").setExecutor(new CommandBoutique());
